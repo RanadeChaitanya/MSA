@@ -1,0 +1,3990 @@
+{
+  "extraction": {
+    "questions": [
+      {
+        "correct_option": null,
+        "number": "1",
+        "option_a": "C<sub>2</sub>H<sub>5</sub>OH",
+        "option_b": "CH<sub>3</sub>CHO",
+        "option_c": "CH<sub>3</sub>COCH<sub>3</sub>",
+        "option_d": "CH<sub>3</sub>COOH",
+        "stem": "An organic compound 'X' on treatment with pyridinium chloro chromate in dichloromethane gives compound 'Y'. Compound 'Y' reacts with I<sub>2</sub> and alkali to form triiodomethane. The compound 'X' is"
+      },
+      {
+        "correct_option": null,
+        "number": "4",
+        "option_a": "HCHO + (CH<sub>3</sub>)<sub>2</sub>CHCH<sub>2</sub>MgX",
+        "option_b": "$CH<sub>2</sub>-CH<sub>2</sub> + (CH<sub>3</sub>)<sub>2</sub>CHMgX$",
+        "option_c": "(CH<sub>3</sub>)<sub>2</sub>CHCH<sub>2</sub>CH<sub>2</sub>MgX + O<sub>2</sub> air",
+        "option_d": "(CH<sub>3</sub>)<sub>2</sub>CHCHO + CH<sub>3</sub>MgX",
+        "stem": "Alcohol (CH<sub>3</sub>)<sub>2</sub>CHCH<sub>2</sub>OH cannot be obtained by"
+      },
+      {
+        "correct_option": null,
+        "number": "5",
+        "option_a": "Alkyl halides",
+        "option_b": "Alcohols",
+        "option_c": "Aliphatic amines",
+        "option_d": "Aromatic amines",
+        "stem": "Lucas reagent is used to distinguish among primary, secondary and tertiary:"
+      },
+      {
+        "correct_option": null,
+        "number": "6",
+        "option_a": "Primary alcohol",
+        "option_b": "Secondary alcohol",
+        "option_c": "Tertiary alcohol",
+        "option_d": "Aldehyde",
+        "stem": "Ketone upon treatment with Grignard reagent gives"
+      },
+      {
+        "correct_option": null,
+        "number": "7",
+        "option_a": "CH<sub>3</sub>OH",
+        "option_b": "C<sub>2</sub>H<sub>5</sub>OH",
+        "option_c": "CH<sub>3</sub>CHO",
+        "option_d": "CH<sub>3</sub>COCH<sub>3</sub>",
+        "stem": "The starting material for the preparation of CH<sub>3</sub>I in one step reaction is:"
+      },
+      {
+        "correct_option": null,
+        "number": "9",
+        "option_a": "",
+        "option_b": "",
+        "option_c": "",
+        "option_d": "",
+        "stem": "Which one of the following will most readily be dehydrated in acidic condition?"
+      },
+      {
+        "correct_option": null,
+        "number": "10",
+        "option_a": "CH<sub>3</sub>OH + (CH<sub>3</sub>)<sub>3</sub>Cl",
+        "option_b": "CH<sub>3</sub>I + (CH<sub>3</sub>)<sub>3</sub>COH",
+        "option_c": "CH<sub>3</sub>I + (CH<sub>3</sub>)<sub>3</sub>Cl",
+        "option_d": "None of the above",
+        "stem": "Tert-butyl methyl ether on heating with anhydrous HI in ether gives"
+      },
+      {
+        "correct_option": null,
+        "number": "11",
+        "option_a": "NaOH",
+        "option_b": "Water",
+        "option_c": "KMnO<sub>4</sub>",
+        "option_d": "HI",
+        "stem": "Diethyl ether is decomposed on heating with:"
+      },
+      {
+        "correct_option": null,
+        "number": "12",
+        "option_a": "Sand",
+        "option_b": "Pyrene",
+        "option_c": "CO<sub>2</sub>",
+        "option_d": "All of these",
+        "stem": "Ether fire can be extinguished by:"
+      },
+      {
+        "correct_option": null,
+        "number": "13",
+        "option_a": "Acetic acid",
+        "option_b": "Carbon dioxide",
+        "option_c": "Ethyl propanoate",
+        "option_d": "Acetyl chloride",
+        "stem": "Diethyl ether on reaction with CO in specific conditions forms:"
+      },
+      {
+        "correct_option": null,
+        "number": "14",
+        "option_a": "Propan-1-ol",
+        "option_b": "Propan-2-ol",
+        "option_c": "Propane-1, 2-diol",
+        "option_d": "Propane-1,2,3-triol",
+        "stem": "Most viscous among the following is:"
+      },
+      {
+        "correct_option": null,
+        "number": "15",
+        "option_a": "10 %",
+        "option_b": "40 %",
+        "option_c": "95 %",
+        "option_d": "70 %",
+        "stem": "In the fermentation of sugar molasses, the percentage of ethanol formed is:"
+      },
+      {
+        "correct_option": null,
+        "number": "16",
+        "option_a": "HCHO",
+        "option_b": "CH<sub>3</sub>COCH<sub>3</sub>",
+        "option_c": "CH<sub>3</sub>COOH",
+        "option_d": "CH<sub>3</sub>OH",
+        "stem": "A liquid was mixed with ethanol and a drop of concentrated H<sub>2</sub>SO<sub>4</sub> was added. A compound with a fruity smell was formed. The liquid was:"
+      },
+      {
+        "correct_option": null,
+        "number": "17",
+        "option_a": "PCl<sub>5</sub>",
+        "option_b": "K<sub>2</sub>Cr<sub>2</sub>O<sub>7</sub> + H<sub>2</sub>SO<sub>4</sub>",
+        "option_c": "CH<sub>3</sub>COOH",
+        "option_d": "CH<sub>3</sub>COCH<sub>3</sub>",
+        "stem": "Ethyl alcohol reacts with following to form a compound of fruity smell:"
+      },
+      {
+        "correct_option": null,
+        "number": "18",
+        "option_a": "HCOOH",
+        "option_b": "CH<sub>3</sub>COOH",
+        "option_c": "C<sub>6</sub>H<sub>5</sub>COOH",
+        "option_d": "C<sub>6</sub>H<sub>5</sub>OH",
+        "stem": "Carbolic acid is"
+      },
+      {
+        "correct_option": null,
+        "number": "19",
+        "option_a": "The first structure is a cyclopentane ring with a methoxy group (H3CO) and a hydrogen atom (H) at the left position, and a methyl group (H3C) and a hydroxyl group (OH) at the right position. The second structure is a cyclopentane ring with a hydrogen (H) and a hydroxyl group (OH) at the left position, and a methoxy group (H3CO) and a methyl group (CH3) at the right position.",
+        "option_b": "The first structure shows a cyclopentane ring with a hydrogen (H) and a methoxy group (H3CO) at the left position, and a methyl group (H3C) and a hydroxyl group (OH) at the right position. The second structure shows a cyclopentane ring with a hydrogen (H) and a hydroxyl group (OH) at the left position, and a methoxy group (H3CO) and a methyl group (CH3) at the right position.",
+        "option_c": "The first structure shows a cyclopentane ring with a methoxy group (OCH3) and a hydrogen (H) at the left position, and a methyl group (CH3) and a hydroxyl group (OH) at the right position. The second structure shows a cyclopentane ring with a hydrogen (H) and a methoxy group (MeO) at the left position, and a hydroxyl group (HO) and a methyl group (CH3) at the right position.",
+        "option_d": "The first structure shows a cyclopentane ring with a methyl group (CH3) and a methoxy group (H3CO) at the left position, and a hydrogen (H) and a hydroxyl group (OH) at the right position. The second structure shows a cyclopentane ring with a hydrogen (H) and a methoxy group (H3CO) at the left position, and a methyl group (H3C) and a hydroxyl group (OH) at the right position.",
+        "stem": "A and B are"
+      },
+      {
+        "correct_option": null,
+        "number": "20",
+        "option_a": "2-chloro-3-methylbutane",
+        "option_b": "2,2-dimethylpentane",
+        "option_c": "2-chloro-2-methylbutane",
+        "option_d": "1-chloro-2-methylbutane",
+        "stem": "2-methyl-2-butanol on treatment with HCl gives predominantly"
+      },
+      {
+        "correct_option": null,
+        "number": "21",
+        "option_a": "Passing ethanol over heated alumina",
+        "option_b": "Heating sodium ethoxide with ethyl bromide",
+        "option_c": "Treating ethyl alcohol with excess of $H_2SO_4$ at 430-440 K",
+        "option_d": "Heating ethanol with dry $Ag_2O$",
+        "stem": "In Williamson's synthesis ethoxy ethane is prepared by"
+      },
+      {
+        "correct_option": null,
+        "number": "22",
+        "option_a": "Trimethyl carbinol",
+        "option_b": "Ethanol",
+        "option_c": "Propanol",
+        "option_d": "Methanol",
+        "stem": "Which of the following reacts fastest with a mixture of anhydrous $ZnCl_2$ and conc. HCl?"
+      },
+      {
+        "correct_option": null,
+        "number": "23",
+        "option_a": "Conc. $HNO_3$",
+        "option_b": "Conc. $H_2SO_4$",
+        "option_c": "Conc. HCl",
+        "option_d": "None of these",
+        "stem": "Ethers are made free from peroxide linkage on distilling impure sample with:"
+      },
+      {
+        "correct_option": null,
+        "number": "24",
+        "option_a": "Formation of water and $CO_2$ on reduction",
+        "option_b": "Formation of tartronic acid on oxidation",
+        "option_c": "Formation of acrolein on dehydration",
+        "option_d": "Formation of allyl iodide with $PI_3$",
+        "stem": "Which of the property given below is not associated with glycerol?"
+      },
+      {
+        "correct_option": null,
+        "number": "25",
+        "option_a": "[VISUAL_TEXT]",
+        "option_b": "[VISUAL_TEXT]",
+        "option_c": "[VISUAL_TEXT]",
+        "option_d": "$CH_3OH + CH_3I$",
+        "stem": "The products obtained when anisole is heated in a sealed tube with HI are"
+      },
+      {
+        "correct_option": null,
+        "number": "26",
+        "option_a": "A cyclobutane ring with a bromine atom at one corner and a -CH2OH group at the opposite corner.",
+        "option_b": "A cyclobutane ring with a chlorine atom at one corner and a -CH2OH group at the opposite corner.",
+        "option_c": "A cyclobutane ring with a -CH2OH group at two opposite corners.",
+        "option_d": "A cyclobutane ring with an aldehyde group (-CHO) at two opposite corners.",
+        "stem": "Cl and Br reacted with Mg/ether followed by HCHO and H3O+ to yield A."
+      },
+      {
+        "correct_option": null,
+        "number": "27",
+        "option_a": "[Cyclopentane ring with a =CH2 group attached]",
+        "option_b": "[Cyclopentene ring with a -CH3 group attached to the double bond carbon]",
+        "option_c": "[Cyclohexene ring]",
+        "option_d": "[Cyclopentane ring with a -CH3 group attached]",
+        "stem": "The product in the given reaction is:\nReaction: Cyclopentylmethanol --(H2SO4)--> Product"
+      },
+      {
+        "correct_option": null,
+        "number": "28",
+        "option_a": "A primary alcohol",
+        "option_b": "A secondary alcohol",
+        "option_c": "A tertiary alcohol",
+        "option_d": "An aldehyde",
+        "stem": "When CH<sub>3</sub>MgI is made to react with acetone and the addition product formed is hydrolysed, we get:"
+      },
+      {
+        "correct_option": null,
+        "number": "29",
+        "option_a": "Low concentration of sugar",
+        "option_b": "High concentration of sugars",
+        "option_c": "Presence of ammonium salts",
+        "option_d": "Presence of air",
+        "stem": "The factor adversely affecting the process of fermentation is:"
+      },
+      {
+        "correct_option": null,
+        "number": "30",
+        "option_a": "I > II > III",
+        "option_b": "III > II > I",
+        "option_c": "I > III > II",
+        "option_d": "III > I > II",
+        "stem": "The correct order of ease of dehydration of following is\nI: Cyclohexanol\nII: Cyclohex-2-en-1-ol\nIII: Cyclohexa-1,3-dien-1-ol"
+      },
+      {
+        "correct_option": null,
+        "number": "31",
+        "option_a": "1° > 2° > 3°",
+        "option_b": "3° > 2° > 1°",
+        "option_c": "2° > 1° > 3°",
+        "option_d": "2° > 3° > 1°",
+        "stem": "The correct order of boiling point for primary (1°), secondary (2°) and tertiary (3°)alcohols is"
+      },
+      {
+        "correct_option": null,
+        "number": "32",
+        "option_a": "[Structure with phenol and two methyl groups]",
+        "option_b": "[Structure with phenol and two chlorine atoms]",
+        "option_c": "[Structure with phenol and two nitro groups]",
+        "option_d": "[Structure with phenol and three methyl groups]",
+        "stem": "Which substance will not react with $\\phi$ NNCl (\\phi = Phenyl) to give dye?"
+      },
+      {
+        "correct_option": null,
+        "number": "33",
+        "option_a": "Sodium",
+        "option_b": "NaOH/I<sub>2</sub>",
+        "option_c": "Neutral FeCl<sub>3</sub>",
+        "option_d": "Br<sub>2</sub>/H<sub>2</sub>O",
+        "stem": "Phenol can be distinguished from ethanol by the following reagents except"
+      },
+      {
+        "correct_option": null,
+        "number": "34",
+        "option_a": "CH<sub>3</sub>CHOHCH<sub>3</sub>",
+        "option_b": "CH<sub>3</sub>—O—CH<sub>3</sub>",
+        "option_c": "CH<sub>3</sub>COOH",
+        "option_d": "C<sub>2</sub>H<sub>5</sub>OH",
+        "stem": "The compound which does not react with sodium is:"
+      },
+      {
+        "correct_option": null,
+        "number": "35",
+        "option_a": "1, 1-dichloroethane",
+        "option_b": "1, 2-dichloroethane",
+        "option_c": "1, 1, 1-trichloroethane",
+        "option_d": "2, 2-dichloroethane",
+        "stem": "Ethylene glycol reacts with excess of PCI<sub>5</sub> to give"
+      },
+      {
+        "correct_option": null,
+        "number": "36",
+        "option_a": "Baking powder",
+        "option_b": "Paints",
+        "option_c": "Thermometers",
+        "option_d": "Weighing",
+        "stem": "Alcohol is sometimes used in:"
+      },
+      {
+        "correct_option": null,
+        "number": "37",
+        "option_a": "[Chemical structure of phenolphthalein]",
+        "option_b": "[Chemical structure of phenolphthalein ion]",
+        "option_c": "[Chemical structure of phenolphthalein ion]",
+        "option_d": "All of the above",
+        "stem": "Phenolphthalein is formed by condensation of phthalic anhydride and $\\phi$ OH. Which structure shows colour in basic medium?"
+      },
+      {
+        "correct_option": null,
+        "number": "38",
+        "option_a": "C<sub>6</sub>H<sub>5</sub>OC<sub>2</sub>H<sub>5</sub>",
+        "option_b": "C<sub>2</sub>H<sub>5</sub>OC<sub>2</sub>H<sub>5</sub>",
+        "option_c": "C<sub>6</sub>H<sub>5</sub>OC<sub>6</sub>H<sub>5</sub>",
+        "option_d": "C<sub>6</sub>H<sub>5</sub>I",
+        "stem": "Phenol reacting with C<sub>2</sub>H<sub>5</sub>I in anhydrous C<sub>2</sub>H<sub>5</sub>OH to form phenetole"
+      },
+      {
+        "correct_option": null,
+        "number": "39",
+        "option_a": "[CHEMICAL STRUCTURE]",
+        "option_b": "[CHEMICAL STRUCTURE]",
+        "option_c": "[CHEMICAL STRUCTURE]",
+        "option_d": "[CHEMICAL STRUCTURE]",
+        "stem": "The major product in the reaction of PhCH<sub>2</sub>CH(OH)CH(CH<sub>3</sub>)<sub>2</sub> with concentrated H<sub>2</sub>SO<sub>4</sub> is"
+      },
+      {
+        "correct_option": null,
+        "number": "40",
+        "option_a": "CH<sub>2</sub>=CHCH<sub>2</sub>OH",
+        "option_b": "CH<sub>2</sub>OHCH<sub>2</sub>OH",
+        "option_c": "C<sub>6</sub>H<sub>5</sub>CH<sub>2</sub>OH",
+        "option_d": "C<sub>6</sub>H<sub>5</sub>OH",
+        "stem": "Which is not an alcohol?"
+      },
+      {
+        "correct_option": null,
+        "number": "41",
+        "option_a": "[CHEMICAL STRUCTURE]",
+        "option_b": "[CHEMICAL STRUCTURE]",
+        "option_c": "[CHEMICAL STRUCTURE]",
+        "option_d": "[CHEMICAL STRUCTURE]",
+        "stem": "Cyclobutane ring with OH and CH3 attached reacted with Conc. H<sub>2</sub>SO<sub>4</sub> \\u2192 A."
+      },
+      {
+        "correct_option": null,
+        "number": "42",
+        "option_a": "KMnO<sub>4</sub>",
+        "option_b": "K<sub>2</sub>Cr<sub>2</sub>O<sub>7</sub>",
+        "option_c": "HNO<sub>3</sub>",
+        "option_d": null,
+        "stem": "Glycerol catches fire on mixing with:"
+      },
+      {
+        "correct_option": null,
+        "number": "43",
+        "option_a": "Alkane",
+        "option_b": "Carboxylic acid",
+        "option_c": "Sodium salt of carboxylic acid",
+        "option_d": "Ketone",
+        "stem": "The end product of the reaction,\nCH<sub>3</sub>OH $\\xrightarrow[300^{\\circ}C]{Cu}$ A $\\xrightarrow{NaOH}$ B is :"
+      },
+      {
+        "correct_option": null,
+        "number": "44",
+        "option_a": "$sp^{3}$ and $sp^{2}$",
+        "option_b": "$sp^{3}$ and $sp^{3}$",
+        "option_c": "$sp$ and $sp$",
+        "option_d": "$sp^{2}$ and $sp^{2}$",
+        "stem": "What is the hybridisation of carbon and oxygen in electronic structure of ether?"
+      },
+      {
+        "correct_option": null,
+        "number": "45",
+        "option_a": "Protonation of alcohol molecule",
+        "option_b": "Formation of carbocation",
+        "option_c": "Elimination of water",
+        "option_d": "Formation of an ester",
+        "stem": "During dehydration of alcohols to alkenes by heating with concentrated $H_{2}SO_{4}$ the initiation step is"
+      },
+      {
+        "correct_option": null,
+        "number": "46",
+        "option_a": "CH3—CH2—OH",
+        "option_b": "CH3—CH2—C(CH3)2—OH",
+        "option_c": "CH3—C(CH3)(CH2—CH2—CH3)—CH2OH",
+        "option_d": "CH2—OH—CH—OH—CH2—OH",
+        "stem": "Which of the following is tertiary alcohol?"
+      },
+      {
+        "correct_option": null,
+        "number": "47",
+        "option_a": "$P_2O_5$",
+        "option_b": "Conc.$H_2SO_4$",
+        "option_c": "$KHSO_4$",
+        "option_d": "All of these",
+        "stem": "Which of the following reagent will convert glycerol to acrolein?"
+      },
+      {
+        "correct_option": null,
+        "number": "48",
+        "option_a": "Phenol",
+        "option_b": "$o$-cresol",
+        "option_c": "$p$-nitrophenol",
+        "option_d": "$p$-chlorophenol",
+        "stem": "Among the following, which is least acidic?"
+      },
+      {
+        "correct_option": null,
+        "number": "49",
+        "option_a": "Ethanol",
+        "option_b": "Methanoic acid",
+        "option_c": "Ether",
+        "option_d": "Acetone",
+        "stem": "Glycerol on heating with oxalic acid at 110°C gives"
+      },
+      {
+        "correct_option": null,
+        "number": "50",
+        "option_a": "$CH_3-CH-CH=CH_2$",
+        "option_b": "$CH_3-C-CH_2CH_3$",
+        "option_c": "$CH_3-C=CH-CH_3$",
+        "option_d": "None of the above",
+        "stem": "The dehydration of neo-pentanol gives mainly:"
+      },
+      {
+        "correct_option": null,
+        "number": "51",
+        "option_a": "2, 4, 6-trinitrobenzene",
+        "option_b": "$o$-nitrophenol",
+        "option_c": "$p$-nitrophenol",
+        "option_d": "Nitrobenzene",
+        "stem": "Phenol, when it first reacts with concentrated sulphuric acid and then with concentrated nitric acid, gives"
+      },
+      {
+        "correct_option": null,
+        "number": "52",
+        "option_a": "Glycerol",
+        "option_b": "Ethylene glycol",
+        "option_c": "Catechol",
+        "option_d": "Resorcinol",
+        "stem": "Which of the following is dihydric alcohol?"
+      },
+      {
+        "correct_option": null,
+        "number": "53",
+        "option_a": "40% $H_2O$",
+        "option_b": "10% $H_2O$",
+        "option_c": "5% $H_2O$",
+        "option_d": "100% $C_2H_5OH$",
+        "stem": "Absolute alcohol contains:"
+      },
+      {
+        "correct_option": null,
+        "number": "54",
+        "option_a": "$I > II > III > IV$",
+        "option_b": "$I > III > II > IV$",
+        "option_c": "$IV > III > II > I$",
+        "option_d": "$IV > III > I > II$",
+        "stem": "The order of reactivity of the following alcohols"
+      },
+      {
+        "correct_option": null,
+        "number": "55",
+        "option_a": "Nitrobenzene",
+        "option_b": "Glycerine trinitrate",
+        "option_c": "Nitroaniline",
+        "option_d": "Nitrosobenzene",
+        "stem": "The most important ingredient of dynamite is:"
+      },
+      {
+        "correct_option": null,
+        "number": "56",
+        "option_a": "2-butanol",
+        "option_b": "1-butanol",
+        "option_c": "2-butanone",
+        "option_d": "Butanal",
+        "stem": "2-methoxy butane is obtained by reacting diazomethane with"
+      },
+      {
+        "correct_option": null,
+        "number": "57",
+        "option_a": "4",
+        "option_b": "3",
+        "option_c": "6",
+        "option_d": "7",
+        "stem": "How many structural isomers are known for $C_4H_{10}O$ ?"
+      },
+      {
+        "correct_option": null,
+        "number": "58",
+        "option_a": null,
+        "option_b": null,
+        "option_c": null,
+        "option_d": null,
+        "stem": "Product is"
+      }
+    ]
+  },
+  "extraction_metadata": {
+    "questions": [
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 214,
+              "start": 140
+            }
+          ],
+          "value": "1"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 456,
+              "start": 345
+            }
+          ],
+          "value": "C<sub>2</sub>H<sub>5</sub>OH"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 456,
+              "start": 345
+            }
+          ],
+          "value": "CH<sub>3</sub>CHO"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 456,
+              "start": 345
+            }
+          ],
+          "value": "CH<sub>3</sub>COCH<sub>3</sub>"
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 456,
+              "start": 345
+            }
+          ],
+          "value": "CH<sub>3</sub>COOH"
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 214,
+              "start": 140
+            },
+            {
+              "end": 308,
+              "start": 215
+            },
+            {
+              "end": 344,
+              "start": 309
+            }
+          ],
+          "value": "An organic compound 'X' on treatment with pyridinium chloro chromate in dichloromethane gives compound 'Y'. Compound 'Y' reacts with I<sub>2</sub> and alkali to form triiodomethane. The compound 'X' is"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 1058,
+              "start": 979
+            }
+          ],
+          "value": "4"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 1188,
+              "start": 1059
+            }
+          ],
+          "value": "HCHO + (CH<sub>3</sub>)<sub>2</sub>CHCH<sub>2</sub>MgX"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 1188,
+              "start": 1059
+            }
+          ],
+          "value": "$CH<sub>2</sub>-CH<sub>2</sub> + (CH<sub>3</sub>)<sub>2</sub>CHMgX$"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 1331,
+              "start": 1189
+            }
+          ],
+          "value": "(CH<sub>3</sub>)<sub>2</sub>CHCH<sub>2</sub>CH<sub>2</sub>MgX + O<sub>2</sub> air"
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 1331,
+              "start": 1189
+            }
+          ],
+          "value": "(CH<sub>3</sub>)<sub>2</sub>CHCHO + CH<sub>3</sub>MgX"
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 1058,
+              "start": 979
+            }
+          ],
+          "value": "Alcohol (CH<sub>3</sub>)<sub>2</sub>CHCH<sub>2</sub>OH cannot be obtained by"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 1410,
+              "start": 1332
+            }
+          ],
+          "value": "5"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 1481,
+              "start": 1411
+            }
+          ],
+          "value": "Alkyl halides"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 1481,
+              "start": 1411
+            }
+          ],
+          "value": "Alcohols"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 1481,
+              "start": 1411
+            }
+          ],
+          "value": "Aliphatic amines"
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 1481,
+              "start": 1411
+            }
+          ],
+          "value": "Aromatic amines"
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 1410,
+              "start": 1332
+            }
+          ],
+          "value": "Lucas reagent is used to distinguish among primary, secondary and tertiary:"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 1534,
+              "start": 1482
+            }
+          ],
+          "value": "6"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 1609,
+              "start": 1535
+            }
+          ],
+          "value": "Primary alcohol"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 1609,
+              "start": 1535
+            }
+          ],
+          "value": "Secondary alcohol"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 1609,
+              "start": 1535
+            }
+          ],
+          "value": "Tertiary alcohol"
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 1609,
+              "start": 1535
+            }
+          ],
+          "value": "Aldehyde"
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 1534,
+              "start": 1482
+            }
+          ],
+          "value": "Ketone upon treatment with Grignard reagent gives"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 1698,
+              "start": 1610
+            }
+          ],
+          "value": "7"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 1808,
+              "start": 1699
+            }
+          ],
+          "value": "CH<sub>3</sub>OH"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 1808,
+              "start": 1699
+            }
+          ],
+          "value": "C<sub>2</sub>H<sub>5</sub>OH"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 1808,
+              "start": 1699
+            }
+          ],
+          "value": "CH<sub>3</sub>CHO"
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 1808,
+              "start": 1699
+            }
+          ],
+          "value": "CH<sub>3</sub>COCH<sub>3</sub>"
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 1698,
+              "start": 1610
+            }
+          ],
+          "value": "The starting material for the preparation of CH<sub>3</sub>I in one step reaction is:"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 2011,
+              "start": 1929
+            }
+          ],
+          "value": "9"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 2082,
+              "start": 2012
+            }
+          ],
+          "value": ""
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 2082,
+              "start": 2012
+            }
+          ],
+          "value": ""
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 2082,
+              "start": 2012
+            }
+          ],
+          "value": ""
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 2082,
+              "start": 2012
+            }
+          ],
+          "value": ""
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 2011,
+              "start": 1929
+            }
+          ],
+          "value": "Which one of the following will most readily be dehydrated in acidic condition?"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 2154,
+              "start": 2083
+            }
+          ],
+          "value": "10"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 2334,
+              "start": 2155
+            }
+          ],
+          "value": "CH<sub>3</sub>OH + (CH<sub>3</sub>)<sub>3</sub>Cl"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 2334,
+              "start": 2155
+            }
+          ],
+          "value": "CH<sub>3</sub>I + (CH<sub>3</sub>)<sub>3</sub>COH"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 2334,
+              "start": 2155
+            }
+          ],
+          "value": "CH<sub>3</sub>I + (CH<sub>3</sub>)<sub>3</sub>Cl"
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 2334,
+              "start": 2155
+            }
+          ],
+          "value": "None of the above"
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 2154,
+              "start": 2083
+            }
+          ],
+          "value": "Tert-butyl methyl ether on heating with anhydrous HI in ether gives"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 2383,
+              "start": 2335
+            }
+          ],
+          "value": "11"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 2429,
+              "start": 2384
+            }
+          ],
+          "value": "NaOH"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 2429,
+              "start": 2384
+            }
+          ],
+          "value": "Water"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 2429,
+              "start": 2384
+            }
+          ],
+          "value": "KMnO<sub>4</sub>"
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 2429,
+              "start": 2384
+            }
+          ],
+          "value": "HI"
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 2383,
+              "start": 2335
+            }
+          ],
+          "value": "Diethyl ether is decomposed on heating with:"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 2468,
+              "start": 2430
+            }
+          ],
+          "value": "12"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 2523,
+              "start": 2469
+            }
+          ],
+          "value": "Sand"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 2523,
+              "start": 2469
+            }
+          ],
+          "value": "Pyrene"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 2523,
+              "start": 2469
+            }
+          ],
+          "value": "CO<sub>2</sub>"
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 2523,
+              "start": 2469
+            }
+          ],
+          "value": "All of these"
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 2468,
+              "start": 2430
+            }
+          ],
+          "value": "Ether fire can be extinguished by:"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 2591,
+              "start": 2524
+            }
+          ],
+          "value": "13"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 2666,
+              "start": 2592
+            }
+          ],
+          "value": "Acetic acid"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 2666,
+              "start": 2592
+            }
+          ],
+          "value": "Carbon dioxide"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 2666,
+              "start": 2592
+            }
+          ],
+          "value": "Ethyl propanoate"
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 2666,
+              "start": 2592
+            }
+          ],
+          "value": "Acetyl chloride"
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 2591,
+              "start": 2524
+            }
+          ],
+          "value": "Diethyl ether on reaction with CO in specific conditions forms:"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 2743,
+              "start": 2703
+            }
+          ],
+          "value": "14"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 2817,
+              "start": 2744
+            }
+          ],
+          "value": "Propan-1-ol"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 2817,
+              "start": 2744
+            }
+          ],
+          "value": "Propan-2-ol"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 2817,
+              "start": 2744
+            }
+          ],
+          "value": "Propane-1, 2-diol"
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 2817,
+              "start": 2744
+            }
+          ],
+          "value": "Propane-1,2,3-triol"
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 2743,
+              "start": 2703
+            }
+          ],
+          "value": "Most viscous among the following is:"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 2897,
+              "start": 2818
+            }
+          ],
+          "value": "15"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 2929,
+              "start": 2898
+            }
+          ],
+          "value": "10 %"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 2929,
+              "start": 2898
+            }
+          ],
+          "value": "40 %"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 2929,
+              "start": 2898
+            }
+          ],
+          "value": "95 %"
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 2929,
+              "start": 2898
+            }
+          ],
+          "value": "70 %"
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 2897,
+              "start": 2818
+            }
+          ],
+          "value": "In the fermentation of sugar molasses, the percentage of ethanol formed is:"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 3033,
+              "start": 2930
+            }
+          ],
+          "value": "16"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 3174,
+              "start": 3091
+            }
+          ],
+          "value": "HCHO"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 3174,
+              "start": 3091
+            }
+          ],
+          "value": "CH<sub>3</sub>COCH<sub>3</sub>"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 3174,
+              "start": 3091
+            }
+          ],
+          "value": "CH<sub>3</sub>COOH"
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 3174,
+              "start": 3091
+            }
+          ],
+          "value": "CH<sub>3</sub>OH"
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 3033,
+              "start": 2930
+            },
+            {
+              "end": 3090,
+              "start": 3034
+            }
+          ],
+          "value": "A liquid was mixed with ethanol and a drop of concentrated H<sub>2</sub>SO<sub>4</sub> was added. A compound with a fruity smell was formed. The liquid was:"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 3250,
+              "start": 3175
+            }
+          ],
+          "value": "17"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 3399,
+              "start": 3251
+            }
+          ],
+          "value": "PCl<sub>5</sub>"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 3399,
+              "start": 3251
+            }
+          ],
+          "value": "K<sub>2</sub>Cr<sub>2</sub>O<sub>7</sub> + H<sub>2</sub>SO<sub>4</sub>"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 3399,
+              "start": 3251
+            }
+          ],
+          "value": "CH<sub>3</sub>COOH"
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 3399,
+              "start": 3251
+            }
+          ],
+          "value": "CH<sub>3</sub>COCH<sub>3</sub>"
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 3250,
+              "start": 3175
+            }
+          ],
+          "value": "Ethyl alcohol reacts with following to form a compound of fruity smell:"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 3420,
+              "start": 3400
+            }
+          ],
+          "value": "18"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 3517,
+              "start": 3421
+            }
+          ],
+          "value": "HCOOH"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 3517,
+              "start": 3421
+            }
+          ],
+          "value": "CH<sub>3</sub>COOH"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 3517,
+              "start": 3421
+            }
+          ],
+          "value": "C<sub>6</sub>H<sub>5</sub>COOH"
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 3517,
+              "start": 3421
+            }
+          ],
+          "value": "C<sub>6</sub>H<sub>5</sub>OH"
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 3420,
+              "start": 3400
+            }
+          ],
+          "value": "Carbolic acid is"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 3520,
+              "start": 3518
+            }
+          ],
+          "value": "19"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 4098,
+              "start": 3718
+            }
+          ],
+          "value": "The first structure is a cyclopentane ring with a methoxy group (H3CO) and a hydrogen atom (H) at the left position, and a methyl group (H3C) and a hydroxyl group (OH) at the right position. The second structure is a cyclopentane ring with a hydrogen (H) and a hydroxyl group (OH) at the left position, and a methoxy group (H3CO) and a methyl group (CH3) at the right position."
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 4481,
+              "start": 4100
+            }
+          ],
+          "value": "The first structure shows a cyclopentane ring with a hydrogen (H) and a methoxy group (H3CO) at the left position, and a methyl group (H3C) and a hydroxyl group (OH) at the right position. The second structure shows a cyclopentane ring with a hydrogen (H) and a hydroxyl group (OH) at the left position, and a methoxy group (H3CO) and a methyl group (CH3) at the right position."
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 4863,
+              "start": 4483
+            }
+          ],
+          "value": "The first structure shows a cyclopentane ring with a methoxy group (OCH3) and a hydrogen (H) at the left position, and a methyl group (CH3) and a hydroxyl group (OH) at the right position. The second structure shows a cyclopentane ring with a hydrogen (H) and a methoxy group (MeO) at the left position, and a hydroxyl group (HO) and a methyl group (CH3) at the right position."
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 5269,
+              "start": 4865
+            }
+          ],
+          "value": "The first structure shows a cyclopentane ring with a methyl group (CH3) and a methoxy group (H3CO) at the left position, and a hydrogen (H) and a hydroxyl group (OH) at the right position. The second structure shows a cyclopentane ring with a hydrogen (H) and a methoxy group (H3CO) at the left position, and a methyl group (H3C) and a hydroxyl group (OH) at the right position."
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 3557,
+              "start": 3523
+            }
+          ],
+          "value": "A and B are"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 5335,
+              "start": 5271
+            }
+          ],
+          "value": "20"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 5364,
+              "start": 5336
+            }
+          ],
+          "value": "2-chloro-3-methylbutane"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 5388,
+              "start": 5365
+            }
+          ],
+          "value": "2,2-dimethylpentane"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 5417,
+              "start": 5389
+            }
+          ],
+          "value": "2-chloro-2-methylbutane"
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 5445,
+              "start": 5418
+            }
+          ],
+          "value": "1-chloro-2-methylbutane"
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 5335,
+              "start": 5271
+            }
+          ],
+          "value": "2-methyl-2-butanol on treatment with HCl gives predominantly"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 5504,
+              "start": 5446
+            }
+          ],
+          "value": "21"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 5544,
+              "start": 5505
+            }
+          ],
+          "value": "Passing ethanol over heated alumina"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 5591,
+              "start": 5545
+            }
+          ],
+          "value": "Heating sodium ethoxide with ethyl bromide"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 5656,
+              "start": 5592
+            }
+          ],
+          "value": "Treating ethyl alcohol with excess of $H_2SO_4$ at 430-440 K"
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 5693,
+              "start": 5657
+            }
+          ],
+          "value": "Heating ethanol with dry $Ag_2O$"
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 5504,
+              "start": 5446
+            }
+          ],
+          "value": "In Williamson's synthesis ethoxy ethane is prepared by"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 5787,
+              "start": 5694
+            }
+          ],
+          "value": "22"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 5810,
+              "start": 5788
+            }
+          ],
+          "value": "Trimethyl carbinol"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 5822,
+              "start": 5811
+            }
+          ],
+          "value": "Ethanol"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 5835,
+              "start": 5823
+            }
+          ],
+          "value": "Propanol"
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 5848,
+              "start": 5836
+            }
+          ],
+          "value": "Methanol"
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 5787,
+              "start": 5694
+            }
+          ],
+          "value": "Which of the following reacts fastest with a mixture of anhydrous $ZnCl_2$ and conc. HCl?"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 5929,
+              "start": 5849
+            }
+          ],
+          "value": "23"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 5948,
+              "start": 5930
+            }
+          ],
+          "value": "Conc. $HNO_3$"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 5969,
+              "start": 5949
+            }
+          ],
+          "value": "Conc. $H_2SO_4$"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 5984,
+              "start": 5970
+            }
+          ],
+          "value": "Conc. HCl"
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 6002,
+              "start": 5985
+            }
+          ],
+          "value": "None of these"
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 5929,
+              "start": 5849
+            }
+          ],
+          "value": "Ethers are made free from peroxide linkage on distilling impure sample with:"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 6073,
+              "start": 6003
+            }
+          ],
+          "value": "24"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 6120,
+              "start": 6074
+            },
+            {
+              "end": 6406,
+              "start": 6121
+            }
+          ],
+          "value": "Formation of water and $CO_2$ on reduction"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 6165,
+              "start": 6121
+            }
+          ],
+          "value": "Formation of tartronic acid on oxidation"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 6206,
+              "start": 6166
+            }
+          ],
+          "value": "Formation of acrolein on dehydration"
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 6248,
+              "start": 6207
+            }
+          ],
+          "value": "Formation of allyl iodide with $PI_3$"
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 6073,
+              "start": 6003
+            }
+          ],
+          "value": "Which of the property given below is not associated with glycerol?"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 6326,
+              "start": 6249
+            }
+          ],
+          "value": "25"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 6345,
+              "start": 6327
+            }
+          ],
+          "value": "[VISUAL_TEXT]"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 6364,
+              "start": 6346
+            }
+          ],
+          "value": "[VISUAL_TEXT]"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 6383,
+              "start": 6365
+            }
+          ],
+          "value": "[VISUAL_TEXT]"
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 6404,
+              "start": 6384
+            }
+          ],
+          "value": "$CH_3OH + CH_3I$"
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 6326,
+              "start": 6249
+            }
+          ],
+          "value": "The products obtained when anisole is heated in a sealed tube with HI are"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 6466,
+              "start": 6439
+            }
+          ],
+          "value": "26"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 6942,
+              "start": 6468
+            },
+            {
+              "end": 7070,
+              "start": 6944
+            }
+          ],
+          "value": "A cyclobutane ring with a bromine atom at one corner and a -CH2OH group at the opposite corner."
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 7070,
+              "start": 6944
+            },
+            {
+              "end": 7199,
+              "start": 7072
+            }
+          ],
+          "value": "A cyclobutane ring with a chlorine atom at one corner and a -CH2OH group at the opposite corner."
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 7199,
+              "start": 7072
+            },
+            {
+              "end": 7295,
+              "start": 7201
+            }
+          ],
+          "value": "A cyclobutane ring with a -CH2OH group at two opposite corners."
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 7295,
+              "start": 7201
+            },
+            {
+              "end": 7406,
+              "start": 7297
+            }
+          ],
+          "value": "A cyclobutane ring with an aldehyde group (-CHO) at two opposite corners."
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 6466,
+              "start": 6439
+            },
+            {
+              "end": 6942,
+              "start": 6468
+            }
+          ],
+          "value": "Cl and Br reacted with Mg/ether followed by HCHO and H3O+ to yield A."
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 7472,
+              "start": 7408
+            },
+            {
+              "end": 8296,
+              "start": 7475
+            }
+          ],
+          "value": "27"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 8035,
+              "start": 7476
+            },
+            {
+              "end": 8138,
+              "start": 8089
+            }
+          ],
+          "value": "[Cyclopentane ring with a =CH2 group attached]"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 8035,
+              "start": 7476
+            },
+            {
+              "end": 8214,
+              "start": 8139
+            }
+          ],
+          "value": "[Cyclopentene ring with a -CH3 group attached to the double bond carbon]"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 8035,
+              "start": 7476
+            },
+            {
+              "end": 8236,
+              "start": 8215
+            }
+          ],
+          "value": "[Cyclohexene ring]"
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 8035,
+              "start": 7476
+            },
+            {
+              "end": 8295,
+              "start": 8237
+            }
+          ],
+          "value": "[Cyclopentane ring with a -CH3 group attached]"
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 7472,
+              "start": 7408
+            },
+            {
+              "end": 8035,
+              "start": 7476
+            },
+            {
+              "end": 8087,
+              "start": 8037
+            }
+          ],
+          "value": "The product in the given reaction is:\nReaction: Cyclopentylmethanol --(H2SO4)--> Product"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 8388,
+              "start": 8297
+            }
+          ],
+          "value": "28"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 8489,
+              "start": 8409
+            }
+          ],
+          "value": "A primary alcohol"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 8489,
+              "start": 8409
+            }
+          ],
+          "value": "A secondary alcohol"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 8489,
+              "start": 8409
+            }
+          ],
+          "value": "A tertiary alcohol"
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 8489,
+              "start": 8409
+            }
+          ],
+          "value": "An aldehyde"
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 8388,
+              "start": 8297
+            },
+            {
+              "end": 8408,
+              "start": 8389
+            }
+          ],
+          "value": "When CH<sub>3</sub>MgI is made to react with acetone and the addition product formed is hydrolysed, we get:"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 8556,
+              "start": 8490
+            }
+          ],
+          "value": "29"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 8587,
+              "start": 8557
+            }
+          ],
+          "value": "Low concentration of sugar"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 8620,
+              "start": 8588
+            }
+          ],
+          "value": "High concentration of sugars"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 8651,
+              "start": 8621
+            }
+          ],
+          "value": "Presence of ammonium salts"
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 8671,
+              "start": 8652
+            }
+          ],
+          "value": "Presence of air"
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 8556,
+              "start": 8490
+            }
+          ],
+          "value": "The factor adversely affecting the process of fermentation is:"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 8732,
+              "start": 8672
+            },
+            {
+              "end": 9058,
+              "start": 8734
+            }
+          ],
+          "value": "30"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 8909,
+              "start": 8894
+            }
+          ],
+          "value": "I > II > III"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 8925,
+              "start": 8910
+            }
+          ],
+          "value": "III > II > I"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 8941,
+              "start": 8926
+            }
+          ],
+          "value": "I > III > II"
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 8957,
+              "start": 8942
+            }
+          ],
+          "value": "III > I > II"
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 8732,
+              "start": 8672
+            },
+            {
+              "end": 8825,
+              "start": 8735
+            },
+            {
+              "end": 8841,
+              "start": 8826
+            },
+            {
+              "end": 8864,
+              "start": 8842
+            },
+            {
+              "end": 8893,
+              "start": 8865
+            }
+          ],
+          "value": "The correct order of ease of dehydration of following is\nI: Cyclohexanol\nII: Cyclohex-2-en-1-ol\nIII: Cyclohexa-1,3-dien-1-ol"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 9058,
+              "start": 8958
+            },
+            {
+              "end": 9796,
+              "start": 9059
+            }
+          ],
+          "value": "31"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 9074,
+              "start": 9059
+            }
+          ],
+          "value": "1° > 2° > 3°"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 9090,
+              "start": 9075
+            }
+          ],
+          "value": "3° > 2° > 1°"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 9106,
+              "start": 9091
+            }
+          ],
+          "value": "2° > 1° > 3°"
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 9122,
+              "start": 9107
+            }
+          ],
+          "value": "2° > 3° > 1°"
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 9058,
+              "start": 8958
+            },
+            {
+              "end": 9796,
+              "start": 9059
+            }
+          ],
+          "value": "The correct order of boiling point for primary (1°), secondary (2°) and tertiary (3°)alcohols is"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 9195,
+              "start": 9123
+            },
+            {
+              "end": 10999,
+              "start": 9797
+            }
+          ],
+          "value": "32"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 10767,
+              "start": 9957
+            }
+          ],
+          "value": "[Structure with phenol and two methyl groups]"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 10767,
+              "start": 9957
+            }
+          ],
+          "value": "[Structure with phenol and two chlorine atoms]"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 10767,
+              "start": 9957
+            }
+          ],
+          "value": "[Structure with phenol and two nitro groups]"
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 10767,
+              "start": 9957
+            }
+          ],
+          "value": "[Structure with phenol and three methyl groups]"
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 9195,
+              "start": 9123
+            },
+            {
+              "end": 9795,
+              "start": 9199
+            },
+            {
+              "end": 10999,
+              "start": 9797
+            }
+          ],
+          "value": "Which substance will not react with $\\phi$ NNCl (\\phi = Phenyl) to give dye?"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 10846,
+              "start": 10769
+            }
+          ],
+          "value": "33"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 10858,
+              "start": 10847
+            }
+          ],
+          "value": "Sodium"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 10881,
+              "start": 10859
+            }
+          ],
+          "value": "NaOH/I<sub>2</sub>"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 10911,
+              "start": 10882
+            }
+          ],
+          "value": "Neutral FeCl<sub>3</sub>"
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 10945,
+              "start": 10912
+            }
+          ],
+          "value": "Br<sub>2</sub>/H<sub>2</sub>O"
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 10846,
+              "start": 10769
+            }
+          ],
+          "value": "Phenol can be distinguished from ethanol by the following reagents except"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 10999,
+              "start": 10946
+            },
+            {
+              "end": 11333,
+              "start": 11000
+            }
+          ],
+          "value": "34"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 11037,
+              "start": 11000
+            }
+          ],
+          "value": "CH<sub>3</sub>CHOHCH<sub>3</sub>"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 11074,
+              "start": 11038
+            }
+          ],
+          "value": "CH<sub>3</sub>—O—CH<sub>3</sub>"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 11098,
+              "start": 11075
+            }
+          ],
+          "value": "CH<sub>3</sub>COOH"
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 11131,
+              "start": 11099
+            }
+          ],
+          "value": "C<sub>2</sub>H<sub>5</sub>OH"
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 10999,
+              "start": 10946
+            },
+            {
+              "end": 11333,
+              "start": 11000
+            }
+          ],
+          "value": "The compound which does not react with sodium is:"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 11197,
+              "start": 11132
+            }
+          ],
+          "value": "35"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 11222,
+              "start": 11198
+            }
+          ],
+          "value": "1, 1-dichloroethane"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 11246,
+              "start": 11223
+            }
+          ],
+          "value": "1, 2-dichloroethane"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 11275,
+              "start": 11247
+            }
+          ],
+          "value": "1, 1, 1-trichloroethane"
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 11299,
+              "start": 11276
+            }
+          ],
+          "value": "2, 2-dichloroethane"
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 11197,
+              "start": 11132
+            }
+          ],
+          "value": "Ethylene glycol reacts with excess of PCI<sub>5</sub> to give"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 11333,
+              "start": 11300
+            },
+            {
+              "end": 11511,
+              "start": 11334
+            }
+          ],
+          "value": "36"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 11394,
+              "start": 11368
+            }
+          ],
+          "value": "Baking powder"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 11394,
+              "start": 11368
+            }
+          ],
+          "value": "Paints"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 11422,
+              "start": 11395
+            }
+          ],
+          "value": "Thermometers"
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 11422,
+              "start": 11395
+            }
+          ],
+          "value": "Weighing"
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 11333,
+              "start": 11300
+            },
+            {
+              "end": 11511,
+              "start": 11334
+            }
+          ],
+          "value": "Alcohol is sometimes used in:"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 11511,
+              "start": 11423
+            },
+            {
+              "end": 12126,
+              "start": 11512
+            }
+          ],
+          "value": "37"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 11594,
+              "start": 11552
+            }
+          ],
+          "value": "[Chemical structure of phenolphthalein]"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 11641,
+              "start": 11595
+            }
+          ],
+          "value": "[Chemical structure of phenolphthalein ion]"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 11688,
+              "start": 11642
+            }
+          ],
+          "value": "[Chemical structure of phenolphthalein ion]"
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 11708,
+              "start": 11689
+            }
+          ],
+          "value": "All of the above"
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 11511,
+              "start": 11423
+            },
+            {
+              "end": 11551,
+              "start": 11512
+            }
+          ],
+          "value": "Phenolphthalein is formed by condensation of phthalic anhydride and $\\phi$ OH. Which structure shows colour in basic medium?"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 11781,
+              "start": 11711
+            }
+          ],
+          "value": "38"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 11983,
+              "start": 11782
+            }
+          ],
+          "value": "C<sub>6</sub>H<sub>5</sub>OC<sub>2</sub>H<sub>5</sub>"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 11983,
+              "start": 11782
+            }
+          ],
+          "value": "C<sub>2</sub>H<sub>5</sub>OC<sub>2</sub>H<sub>5</sub>"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 11983,
+              "start": 11782
+            }
+          ],
+          "value": "C<sub>6</sub>H<sub>5</sub>OC<sub>6</sub>H<sub>5</sub>"
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 11983,
+              "start": 11782
+            }
+          ],
+          "value": "C<sub>6</sub>H<sub>5</sub>I"
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 11781,
+              "start": 11711
+            }
+          ],
+          "value": "Phenol reacting with C<sub>2</sub>H<sub>5</sub>I in anhydrous C<sub>2</sub>H<sub>5</sub>OH to form phenetole"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 12126,
+              "start": 11984
+            },
+            {
+              "end": 12530,
+              "start": 12127
+            }
+          ],
+          "value": "39"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 12150,
+              "start": 12127
+            }
+          ],
+          "value": "[CHEMICAL STRUCTURE]"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 12174,
+              "start": 12151
+            }
+          ],
+          "value": "[CHEMICAL STRUCTURE]"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 12198,
+              "start": 12175
+            }
+          ],
+          "value": "[CHEMICAL STRUCTURE]"
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 12222,
+              "start": 12199
+            }
+          ],
+          "value": "[CHEMICAL STRUCTURE]"
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 12126,
+              "start": 11984
+            },
+            {
+              "end": 12530,
+              "start": 12127
+            }
+          ],
+          "value": "The major product in the reaction of PhCH<sub>2</sub>CH(OH)CH(CH<sub>3</sub>)<sub>2</sub> with concentrated H<sub>2</sub>SO<sub>4</sub> is"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 12251,
+              "start": 12223
+            }
+          ],
+          "value": "40"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 12324,
+              "start": 12252
+            }
+          ],
+          "value": "CH<sub>2</sub>=CHCH<sub>2</sub>OH"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 12324,
+              "start": 12252
+            }
+          ],
+          "value": "CH<sub>2</sub>OHCH<sub>2</sub>OH"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 12976,
+              "start": 12931
+            }
+          ],
+          "value": "C<sub>6</sub>H<sub>5</sub>CH<sub>2</sub>OH"
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 13008,
+              "start": 12977
+            }
+          ],
+          "value": "C<sub>6</sub>H<sub>5</sub>OH"
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 12251,
+              "start": 12223
+            }
+          ],
+          "value": "Which is not an alcohol?"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 12411,
+              "start": 12325
+            }
+          ],
+          "value": "41"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 12530,
+              "start": 12435
+            }
+          ],
+          "value": "[CHEMICAL STRUCTURE]"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 12530,
+              "start": 12435
+            }
+          ],
+          "value": "[CHEMICAL STRUCTURE]"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 12530,
+              "start": 12435
+            }
+          ],
+          "value": "[CHEMICAL STRUCTURE]"
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 12530,
+              "start": 12435
+            }
+          ],
+          "value": "[CHEMICAL STRUCTURE]"
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 12411,
+              "start": 12325
+            },
+            {
+              "end": 12434,
+              "start": 12418
+            }
+          ],
+          "value": "Cyclobutane ring with OH and CH3 attached reacted with Conc. H<sub>2</sub>SO<sub>4</sub> \\u2192 A."
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 12572,
+              "start": 12531
+            }
+          ],
+          "value": "42"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 12636,
+              "start": 12573
+            }
+          ],
+          "value": "KMnO<sub>4</sub>"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 12636,
+              "start": 12573
+            }
+          ],
+          "value": "K<sub>2</sub>Cr<sub>2</sub>O<sub>7</sub>"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 12930,
+              "start": 12912
+            }
+          ],
+          "value": "HNO<sub>3</sub>"
+        },
+        "option_d": {
+          "ranges": null,
+          "value": null
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 12572,
+              "start": 12531
+            }
+          ],
+          "value": "Glycerol catches fire on mixing with:"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 12673,
+              "start": 12637
+            }
+          ],
+          "value": "43"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 12763,
+              "start": 12754
+            }
+          ],
+          "value": "Alkane"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 12782,
+              "start": 12764
+            }
+          ],
+          "value": "Carboxylic acid"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 12816,
+              "start": 12783
+            }
+          ],
+          "value": "Sodium salt of carboxylic acid"
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 12826,
+              "start": 12817
+            }
+          ],
+          "value": "Ketone"
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 12673,
+              "start": 12637
+            },
+            {
+              "end": 12753,
+              "start": 12674
+            }
+          ],
+          "value": "The end product of the reaction,\nCH<sub>3</sub>OH $\\xrightarrow[300^{\\circ}C]{Cu}$ A $\\xrightarrow{NaOH}$ B is :"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 12911,
+              "start": 12827
+            },
+            {
+              "end": 13140,
+              "start": 12931
+            }
+          ],
+          "value": "44"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 13140,
+              "start": 13043
+            }
+          ],
+          "value": "$sp^{3}$ and $sp^{2}$"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 13140,
+              "start": 13043
+            }
+          ],
+          "value": "$sp^{3}$ and $sp^{3}$"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 13140,
+              "start": 13043
+            }
+          ],
+          "value": "$sp$ and $sp$"
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 13140,
+              "start": 13043
+            }
+          ],
+          "value": "$sp^{2}$ and $sp^{2}$"
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 12911,
+              "start": 12827
+            }
+          ],
+          "value": "What is the hybridisation of carbon and oxygen in electronic structure of ether?"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 13244,
+              "start": 13141
+            }
+          ],
+          "value": "45"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 13288,
+              "start": 13253
+            }
+          ],
+          "value": "Protonation of alcohol molecule"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 13317,
+              "start": 13289
+            }
+          ],
+          "value": "Formation of carbocation"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 13342,
+              "start": 13318
+            }
+          ],
+          "value": "Elimination of water"
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 13368,
+              "start": 13343
+            }
+          ],
+          "value": "Formation of an ester"
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 13244,
+              "start": 13141
+            },
+            {
+              "end": 13252,
+              "start": 13245
+            }
+          ],
+          "value": "During dehydration of alcohols to alkenes by heating with concentrated $H_{2}SO_{4}$ the initiation step is"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 13416,
+              "start": 13369
+            }
+          ],
+          "value": "46"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 13664,
+              "start": 13651
+            }
+          ],
+          "value": "CH3—CH2—OH"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 13787,
+              "start": 13666
+            }
+          ],
+          "value": "CH3—CH2—C(CH3)2—OH"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 13926,
+              "start": 13789
+            }
+          ],
+          "value": "CH3—C(CH3)(CH2—CH2—CH3)—CH2OH"
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 14067,
+              "start": 13928
+            }
+          ],
+          "value": "CH2—OH—CH—OH—CH2—OH"
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 13416,
+              "start": 13369
+            }
+          ],
+          "value": "Which of the following is tertiary alcohol?"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 14138,
+              "start": 14069
+            }
+          ],
+          "value": "47"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 14196,
+              "start": 14139
+            }
+          ],
+          "value": "$P_2O_5$"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 14196,
+              "start": 14139
+            }
+          ],
+          "value": "Conc.$H_2SO_4$"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 14196,
+              "start": 14139
+            }
+          ],
+          "value": "$KHSO_4$"
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 14196,
+              "start": 14139
+            }
+          ],
+          "value": "All of these"
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 14138,
+              "start": 14069
+            }
+          ],
+          "value": "Which of the following reagent will convert glycerol to acrolein?"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 14244,
+              "start": 14197
+            }
+          ],
+          "value": "48"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 14307,
+              "start": 14245
+            }
+          ],
+          "value": "Phenol"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 14307,
+              "start": 14245
+            }
+          ],
+          "value": "$o$-cresol"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 14307,
+              "start": 14245
+            }
+          ],
+          "value": "$p$-nitrophenol"
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 14307,
+              "start": 14245
+            }
+          ],
+          "value": "$p$-chlorophenol"
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 14244,
+              "start": 14197
+            }
+          ],
+          "value": "Among the following, which is least acidic?"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 14363,
+              "start": 14308
+            }
+          ],
+          "value": "49"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 14412,
+              "start": 14364
+            }
+          ],
+          "value": "Ethanol"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 14412,
+              "start": 14364
+            }
+          ],
+          "value": "Methanoic acid"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 14412,
+              "start": 14364
+            }
+          ],
+          "value": "Ether"
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 14412,
+              "start": 14364
+            }
+          ],
+          "value": "Acetone"
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 14363,
+              "start": 14308
+            }
+          ],
+          "value": "Glycerol on heating with oxalic acid at 110°C gives"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 14462,
+              "start": 14413
+            }
+          ],
+          "value": "50"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 14545,
+              "start": 14463
+            }
+          ],
+          "value": "$CH_3-CH-CH=CH_2$"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 14545,
+              "start": 14463
+            }
+          ],
+          "value": "$CH_3-C-CH_2CH_3$"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 14545,
+              "start": 14463
+            }
+          ],
+          "value": "$CH_3-C=CH-CH_3$"
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 14545,
+              "start": 14463
+            },
+            {
+              "end": 15023,
+              "start": 14567
+            }
+          ],
+          "value": "None of the above"
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 14462,
+              "start": 14413
+            }
+          ],
+          "value": "The dehydration of neo-pentanol gives mainly:"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 14659,
+              "start": 14567
+            }
+          ],
+          "value": "51"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 14724,
+              "start": 14679
+            }
+          ],
+          "value": "2, 4, 6-trinitrobenzene"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 14724,
+              "start": 14679
+            }
+          ],
+          "value": "$o$-nitrophenol"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 14759,
+              "start": 14725
+            }
+          ],
+          "value": "$p$-nitrophenol"
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 14759,
+              "start": 14725
+            }
+          ],
+          "value": "Nitrobenzene"
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 14659,
+              "start": 14567
+            },
+            {
+              "end": 14678,
+              "start": 14660
+            }
+          ],
+          "value": "Phenol, when it first reacts with concentrated sulphuric acid and then with concentrated nitric acid, gives"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 14807,
+              "start": 14760
+            }
+          ],
+          "value": "52"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 14864,
+              "start": 14808
+            }
+          ],
+          "value": "Glycerol"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 14864,
+              "start": 14808
+            }
+          ],
+          "value": "Ethylene glycol"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 14864,
+              "start": 14808
+            }
+          ],
+          "value": "Catechol"
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 14864,
+              "start": 14808
+            }
+          ],
+          "value": "Resorcinol"
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 14807,
+              "start": 14760
+            }
+          ],
+          "value": "Which of the following is dihydric alcohol?"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 14895,
+              "start": 14865
+            }
+          ],
+          "value": "53"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 14955,
+              "start": 14896
+            }
+          ],
+          "value": "40% $H_2O$"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 14955,
+              "start": 14896
+            }
+          ],
+          "value": "10% $H_2O$"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 14955,
+              "start": 14896
+            }
+          ],
+          "value": "5% $H_2O$"
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 14955,
+              "start": 14896
+            }
+          ],
+          "value": "100% $C_2H_5OH$"
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 14895,
+              "start": 14865
+            }
+          ],
+          "value": "Absolute alcohol contains:"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 15009,
+              "start": 14956
+            }
+          ],
+          "value": "54"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 15115,
+              "start": 15024
+            }
+          ],
+          "value": "$I > II > III > IV$"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 15115,
+              "start": 15024
+            }
+          ],
+          "value": "$I > III > II > IV$"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 15115,
+              "start": 15024
+            }
+          ],
+          "value": "$IV > III > II > I$"
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 15115,
+              "start": 15024
+            }
+          ],
+          "value": "$IV > III > I > II$"
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 15009,
+              "start": 14956
+            },
+            {
+              "end": 15023,
+              "start": 15010
+            },
+            {
+              "end": 15469,
+              "start": 15024
+            }
+          ],
+          "value": "The order of reactivity of the following alcohols"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 15165,
+              "start": 15116
+            }
+          ],
+          "value": "55"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 15239,
+              "start": 15166
+            }
+          ],
+          "value": "Nitrobenzene"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 15239,
+              "start": 15166
+            }
+          ],
+          "value": "Glycerine trinitrate"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 15239,
+              "start": 15166
+            }
+          ],
+          "value": "Nitroaniline"
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 15239,
+              "start": 15166
+            }
+          ],
+          "value": "Nitrosobenzene"
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 15165,
+              "start": 15116
+            }
+          ],
+          "value": "The most important ingredient of dynamite is:"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 15302,
+              "start": 15240
+            }
+          ],
+          "value": "56"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 15353,
+              "start": 15303
+            }
+          ],
+          "value": "2-butanol"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 15353,
+              "start": 15303
+            }
+          ],
+          "value": "1-butanol"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 15353,
+              "start": 15303
+            }
+          ],
+          "value": "2-butanone"
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 15353,
+              "start": 15303
+            }
+          ],
+          "value": "Butanal"
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 15302,
+              "start": 15240
+            }
+          ],
+          "value": "2-methoxy butane is obtained by reacting diazomethane with"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 15414,
+              "start": 15354
+            }
+          ],
+          "value": "57"
+        },
+        "option_a": {
+          "ranges": [
+            {
+              "end": 15434,
+              "start": 15415
+            }
+          ],
+          "value": "4"
+        },
+        "option_b": {
+          "ranges": [
+            {
+              "end": 15434,
+              "start": 15415
+            }
+          ],
+          "value": "3"
+        },
+        "option_c": {
+          "ranges": [
+            {
+              "end": 15434,
+              "start": 15415
+            }
+          ],
+          "value": "6"
+        },
+        "option_d": {
+          "ranges": [
+            {
+              "end": 15434,
+              "start": 15415
+            }
+          ],
+          "value": "7"
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 15414,
+              "start": 15354
+            }
+          ],
+          "value": "How many structural isomers are known for $C_4H_{10}O$ ?"
+        }
+      },
+      {
+        "correct_option": {
+          "ranges": null,
+          "value": null
+        },
+        "number": {
+          "ranges": [
+            {
+              "end": 15440,
+              "start": 15435
+            },
+            {
+              "end": 15544,
+              "start": 15470
+            }
+          ],
+          "value": "58"
+        },
+        "option_a": {
+          "ranges": null,
+          "value": null
+        },
+        "option_b": {
+          "ranges": null,
+          "value": null
+        },
+        "option_c": {
+          "ranges": null,
+          "value": null
+        },
+        "option_d": {
+          "ranges": null,
+          "value": null
+        },
+        "stem": {
+          "ranges": [
+            {
+              "end": 15440,
+              "start": 15435
+            },
+            {
+              "end": 15455,
+              "start": 15441
+            },
+            {
+              "end": 15469,
+              "start": 15456
+            },
+            {
+              "end": 15493,
+              "start": 15483
+            }
+          ],
+          "value": "Product is"
+        }
+      }
+    ]
+  },
+  "markdown": "**ACTIVE SITE TUTORIALS**\n\n\nDate : 23-07-2019 \nTime : 09:40:00 \nMarks : 2320 \n\nTEST ID: 186 \nCHEMISTRY \n\n11. ALCOHOLS, PHENOLS AND ETHERS\n\n\n1. An organic compound 'X' on treatment with pyridinium chloro chromate in\ndichloromethane gives compound 'Y'. Compound 'Y' reacts with I<sub>2</sub> and alkali to form\ntriiodomethane. The compound 'X' is\na) C<sub>2</sub>H<sub>5</sub>OH  b) CH<sub>3</sub>CHO  c) CH<sub>3</sub>COCH<sub>3</sub>  d) CH<sub>3</sub>COOH\n2. Ethyl alcohol is industrially prepared from the ethylene by:\n [ ] Permanganate oxidation\n [ ] Catalytic reduction\n [ ] Absorbing in sulphuric acid followed by hydrolysis\n [ ] Fermentation\n3. CH<sub>3</sub>ClCH<sub>2</sub>OH is stronger acid than CH<sub>3</sub>CH<sub>2</sub>OH because:\n [ ] +IE of Cl disperses -ve charge on O -atom to produce more stable anion\n [ ] -IE of Cl disperses -ve charge on O -atom to produce more stable anion\n [ ] +IE of Cl increases -ve charge on O -atom to alcohol\n [ ] None of the above\n4. Alcohol (CH<sub>3</sub>)<sub>2</sub>CHCH<sub>2</sub>OH cannot be obtained by\na) HCHO + (CH<sub>3</sub>)<sub>2</sub>CHCH<sub>2</sub>MgX  b) $CH<sub>2</sub>-CH<sub>2</sub> + (CH<sub>3</sub>)<sub>2</sub>CHMgX$\nc) (CH<sub>3</sub>)<sub>2</sub>CHCH<sub>2</sub>CH<sub>2</sub>MgX + O<sub>2</sub> air  d) (CH<sub>3</sub>)<sub>2</sub>CHCHO + CH<sub>3</sub>MgX\n5. Lucas reagent is used to distinguish among primary, secondary and tertiary:\na) Alkyl halides  b) Alcohols  c) Aliphatic amines  d) Aromatic amines\n6. Ketone upon treatment with Grignard reagent gives\na) Primary alcohol  b) Secondary alcohol  c) Tertiary alcohol  d) Aldehyde\n7. The starting material for the preparation of CH<sub>3</sub>I in one step reaction is:\na) CH<sub>3</sub>OH  b) C<sub>2</sub>H<sub>5</sub>OH  c) CH<sub>3</sub>CHO  d) CH<sub>3</sub>COCH<sub>3</sub>\n8. From methyl alcohol we get:\n [ ] Neoprene rubber\n [ ] Perspex rubber\n [ ] Bakelite a hard plastic\n [ ] Sponge rubber\n9. Which one of the following will most readily be dehydrated in acidic condition?\na) [VISUAL_TEXT]  b) [VISUAL_TEXT]  c) [VISUAL_TEXT]  d) [VISUAL_TEXT]\n10. Tert-butyl methyl ether on heating with anhydrous HI in ether gives\na) CH<sub>3</sub>OH + (CH<sub>3</sub>)<sub>3</sub>Cl b) CH<sub>3</sub>I + (CH<sub>3</sub>)<sub>3</sub>COH c) CH<sub>3</sub>I + (CH<sub>3</sub>)<sub>3</sub>Cl  d) None of the above\n11. Diethyl ether is decomposed on heating with:\na) NaOH  b) Water  c) KMnO<sub>4</sub>  d) HI\n12. Ether fire can be extinguished by:\na) Sand  b) Pyrene  c) CO<sub>2</sub>  d) All of these\n13. Diethyl ether on reaction with CO in specific conditions forms:\na) Acetic acid  b) Carbon dioxide  c) Ethyl propanoate  d) Acetyl chloride\n\n\n\n\nPage | 1\n\n\n<!-- PAGE BREAK -->\n\n14. Most viscous among the following is:\na) Propan-1-ol b) Propan-2-ol c) Propane-1, 2-diol d) Propane-1,2,3-triol\n15. In the fermentation of sugar molasses, the percentage of ethanol formed is:\na) 10 % b) 40 % c) 95 % d) 70 %\n16. A liquid was mixed with ethanol and a drop of concentrated H<sub>2</sub>SO<sub>4</sub> was added. A\ncompound with a fruity smell was formed. The liquid was:\na) HCHO b) CH<sub>3</sub>COCH<sub>3</sub> c) CH<sub>3</sub>COOH d) CH<sub>3</sub>OH\n17. Ethyl alcohol reacts with following to form a compound of fruity smell:\na) PCl<sub>5</sub> b) K<sub>2</sub>Cr<sub>2</sub>O<sub>7</sub> + H<sub>2</sub>SO<sub>4</sub> c) CH<sub>3</sub>COOH d) CH<sub>3</sub>COCH<sub>3</sub>\n18. Carbolic acid is\na) HCOOH b) CH<sub>3</sub>COOH c) C<sub>6</sub>H<sub>5</sub>COOH d) C<sub>6</sub>H<sub>5</sub>OH\n19\n\n\n<figure type=\"DIAGRAM\">A and B are\n\n\n\n<description>The image displays four sets of chemical structure pairs labeled a), b), c), and d), each featuring two five-membered rings with substituents.\n\na) The first structure is a cyclopentane ring with a methoxy group (H3CO) and a hydrogen atom (H) at the left position, and a methyl group (H3C) and a hydroxyl group (OH) at the right position. The second structure is a cyclopentane ring with a hydrogen (H) and a hydroxyl group (OH) at the left position, and a methoxy group (H3CO) and a methyl group (CH3) at the right position.\n\nb) The first structure shows a cyclopentane ring with a hydrogen (H) and a methoxy group (H3CO) at the left position, and a methyl group (H3C) and a hydroxyl group (OH) at the right position. The second structure shows a cyclopentane ring with a hydrogen (H) and a hydroxyl group (OH) at the left position, and a methoxy group (H3CO) and a methyl group (CH3) at the right position.\n\nc) The first structure shows a cyclopentane ring with a methoxy group (OCH3) and a hydrogen (H) at the left position, and a methyl group (CH3) and a hydroxyl group (OH) at the right position. The second structure shows a cyclopentane ring with a hydrogen (H) and a methoxy group (MeO) at the left position, and a hydroxyl group (HO) and a methyl group (CH3) at the right position.\n\nd) The first structure shows a cyclopentane ring with a methyl group (CH3) and a methoxy group (H3CO) at the left position, and a hydrogen (H) and a hydroxyl group (OH) at the right position. The second structure shows a cyclopentane ring with a hydrogen (H) and a methoxy group (H3CO) at the left position, and a methyl group (H3C) and a hydroxyl group (OH) at the right position.</description></figure>\n\n20. 2-methyl-2-butanol on treatment with HCl gives predominantly\n a) 2-chloro-3-methylbutane \n b) 2,2-dimethylpentane\n c) 2-chloro-2-methylbutane \n d) 1-chloro-2-methylbutane\n21. In Williamson's synthesis ethoxy ethane is prepared by\n a) Passing ethanol over heated alumina\n b) Heating sodium ethoxide with ethyl bromide\n c) Treating ethyl alcohol with excess of $H_2SO_4$ at 430-440 K\n d) Heating ethanol with dry $Ag_2O$\n22. Which of the following reacts fastest with a mixture of anhydrous $ZnCl_2$ and conc. HCl?\n a) Trimethyl carbinol\n b) Ethanol\n c) Propanol\n d) Methanol\n23. Ethers are made free from peroxide linkage on distilling impure sample with:\n a) Conc. $HNO_3$ \n b) Conc. $H_2SO_4$ \n c) Conc. HCl \n d) None of these\n24. Which of the property given below is not associated with glycerol?\n a) Formation of water and $CO_2$ on reduction\n b) Formation of tartronic acid on oxidation\n c) Formation of acrolein on dehydration\n d) Formation of allyl iodide with $PI_3$\n25. The products obtained when anisole is heated in a sealed tube with HI are\n a) [VISUAL_TEXT] \n b) [VISUAL_TEXT] \n c) [VISUAL_TEXT] \n d) $CH_3OH + CH_3I$\n\n\nPage | 2\n\n\n<!-- PAGE BREAK -->\n\n<figure type=\"DIAGRAM\">26. \n\n<description>The image displays a multiple-choice chemistry problem. At the top, a chemical reaction is depicted: a cyclobutane ring substituted with a chlorine atom at one position and a bromine atom at the meta-like position, labeled as 'Cl' and 'Br'. The reaction proceeds with the reagents 'Mg/ether' followed by 'HCHO' and 'H3O+', yielding a product 'A'. Below this, four options (a, b, c, and d) are provided as potential chemical structures for 'A':</description> a) \n\n<description>A cyclobutane ring with a bromine atom at one corner and a -CH2OH group at the opposite corner.</description> b) \n\n<description>A cyclobutane ring with a chlorine atom at one corner and a -CH2OH group at the opposite corner.</description> c) \n\n<description>A cyclobutane ring with a -CH2OH group at two opposite corners.</description> d) \n\n<description>A cyclobutane ring with an aldehyde group (-CHO) at two opposite corners.</description></figure>\n\n<figure type=\"DIAGRAM\">27. The product in the given reaction is:\n\n\n\n<description>A chemical reaction diagram showing a reactant molecule, cyclopentylmethanol (a cyclopentane ring with a -CH2OH group attached), reacting in the presence of H2SO4 to form a product. Below the reaction, four chemical structure options are provided: a) methylenecyclopentane (a cyclopentane ring with a =CH2 group), b) 1-methylcyclopentene (a cyclopentene ring with a -CH3 group at the double bond position), c) cyclohexene (a six-membered ring with one double bond), and d) methylcyclopentane (a cyclopentane ring with a -CH3 group).</description>\n\nReaction: Cyclopentylmethanol --(H2SO4)--> Product\n\na) [Cyclopentane ring with a =CH2 group attached]\nb) [Cyclopentene ring with a -CH3 group attached to the double bond carbon]\nc) [Cyclohexene ring]\nd) [Cyclopentane ring with a -CH3 group attached]</figure>\n\n28. When CH<sub>3</sub>MgI is made to react with acetone and the addition product formed is\nhydrolysed, we get:\na) A primary alcohol b) A secondary alcohol c) A tertiary alcohol d) An aldehyde\n29. The factor adversely affecting the process of fermentation is:\n a) Low concentration of sugar\n b) High concentration of sugars\n c) Presence of ammonium salts\n d) Presence of air\n30. The correct order of ease of dehydration of following is\n\n\n<figure type=\"DIAGRAM\">30. [Image shows three chemical structures labeled I, II, and III.]\nI: Cyclohexanol\nII: Cyclohex-2-en-1-ol\nIII: Cyclohexa-1,3-dien-1-ol\na) I > II > III\nb) III > II > I\nc) I > III > II\nd) III > I > II\n31. The correct order of boiling point for primary (1°), secondary (2°) and tertiary (3°)alcohols is\na) 1° > 2° > 3°\nb) 3° > 2° > 1°\nc) 2° > 1° > 3°\nd) 2° > 3° > 1°\n32. Which substance will not react with φ NNCl (φ = Phenyl) to give dye?\n\n\n\n<description>The image displays a series of chemistry questions. Question 30 presents three cyclic organic compounds: a saturated cyclohexane ring with a hydroxyl group (I), a cyclohexene ring with a hydroxyl group (II), and a cyclohexa-1,3-diene ring with a hydroxyl group (III), followed by four multiple-choice options. Question 31 is a text-based question asking for the boiling point order of primary, secondary, and tertiary alcohols with corresponding options. Question 32 asks which substance will not react with phenyl diazonium chloride (φ NNCl) to produce a dye.</description></figure>\n\n<figure type=\"DIAGRAM\">The figure displays four distinct chemical structures, labeled a) through d), each featuring a benzene ring with various substituents. \n\n<description>Structure a) shows a phenol derivative with a methyl group at the ortho position (2-position) and another methyl group at the para position (4-position). Structure b) displays a phenol derivative with a chlorine atom at the ortho position and another chlorine atom at the para position. Structure c) presents a phenol derivative with a nitro group (NO2) at the ortho position and another nitro group at the para position. Structure d) depicts a phenol derivative with two methyl groups at both ortho positions (2 and 6 positions) and a third methyl group at the para position.</description> a) [Structure with phenol and two methyl groups] b) [Structure with phenol and two chlorine atoms] c) [Structure with phenol and two nitro groups] d) [Structure with phenol and three methyl groups]</figure>\n\n33. Phenol can be distinguished from ethanol by the following reagents except\n a) Sodium \n b) NaOH/I<sub>2</sub>\n c) Neutral FeCl<sub>3</sub> \n d) Br<sub>2</sub>/H<sub>2</sub>O\n34. The compound which does not react with sodium is:\n a) CH<sub>3</sub>CHOHCH<sub>3</sub> \n b) CH<sub>3</sub>—O—CH<sub>3</sub> \n c) CH<sub>3</sub>COOH \n d) C<sub>2</sub>H<sub>5</sub>OH\n35. Ethylene glycol reacts with excess of PCI<sub>5</sub> to give\n a) 1, 1-dichloroethane \n b) 1, 2-dichloroethane\n c) 1, 1, 1-trichloroethane \n d) 2, 2-dichloroethane\n36. Alcohol is sometimes used in:\n\n\nPage | 3\n\n\n<!-- PAGE BREAK -->\n\na) Baking powder b) Paints\nc) Thermometers d) Weighing\n37. Phenolphthalein is formed by condensation of phthalic anhydride and $\\phi$ OH. Which\nstructure shows colour in basic medium?\na) [Chemical structure of phenolphthalein]\nb) [Chemical structure of phenolphthalein ion]\nc) [Chemical structure of phenolphthalein ion]\nd) All of the above\n\n\n38. [PHENOL REACTING WITH C2H5I IN ANHYDROUS C2H5OH TO FORM PHENETOLE]\na) C<sub>6</sub>H<sub>5</sub>OC<sub>2</sub>H<sub>5</sub> b) C<sub>2</sub>H<sub>5</sub>OC<sub>2</sub>H<sub>5</sub> c) C<sub>6</sub>H<sub>5</sub>OC<sub>6</sub>H<sub>5</sub> d) C<sub>6</sub>H<sub>5</sub>I\n39. The major product in the reaction of PhCH<sub>2</sub>CH(OH)CH(CH<sub>3</sub>)<sub>2</sub> with concentrated H<sub>2</sub>SO<sub>4</sub> is\na) [CHEMICAL STRUCTURE]\nb) [CHEMICAL STRUCTURE]\nc) [CHEMICAL STRUCTURE]\nd) [CHEMICAL STRUCTURE]\n40. Which is not an alcohol?\na) CH<sub>2</sub>=CHCH<sub>2</sub>OH b) CH<sub>2</sub>OHCH<sub>2</sub>OH\n41. [CYCLOBUTANE RING WITH OH AND CH3 ATTACHED] Conc. H<sub>2</sub>SO<sub>4</sub> → A,\nOH OH\nThe product A is\na) [CHEMICAL STRUCTURE] b) [CHEMICAL STRUCTURE] c) [CHEMICAL STRUCTURE] d) [CHEMICAL STRUCTURE]\n42. Glycerol catches fire on mixing with:\na) KMnO<sub>4</sub> b) K<sub>2</sub>Cr<sub>2</sub>O<sub>7</sub>\n43. The end product of the reaction,\nCH<sub>3</sub>OH $\\xrightarrow[300^{\\circ}C]{Cu}$ A $\\xrightarrow{NaOH}$ B is :\na) Alkane\nb) Carboxylic acid\nc) Sodium salt of carboxylic acid\nd) Ketone\n44. What is the hybridisation of carbon and oxygen in electronic structure of ether?\nc) HNO<sub>3</sub>\nc) C<sub>6</sub>H<sub>5</sub>CH<sub>2</sub>OH\nd) C<sub>6</sub>H<sub>5</sub>OH\n\n\nPage | 4\n\n\n<!-- PAGE BREAK -->\n\na) $sp^{3}$ and $sp^{2}$   b) $sp^{3}$ and $sp^{3}$   c) $sp$ and $sp$   d) $sp^{2}$ and $sp^{2}$\n45. During dehydration of alcohols to alkenes by heating with concentrated $H_{2}SO_{4}$ the initiation\nstep is\n a) Protonation of alcohol molecule\n b) Formation of carbocation\n c) Elimination of water\n d) Formation of an ester\n46. Which of the following is tertiary alcohol?\n\n\n<figure type=\"DIAGRAM\">\n\n<description>The image displays four distinct chemical structures, labeled a) through d), representing different alcohol compounds. Each structure is written using standard chemical notation.</description>\n\na) CH3—CH2—OH\n\nb) CH3—CH2—C(CH3)2—OH (represented as a central carbon bonded to an ethyl group, two methyl groups, and a hydroxyl group)\n\nc) CH3—C(CH3)(CH2—CH2—CH3)—CH2OH (represented as a central carbon bonded to two methyl groups, a propyl chain, and a hydroxymethyl group)\n\nd) CH2—OH—CH—OH—CH2—OH (represented as a glycerol structure, a three-carbon chain where each carbon is bonded to a hydroxyl group)</figure>\n\n47. Which of the following reagent will convert glycerol to acrolein?\na) $P_2O_5$ b) Conc.$H_2SO_4$ c) $KHSO_4$ d) All of these\n48. Among the following, which is least acidic?\na) Phenol b) $o$-cresol c) $p$-nitrophenol d) $p$-chlorophenol\n49. Glycerol on heating with oxalic acid at 110°C gives\na) Ethanol b) Methanoic acid c) Ether d) Acetone\n50. The dehydration of neo-pentanol gives mainly:\na) $CH_3-CH-CH=CH_2$ b) $CH_3-C-CH_2CH_3$ c) $CH_3-C=CH-CH_3$ d) None of the above\n$CH_3$ $CH_3$ $CH_3$\n51. Phenol, when it first reacts with concentrated sulphuric acid and then with concentrated\nnitric acid, gives\na) 2, 4, 6-trinitrobenzene b) $o$-nitrophenol\nc) $p$-nitrophenol d) Nitrobenzene\n52. Which of the following is dihydric alcohol?\na) Glycerol b) Ethylene glycol c) Catechol d) Resorcinol\n53. Absolute alcohol contains:\na) 40% $H_2O$ b) 10% $H_2O$ c) 5% $H_2O$ d) 100% $C_2H_5OH$\n54. The order of reactivity of the following alcohols\n[VISUAL_TEXT]\na) $I > II > III > IV$ b) $I > III > II > IV$ c) $IV > III > II > I$ d) $IV > III > I > II$\n55. The most important ingredient of dynamite is:\na) Nitrobenzene b) Glycerine trinitrate c) Nitroaniline d) Nitrosobenzene\n56. 2-methoxy butane is obtained by reacting diazomethane with\na) 2-butanol b) 1-butanol c) 2-butanone d) Butanal\n57. How many structural isomers are known for $C_4H_{10}O$ ?\na) 4 b) 3 c) 6 d) 7\n58. *\n$OCH_2CH=CH_2$\n[VISUAL_TEXT]\n\n\nPage | 5\n\n\nProduct is\n\n\n<!-- doc_id=parse-01m4dddd5kp5s3sqx6k2jk8znh -->",
+  "metadata": {
+    "job_id": "extract-01m4dddvfv87143ma5q0h5jxa7",
+    "model_version": "extract-20260903",
+    "duration_ms": 33190,
+    "doc_id": "parse-01m4dddd5kp5s3sqx6k2jk8znh",
+    "range_units": "unicode_codepoints",
+    "input_markdown_chars": 15544,
+    "output_extraction_chars": 15625,
+    "openapi_spec": "https://api.ade.landing.ai/openapi.json",
+    "billing": {
+      "service_tier": "priority",
+      "total_credits": 37.5
+    }
+  },
+  "schema_violation_error": "The value at 'questions[38].option_d' was not found in the document, so null was returned. Since the schema requires a non-null value, verify that the document indeed doesn't contain this data, and if so, update the schema to allow null by adding 'null' to the field's type (e.g., type: ['string', 'null']) or by setting nullable: true.",
+  "warnings": [
+    {
+      "code": "nonconformant_output",
+      "msg": "The value at 'questions[38].option_d' was not found in the document, so null was returned. Since the schema requires a non-null value, verify that the document indeed doesn't contain this data, and if so, update the schema to allow null by adding 'null' to the field's type (e.g., type: ['string', 'null']) or by setting nullable: true."
+    }
+  ]
+}

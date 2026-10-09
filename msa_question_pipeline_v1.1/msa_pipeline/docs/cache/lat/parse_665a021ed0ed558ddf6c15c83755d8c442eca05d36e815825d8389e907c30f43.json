@@ -1,0 +1,194 @@
+{
+  "markdown": "a) Sand\n\n\nb) Pyrene\n\n\nc) $CO_2$\n\n\nd) All of these\n\n\nDiethyl ether on reaction with CO in specific conditions forms:\n\n\na) Acetic acid\n\n\nb) Carbon dioxide\n\n\nc) Ethyl propanoate\n\n\nd) Acetyl chloride\n\n\n<!-- doc_id=parse-01m4dczvbbjmqvy9rn89c5ewq2 -->",
+  "metadata": {
+    "job_id": "parse-01m4dczvbbjmqvy9rn89c5ewq2",
+    "model_version": "dpt-3-pro-20260710",
+    "page_count": 1,
+    "output_markdown_chars": 246,
+    "range_units": "unicode_codepoints",
+    "openapi_spec": "https://api.ade.landing.ai/openapi.json",
+    "failed_pages": [],
+    "duration_ms": 5893,
+    "billing": {
+      "service_tier": "priority",
+      "total_credits": 1.2
+    }
+  },
+  "structure": {
+    "children": [
+      {
+        "children": [
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.10188,
+                "xmin": 0.00717,
+                "ymax": 0.32762,
+                "ymin": 0.00316
+              },
+              "page": 1,
+              "range": {
+                "end": 8,
+                "start": 0
+              }
+            },
+            "id": "text-0",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.3855,
+                "xmin": 0.26442,
+                "ymax": 0.3288,
+                "ymin": 0.01939
+              },
+              "page": 1,
+              "range": {
+                "end": 20,
+                "start": 10
+              }
+            },
+            "id": "text-1",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.62042,
+                "xmin": 0.52004,
+                "ymax": 0.32841,
+                "ymin": 0.01637
+              },
+              "page": 1,
+              "range": {
+                "end": 32,
+                "start": 22
+              }
+            },
+            "id": "text-2",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.95646,
+                "xmin": 0.78117,
+                "ymax": 0.35024,
+                "ymin": 0.00316
+              },
+              "page": 1,
+              "range": {
+                "end": 50,
+                "start": 34
+              }
+            },
+            "id": "text-3",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.71733,
+                "xmin": 0.00752,
+                "ymax": 0.61497,
+                "ymin": 0.33142
+              },
+              "page": 1,
+              "range": {
+                "end": 116,
+                "start": 52
+              }
+            },
+            "id": "text-4",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.16913,
+                "xmin": 0.00515,
+                "ymax": 0.93154,
+                "ymin": 0.60855
+              },
+              "page": 1,
+              "range": {
+                "end": 133,
+                "start": 118
+              }
+            },
+            "id": "text-5",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.4809,
+                "xmin": 0.26486,
+                "ymax": 0.93076,
+                "ymin": 0.60662
+              },
+              "page": 1,
+              "range": {
+                "end": 153,
+                "start": 135
+              }
+            },
+            "id": "text-6",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.7611,
+                "xmin": 0.52294,
+                "ymax": 0.939,
+                "ymin": 0.60024
+              },
+              "page": 1,
+              "range": {
+                "end": 175,
+                "start": 155
+              }
+            },
+            "id": "text-7",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.9956,
+                "xmin": 0.78392,
+                "ymax": 0.94578,
+                "ymin": 0.58339
+              },
+              "page": 1,
+              "range": {
+                "end": 196,
+                "start": 177
+              }
+            },
+            "id": "text-8",
+            "type": "text"
+          }
+        ],
+        "grounding": {
+          "box": {
+            "xmax": 1.0,
+            "xmin": 0.0,
+            "ymax": 1.0,
+            "ymin": 0.0
+          },
+          "page": 1,
+          "range": {
+            "end": 198,
+            "start": 0
+          }
+        },
+        "status": "ok",
+        "type": "page"
+      }
+    ],
+    "type": "document"
+  }
+}

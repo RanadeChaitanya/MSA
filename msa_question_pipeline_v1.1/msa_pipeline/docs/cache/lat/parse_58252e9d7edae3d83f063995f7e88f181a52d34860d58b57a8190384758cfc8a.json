@@ -1,0 +1,92 @@
+{
+  "markdown": "$CH_3$\n[ILLEGIBLE_TEXT]\n\n\n$CH_3$\n\n\nCH<sub>3</sub>\n\n\n<!-- doc_id=parse-01m4dcwqww1m4mrxj19h2mhvbx -->",
+  "metadata": {
+    "job_id": "parse-01m4dcwqww1m4mrxj19h2mhvbx",
+    "model_version": "dpt-3-pro-20260710",
+    "page_count": 1,
+    "output_markdown_chars": 100,
+    "range_units": "unicode_codepoints",
+    "openapi_spec": "https://api.ade.landing.ai/openapi.json",
+    "failed_pages": [],
+    "duration_ms": 5428,
+    "billing": {
+      "service_tier": "priority",
+      "total_credits": 1.1
+    }
+  },
+  "structure": {
+    "children": [
+      {
+        "children": [
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.44486,
+                "xmin": 0.00231,
+                "ymax": 1.0,
+                "ymin": 0.18608
+              },
+              "page": 1,
+              "range": {
+                "end": 24,
+                "start": 0
+              }
+            },
+            "id": "text-0",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.548,
+                "xmin": 0.44853,
+                "ymax": 0.74482,
+                "ymin": 0.19795
+              },
+              "page": 1,
+              "range": {
+                "end": 33,
+                "start": 26
+              }
+            },
+            "id": "text-1",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.98645,
+                "xmin": 0.89453,
+                "ymax": 0.75166,
+                "ymin": 0.21992
+              },
+              "page": 1,
+              "range": {
+                "end": 50,
+                "start": 35
+              }
+            },
+            "id": "text-2",
+            "type": "text"
+          }
+        ],
+        "grounding": {
+          "box": {
+            "xmax": 1.0,
+            "xmin": 0.0,
+            "ymax": 1.0,
+            "ymin": 0.0
+          },
+          "page": 1,
+          "range": {
+            "end": 52,
+            "start": 0
+          }
+        },
+        "status": "ok",
+        "type": "page"
+      }
+    ],
+    "type": "document"
+  }
+}

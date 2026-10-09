@@ -1,0 +1,92 @@
+{
+  "markdown": "a) Baking powder b) Paints\nPlease check the logic for...\n\n\nc)\nThermometers\n\n\nd) Weighing\n1 | Oil Wt.\n\n\n<!-- doc_id=parse-01m4dcrcpzvasszkype8848ncn -->",
+  "metadata": {
+    "job_id": "parse-01m4dcrcpzvasszkype8848ncn",
+    "model_version": "dpt-3-pro-20260710",
+    "page_count": 1,
+    "output_markdown_chars": 151,
+    "range_units": "unicode_codepoints",
+    "openapi_spec": "https://api.ade.landing.ai/openapi.json",
+    "failed_pages": [],
+    "duration_ms": 7155,
+    "billing": {
+      "service_tier": "priority",
+      "total_credits": 1.1
+    }
+  },
+  "structure": {
+    "children": [
+      {
+        "children": [
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.39861,
+                "xmin": 0.00149,
+                "ymax": 1.0,
+                "ymin": 0.05726
+              },
+              "page": 1,
+              "range": {
+                "end": 57,
+                "start": 0
+              }
+            },
+            "id": "text-0",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.78423,
+                "xmin": 0.54979,
+                "ymax": 0.99589,
+                "ymin": 0.07891
+              },
+              "page": 1,
+              "range": {
+                "end": 75,
+                "start": 59
+              }
+            },
+            "id": "text-1",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.99502,
+                "xmin": 0.83568,
+                "ymax": 0.99885,
+                "ymin": 0.06348
+              },
+              "page": 1,
+              "range": {
+                "end": 101,
+                "start": 77
+              }
+            },
+            "id": "text-2",
+            "type": "text"
+          }
+        ],
+        "grounding": {
+          "box": {
+            "xmax": 1.0,
+            "xmin": 0.0,
+            "ymax": 1.0,
+            "ymin": 0.0
+          },
+          "page": 1,
+          "range": {
+            "end": 103,
+            "start": 0
+          }
+        },
+        "status": "ok",
+        "type": "page"
+      }
+    ],
+    "type": "document"
+  }
+}

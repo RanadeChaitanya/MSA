@@ -1,0 +1,228 @@
+{
+  "markdown": "<table>\n<tr><td>21</td><td>In Williamson's</td><td>synthesis ethoxy</td><td>y ethane is prepared by</td></tr>\n<tr><td></td><td>Reaction with</td><td>1-bromo butane</td><td>1-butanol</td></tr>\n</table>\n\n<!-- doc_id=parse-01m4dcnmjr8qaahv1s63hgvsr3 -->",
+  "metadata": {
+    "job_id": "parse-01m4dcnmjr8qaahv1s63hgvsr3",
+    "model_version": "dpt-3-pro-20260710",
+    "page_count": 1,
+    "output_markdown_chars": 250,
+    "range_units": "unicode_codepoints",
+    "openapi_spec": "https://api.ade.landing.ai/openapi.json",
+    "failed_pages": [],
+    "duration_ms": 3653,
+    "billing": {
+      "service_tier": "priority",
+      "total_credits": 1.2
+    }
+  },
+  "structure": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "col": 0,
+                "colspan": 1,
+                "grounding": {
+                  "box": {
+                    "xmax": 0.06166,
+                    "xmin": 0.00455,
+                    "ymax": 0.77161,
+                    "ymin": 0.00158
+                  },
+                  "page": 1,
+                  "range": {
+                    "end": 18,
+                    "start": 16
+                  }
+                },
+                "id": "table_cell-0",
+                "row": 0,
+                "rowspan": 1,
+                "type": "table_cell"
+              },
+              {
+                "col": 1,
+                "colspan": 1,
+                "grounding": {
+                  "box": {
+                    "xmax": 0.35257,
+                    "xmin": 0.06081,
+                    "ymax": 0.78056,
+                    "ymin": 0.00158
+                  },
+                  "page": 1,
+                  "range": {
+                    "end": 42,
+                    "start": 27
+                  }
+                },
+                "id": "table_cell-1",
+                "row": 0,
+                "rowspan": 1,
+                "type": "table_cell"
+              },
+              {
+                "col": 2,
+                "colspan": 1,
+                "grounding": {
+                  "box": {
+                    "xmax": 0.61453,
+                    "xmin": 0.35229,
+                    "ymax": 0.78862,
+                    "ymin": 0.00157
+                  },
+                  "page": 1,
+                  "range": {
+                    "end": 67,
+                    "start": 51
+                  }
+                },
+                "id": "table_cell-2",
+                "row": 0,
+                "rowspan": 1,
+                "type": "table_cell"
+              },
+              {
+                "col": 3,
+                "colspan": 1,
+                "grounding": {
+                  "box": {
+                    "xmax": 0.99821,
+                    "xmin": 0.61295,
+                    "ymax": 0.80033,
+                    "ymin": 0.00157
+                  },
+                  "page": 1,
+                  "range": {
+                    "end": 99,
+                    "start": 76
+                  }
+                },
+                "id": "table_cell-3",
+                "row": 0,
+                "rowspan": 1,
+                "type": "table_cell"
+              },
+              {
+                "col": 0,
+                "colspan": 1,
+                "grounding": {
+                  "box": {
+                    "xmax": 0.06081,
+                    "xmin": 0.00375,
+                    "ymax": 0.99998,
+                    "ymin": 0.76988
+                  },
+                  "page": 1,
+                  "range": {
+                    "end": 118,
+                    "start": 118
+                  }
+                },
+                "id": "table_cell-4",
+                "row": 1,
+                "rowspan": 1,
+                "type": "table_cell"
+              },
+              {
+                "col": 1,
+                "colspan": 1,
+                "grounding": {
+                  "box": {
+                    "xmax": 0.35229,
+                    "xmin": 0.06056,
+                    "ymax": 0.99999,
+                    "ymin": 0.77161
+                  },
+                  "page": 1,
+                  "range": {
+                    "end": 140,
+                    "start": 127
+                  }
+                },
+                "id": "table_cell-5",
+                "row": 1,
+                "rowspan": 1,
+                "type": "table_cell"
+              },
+              {
+                "col": 2,
+                "colspan": 1,
+                "grounding": {
+                  "box": {
+                    "xmax": 0.61495,
+                    "xmin": 0.35221,
+                    "ymax": 0.99999,
+                    "ymin": 0.78056
+                  },
+                  "page": 1,
+                  "range": {
+                    "end": 163,
+                    "start": 149
+                  }
+                },
+                "id": "table_cell-6",
+                "row": 1,
+                "rowspan": 1,
+                "type": "table_cell"
+              },
+              {
+                "col": 3,
+                "colspan": 1,
+                "grounding": {
+                  "box": {
+                    "xmax": 0.99572,
+                    "xmin": 0.61453,
+                    "ymax": 0.99999,
+                    "ymin": 0.78862
+                  },
+                  "page": 1,
+                  "range": {
+                    "end": 181,
+                    "start": 172
+                  }
+                },
+                "id": "table_cell-7",
+                "row": 1,
+                "rowspan": 1,
+                "type": "table_cell"
+              }
+            ],
+            "grounding": {
+              "box": {
+                "xmax": 0.99946,
+                "xmin": 0.00024,
+                "ymax": 1.0,
+                "ymin": 0.00153
+              },
+              "page": 1,
+              "range": {
+                "end": 200,
+                "start": 0
+              }
+            },
+            "id": "table-0",
+            "type": "table"
+          }
+        ],
+        "grounding": {
+          "box": {
+            "xmax": 1.0,
+            "xmin": 0.0,
+            "ymax": 1.0,
+            "ymin": 0.0
+          },
+          "page": 1,
+          "range": {
+            "end": 202,
+            "start": 0
+          }
+        },
+        "status": "ok",
+        "type": "page"
+      }
+    ],
+    "type": "document"
+  }
+}

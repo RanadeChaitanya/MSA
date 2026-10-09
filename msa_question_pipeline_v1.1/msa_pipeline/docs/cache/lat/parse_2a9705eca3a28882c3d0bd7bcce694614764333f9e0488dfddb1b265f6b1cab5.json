@@ -1,0 +1,143 @@
+{
+  "markdown": "a) $CH_2=CHCH_2OH$\n\n\nb) $CH_2OHCH_2OH$\n\n\nc) $C_6H_5CH_2OH$\n\n\nd) $C_6H_5OH$\n\n\n<figure type=\"DIAGRAM\">\n\n<description>The image displays a chemical structure consisting of a cyclobutane ring connected to a carbon atom. This carbon atom is substituted with a hydroxyl group (-OH) and a 2-hydroxypropan-2-yl group (which is a carbon attached to two methyl groups -CH3 and one hydroxyl group -OH). Below the structure, there is partial text reading \"The product A is\".</description> The product A is</figure>\n\n$$\\xrightarrow{\\text{Conc. } H_2SO_4} A,$$\n\n\n<!-- doc_id=parse-01m4ddgd4j10mp1w9nj9ywc1ww -->",
+  "metadata": {
+    "job_id": "parse-01m4ddgd4j10mp1w9nj9ywc1ww",
+    "model_version": "dpt-3-pro-20260710",
+    "page_count": 1,
+    "output_markdown_chars": 597,
+    "range_units": "unicode_codepoints",
+    "openapi_spec": "https://api.ade.landing.ai/openapi.json",
+    "failed_pages": [],
+    "duration_ms": 5812,
+    "billing": {
+      "service_tier": "priority",
+      "total_credits": 1.3
+    }
+  },
+  "structure": {
+    "children": [
+      {
+        "children": [
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.26086,
+                "xmin": 0.00642,
+                "ymax": 0.24815,
+                "ymin": 0.00299
+              },
+              "page": 1,
+              "range": {
+                "end": 19,
+                "start": 0
+              }
+            },
+            "id": "text-0",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.52485,
+                "xmin": 0.28638,
+                "ymax": 0.25155,
+                "ymin": 0.00418
+              },
+              "page": 1,
+              "range": {
+                "end": 39,
+                "start": 21
+              }
+            },
+            "id": "text-1",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.77209,
+                "xmin": 0.56207,
+                "ymax": 0.26174,
+                "ymin": 0.00345
+              },
+              "page": 1,
+              "range": {
+                "end": 59,
+                "start": 41
+              }
+            },
+            "id": "text-2",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.99487,
+                "xmin": 0.83848,
+                "ymax": 0.27101,
+                "ymin": 0.00149
+              },
+              "page": 1,
+              "range": {
+                "end": 75,
+                "start": 61
+              }
+            },
+            "id": "text-3",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.22692,
+                "xmin": 0.00144,
+                "ymax": 1.0,
+                "ymin": 0.28295
+              },
+              "page": 1,
+              "range": {
+                "end": 502,
+                "start": 77
+              }
+            },
+            "id": "figure-0",
+            "type": "figure"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.43029,
+                "xmin": 0.23132,
+                "ymax": 0.70739,
+                "ymin": 0.35357
+              },
+              "page": 1,
+              "range": {
+                "end": 547,
+                "start": 504
+              }
+            },
+            "id": "text-4",
+            "type": "text"
+          }
+        ],
+        "grounding": {
+          "box": {
+            "xmax": 1.0,
+            "xmin": 0.0,
+            "ymax": 1.0,
+            "ymin": 0.0
+          },
+          "page": 1,
+          "range": {
+            "end": 549,
+            "start": 0
+          }
+        },
+        "status": "ok",
+        "type": "page"
+      }
+    ],
+    "type": "document"
+  }
+}

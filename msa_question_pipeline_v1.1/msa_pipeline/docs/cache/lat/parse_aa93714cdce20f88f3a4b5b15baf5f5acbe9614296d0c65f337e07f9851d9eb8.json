@@ -1,0 +1,143 @@
+{
+  "markdown": "9. Which one of the following will most readily be dehydrated in acidic condition?\n\n\n<figure type=\"DIAGRAM\">a) \n\n<description>The figure shows a chemical structure, 4-hydroxypentan-2-one, represented in skeletal formula. It consists of a five-carbon chain. A carbonyl group (C=O) is located at the second carbon position, and a hydroxyl group (-OH) is attached to the fourth carbon position. The structure is drawn with standard skeletal bond lines.</description></figure>\n\n<figure type=\"DIAGRAM\">b) \n\n<description>A skeletal structure of 2-pentanol. The molecule consists of a five-carbon chain with a hydroxyl group (-OH) attached to the second carbon atom.</description></figure>\n\n<figure type=\"DIAGRAM\">c) \n\n<description>The image displays a chemical structure labeled 'c)'. The structure is a hydroxy ketone, specifically 3-hydroxybutan-2-one (or similar depending on chain length). It consists of a four-carbon chain with a carbonyl group (C=O) at the second position and a hydroxyl group (-OH) attached to the third carbon. Specifically, it features a terminal methyl group on the left, a carbonyl group, a central CH group with an -OH substituent, and a terminal methyl group on the right (part of an ethyl chain). The bond lines are standard skeletal structure representation.</description></figure>\n\n<figure type=\"DIAGRAM\">d) \n\n<description>The figure shows a chemical structure diagram representing 2-pentanone. The molecule consists of a five-carbon chain. A carbonyl group (C=O) is attached to the second carbon atom. The structure starts with a methyl group on the left, followed by a ketone functional group, and continues with a propyl chain (three carbons) extending to the right.</description></figure>\n\n10. *Tert*-butyl methyl ether on heating with anhydrous HI in ether gives\na) CH<sub>3</sub>OH + (CH<sub>3</sub>)<sub>3</sub>Cl b) CH<sub>3</sub>I + (CH<sub>3</sub>)<sub>3</sub>COH c) CH<sub>3</sub>I + (CH<sub>3</sub>)<sub>3</sub>Cl d) None of the\n11. Diethyl ether is decomposed on heating with:\na) NaOH   b) Water   c) KMnO<sub>4</sub>   d) HI\n12. Ether fire can be extinguished by:\na) Sand   b) Pyrene   c) CO<sub>2</sub>   d) All of these\nDiethyl ether on reaction with CO in specific conditions of\n\n\n<!-- doc_id=parse-01m4dckbdh65qgrp60xppkmkfq -->",
+  "metadata": {
+    "job_id": "parse-01m4dckbdh65qgrp60xppkmkfq",
+    "model_version": "dpt-3-pro-20260710",
+    "page_count": 1,
+    "output_markdown_chars": 2274,
+    "range_units": "unicode_codepoints",
+    "openapi_spec": "https://api.ade.landing.ai/openapi.json",
+    "failed_pages": [],
+    "duration_ms": 7237,
+    "billing": {
+      "service_tier": "priority",
+      "total_credits": 2.2
+    }
+  },
+  "structure": {
+    "children": [
+      {
+        "children": [
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.95207,
+                "xmin": 0.00521,
+                "ymax": 0.09471,
+                "ymin": 0.00171
+              },
+              "page": 1,
+              "range": {
+                "end": 83,
+                "start": 0
+              }
+            },
+            "id": "text-0",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.24538,
+                "xmin": 0.04695,
+                "ymax": 0.34391,
+                "ymin": 0.1398
+              },
+              "page": 1,
+              "range": {
+                "end": 472,
+                "start": 85
+              }
+            },
+            "id": "figure-0",
+            "type": "figure"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.51741,
+                "xmin": 0.3095,
+                "ymax": 0.34487,
+                "ymin": 0.14157
+              },
+              "page": 1,
+              "range": {
+                "end": 682,
+                "start": 474
+              }
+            },
+            "id": "figure-1",
+            "type": "figure"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.76405,
+                "xmin": 0.56598,
+                "ymax": 0.40351,
+                "ymin": 0.09208
+              },
+              "page": 1,
+              "range": {
+                "end": 1308,
+                "start": 684
+              }
+            },
+            "id": "figure-2",
+            "type": "figure"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.99882,
+                "xmin": 0.82602,
+                "ymax": 0.32417,
+                "ymin": 0.10233
+              },
+              "page": 1,
+              "range": {
+                "end": 1720,
+                "start": 1310
+              }
+            },
+            "id": "figure-3",
+            "type": "figure"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.9957,
+                "xmin": 0.00901,
+                "ymax": 1.0,
+                "ymin": 0.43945
+              },
+              "page": 1,
+              "range": {
+                "end": 2224,
+                "start": 1722
+              }
+            },
+            "id": "text-1",
+            "type": "text"
+          }
+        ],
+        "grounding": {
+          "box": {
+            "xmax": 1.0,
+            "xmin": 0.0,
+            "ymax": 1.0,
+            "ymin": 0.0
+          },
+          "page": 1,
+          "range": {
+            "end": 2226,
+            "start": 0
+          }
+        },
+        "status": "ok",
+        "type": "page"
+      }
+    ],
+    "type": "document"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "questions": [],
+  "page_issues": {
+    "1": [
+      "extract_failed:extract: all JSON text shapes failed on /v2/extract",
+      "no_questions"
+    ],
+    "2": [
+      "no_questions"
+    ],
+    "3": [
+      "no_questions"
+    ],
+    "4": [
+      "no_questions"
+    ],
+    "5": [
+      "no_questions"
+    ]
+  }
+}

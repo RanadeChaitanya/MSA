@@ -1,0 +1,92 @@
+{
+  "markdown": "most readily be dehydrated in acidic condition?\n\n\n<figure type=\"DIAGRAM\">c) \n\n<description>The image displays a chemical structure, specifically a hydroxy ketone. It features a carbonyl group (C=O) adjacent to a carbon atom bonded to a hydroxyl group (-OH), which is further connected to an ethyl group (-CH2CH3). The structure is oriented horizontally, with the 'c)' label on the left side.</description></figure>\n\n<figure type=\"DIAGRAM\">d) \n\n<description>A chemical structure diagram representing a 5-hydroxy-2-hexanone molecule (or a similar keto-alcohol derivative). The structure is a carbon chain with a ketone group (C=O) on the second carbon from the left and a hydroxyl group (-OH) attached to the second carbon from the right. The label 'd)' appears to the left of the chemical structure.</description></figure>\n\n<!-- doc_id=parse-01m4dcze8er7pffrz65jnmvk9j -->",
+  "metadata": {
+    "job_id": "parse-01m4dcze8er7pffrz65jnmvk9j",
+    "model_version": "dpt-3-pro-20260710",
+    "page_count": 1,
+    "output_markdown_chars": 871,
+    "range_units": "unicode_codepoints",
+    "openapi_spec": "https://api.ade.landing.ai/openapi.json",
+    "failed_pages": [],
+    "duration_ms": 5516,
+    "billing": {
+      "service_tier": "priority",
+      "total_credits": 1.5
+    }
+  },
+  "structure": {
+    "children": [
+      {
+        "children": [
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.86091,
+                "xmin": 0.00281,
+                "ymax": 0.1736,
+                "ymin": 0.0
+              },
+              "page": 1,
+              "range": {
+                "end": 48,
+                "start": 0
+              }
+            },
+            "id": "text-0",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.55239,
+                "xmin": 0.25664,
+                "ymax": 0.96581,
+                "ymin": 0.21681
+              },
+              "page": 1,
+              "range": {
+                "end": 414,
+                "start": 50
+              }
+            },
+            "id": "figure-0",
+            "type": "figure"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.99646,
+                "xmin": 0.67212,
+                "ymax": 0.94566,
+                "ymin": 0.23586
+              },
+              "page": 1,
+              "range": {
+                "end": 821,
+                "start": 416
+              }
+            },
+            "id": "figure-1",
+            "type": "figure"
+          }
+        ],
+        "grounding": {
+          "box": {
+            "xmax": 1.0,
+            "xmin": 0.0,
+            "ymax": 1.0,
+            "ymin": 0.0
+          },
+          "page": 1,
+          "range": {
+            "end": 823,
+            "start": 0
+          }
+        },
+        "status": "ok",
+        "type": "page"
+      }
+    ],
+    "type": "document"
+  }
+}

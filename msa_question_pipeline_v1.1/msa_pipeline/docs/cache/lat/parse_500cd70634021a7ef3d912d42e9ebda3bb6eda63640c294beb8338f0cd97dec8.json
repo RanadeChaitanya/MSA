@@ -1,0 +1,58 @@
+{
+  "markdown": "7. The starting material for the preparation of\nC2H5 - C2H5 = C-H5 - C2H5\n\n\n<!-- doc_id=parse-01m4dcgq93f93d5hddzscn2mh7 -->",
+  "metadata": {
+    "job_id": "parse-01m4dcgq93f93d5hddzscn2mh7",
+    "model_version": "dpt-3-pro-20260710",
+    "page_count": 1,
+    "output_markdown_chars": 124,
+    "range_units": "unicode_codepoints",
+    "openapi_spec": "https://api.ade.landing.ai/openapi.json",
+    "failed_pages": [],
+    "duration_ms": 4950,
+    "billing": {
+      "service_tier": "priority",
+      "total_credits": 1.1
+    }
+  },
+  "structure": {
+    "children": [
+      {
+        "children": [
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.9993,
+                "xmin": 0.00084,
+                "ymax": 1.0,
+                "ymin": 0.00129
+              },
+              "page": 1,
+              "range": {
+                "end": 74,
+                "start": 0
+              }
+            },
+            "id": "text-0",
+            "type": "text"
+          }
+        ],
+        "grounding": {
+          "box": {
+            "xmax": 1.0,
+            "xmin": 0.0,
+            "ymax": 1.0,
+            "ymin": 0.0
+          },
+          "page": 1,
+          "range": {
+            "end": 76,
+            "start": 0
+          }
+        },
+        "status": "ok",
+        "type": "page"
+      }
+    ],
+    "type": "document"
+  }
+}

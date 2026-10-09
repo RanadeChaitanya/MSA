@@ -1,0 +1,58 @@
+{
+  "markdown": "om ethanol by the following reagents except\n\n\n<!-- doc_id=parse-01m4d1knhjgyyvf2a3x19z03a7 -->",
+  "metadata": {
+    "job_id": "parse-01m4d1knhjgyyvf2a3x19z03a7",
+    "model_version": "dpt-3-pro-20260710",
+    "page_count": 1,
+    "output_markdown_chars": 94,
+    "range_units": "unicode_codepoints",
+    "openapi_spec": "https://api.ade.landing.ai/openapi.json",
+    "failed_pages": [],
+    "duration_ms": 4352,
+    "billing": {
+      "service_tier": "priority",
+      "total_credits": 1.1
+    }
+  },
+  "structure": {
+    "children": [
+      {
+        "children": [
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.99876,
+                "xmin": 0.00026,
+                "ymax": 0.99763,
+                "ymin": 0.00073
+              },
+              "page": 1,
+              "range": {
+                "end": 44,
+                "start": 0
+              }
+            },
+            "id": "text-0",
+            "type": "text"
+          }
+        ],
+        "grounding": {
+          "box": {
+            "xmax": 1.0,
+            "xmin": 0.0,
+            "ymax": 1.0,
+            "ymin": 0.0
+          },
+          "page": 1,
+          "range": {
+            "end": 46,
+            "start": 0
+          }
+        },
+        "status": "ok",
+        "type": "page"
+      }
+    ],
+    "type": "document"
+  }
+}

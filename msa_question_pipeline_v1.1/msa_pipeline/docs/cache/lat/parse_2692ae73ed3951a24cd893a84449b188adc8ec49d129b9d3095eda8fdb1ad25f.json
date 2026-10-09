@@ -1,0 +1,58 @@
+{
+  "markdown": "triiodomethane. The compound 'X' is\na) C<sub>2</sub>H<sub>5</sub>OH\nb) CH<sub>3</sub>CHO\n2. Ethyl alcohol is industrially prepared from\na) Permanganate oxidation\nb) Catalytic reduction\nc) Absorbing in sulphuric acid followed by\nd) Fermentation\n3. CH<sub>2</sub>ClCH<sub>2</sub>OH is stronger acid than CH<sub>3</sub>C\na) +IE of Cl disperses -ve chare on O -aton\nb) -IE of Cl disperses -ve charge on O -atc\nc) +IE of Cl increases -ve charge on O -ato\nd) None of the above\n\n\n<!-- doc_id=parse-01m4ddeykjxwxcqx375wrrtf9y -->",
+  "metadata": {
+    "job_id": "parse-01m4ddeykjxwxcqx375wrrtf9y",
+    "model_version": "dpt-3-pro-20260710",
+    "page_count": 1,
+    "output_markdown_chars": 521,
+    "range_units": "unicode_codepoints",
+    "openapi_spec": "https://api.ade.landing.ai/openapi.json",
+    "failed_pages": [],
+    "duration_ms": 6569,
+    "billing": {
+      "service_tier": "priority",
+      "total_credits": 1.3
+    }
+  },
+  "structure": {
+    "children": [
+      {
+        "children": [
+          {
+            "grounding": {
+              "box": {
+                "xmax": 1.0,
+                "xmin": 0.0104,
+                "ymax": 0.99796,
+                "ymin": 0.00217
+              },
+              "page": 1,
+              "range": {
+                "end": 471,
+                "start": 0
+              }
+            },
+            "id": "text-0",
+            "type": "text"
+          }
+        ],
+        "grounding": {
+          "box": {
+            "xmax": 1.0,
+            "xmin": 0.0,
+            "ymax": 1.0,
+            "ymin": 0.0
+          },
+          "page": 1,
+          "range": {
+            "end": 473,
+            "start": 0
+          }
+        },
+        "status": "ok",
+        "type": "page"
+      }
+    ],
+    "type": "document"
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "markdown": "a) Sand\n\n\nDi 1 1 1\n\n\nb) Pyrene\n\n\nc) $CO_2$\n\n\nd) All of these\n\n\n• 1 CO: • C\n\n\n<!-- doc_id=parse-01m4ddg531jsy6azaepkath4j3 -->",
+  "metadata": {
+    "job_id": "parse-01m4ddg531jsy6azaepkath4j3",
+    "model_version": "dpt-3-pro-20260710",
+    "page_count": 1,
+    "output_markdown_chars": 125,
+    "range_units": "unicode_codepoints",
+    "openapi_spec": "https://api.ade.landing.ai/openapi.json",
+    "failed_pages": [],
+    "duration_ms": 5446,
+    "billing": {
+      "service_tier": "priority",
+      "total_credits": 1.1
+    }
+  },
+  "structure": {
+    "children": [
+      {
+        "children": [
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.10605,
+                "xmin": 0.00645,
+                "ymax": 0.77443,
+                "ymin": 0.07235
+              },
+              "page": 1,
+              "range": {
+                "end": 8,
+                "start": 0
+              }
+            },
+            "id": "text-0",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.1418,
+                "xmin": 0.00456,
+                "ymax": 1.0,
+                "ymin": 0.82182
+              },
+              "page": 1,
+              "range": {
+                "end": 19,
+                "start": 10
+              }
+            },
+            "id": "text-1",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.40677,
+                "xmin": 0.27154,
+                "ymax": 0.82628,
+                "ymin": 0.0906
+              },
+              "page": 1,
+              "range": {
+                "end": 31,
+                "start": 21
+              }
+            },
+            "id": "text-2",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.65499,
+                "xmin": 0.53768,
+                "ymax": 0.93404,
+                "ymin": 0.09268
+              },
+              "page": 1,
+              "range": {
+                "end": 43,
+                "start": 33
+              }
+            },
+            "id": "text-3",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.99432,
+                "xmin": 0.81584,
+                "ymax": 0.78651,
+                "ymin": 0.05397
+              },
+              "page": 1,
+              "range": {
+                "end": 61,
+                "start": 45
+              }
+            },
+            "id": "text-4",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.52266,
+                "xmin": 0.26057,
+                "ymax": 1.0,
+                "ymin": 0.84825
+              },
+              "page": 1,
+              "range": {
+                "end": 75,
+                "start": 63
+              }
+            },
+            "id": "text-5",
+            "type": "text"
+          }
+        ],
+        "grounding": {
+          "box": {
+            "xmax": 1.0,
+            "xmin": 0.0,
+            "ymax": 1.0,
+            "ymin": 0.0
+          },
+          "page": 1,
+          "range": {
+            "end": 77,
+            "start": 0
+          }
+        },
+        "status": "ok",
+        "type": "page"
+      }
+    ],
+    "type": "document"
+  }
+}

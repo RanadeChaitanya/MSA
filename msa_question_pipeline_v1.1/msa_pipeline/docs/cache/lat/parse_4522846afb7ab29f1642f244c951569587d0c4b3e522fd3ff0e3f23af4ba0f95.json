@@ -1,0 +1,92 @@
+{
+  "markdown": "m the ethylene by:\n\n\nby hydrolysis\n\n\n$CH_2OH$ because:\nom to produce more stable anion\nom to produce more stable anion\nom to alcohol\n\n\n<!-- doc_id=parse-01m4ddf654wr7kzz27rfj77d22 -->",
+  "metadata": {
+    "job_id": "parse-01m4ddf654wr7kzz27rfj77d22",
+    "model_version": "dpt-3-pro-20260710",
+    "page_count": 1,
+    "output_markdown_chars": 183,
+    "range_units": "unicode_codepoints",
+    "openapi_spec": "https://api.ade.landing.ai/openapi.json",
+    "failed_pages": [],
+    "duration_ms": 5821,
+    "billing": {
+      "service_tier": "priority",
+      "total_credits": 1.1
+    }
+  },
+  "structure": {
+    "children": [
+      {
+        "children": [
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.52556,
+                "xmin": 0.0,
+                "ymax": 0.12948,
+                "ymin": 0.01764
+              },
+              "page": 1,
+              "range": {
+                "end": 19,
+                "start": 0
+              }
+            },
+            "id": "text-0",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.38219,
+                "xmin": 0.0,
+                "ymax": 0.46019,
+                "ymin": 0.34419
+              },
+              "page": 1,
+              "range": {
+                "end": 35,
+                "start": 21
+              }
+            },
+            "id": "text-1",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.98418,
+                "xmin": 0.0,
+                "ymax": 0.98141,
+                "ymin": 0.55779
+              },
+              "page": 1,
+              "range": {
+                "end": 133,
+                "start": 37
+              }
+            },
+            "id": "text-2",
+            "type": "text"
+          }
+        ],
+        "grounding": {
+          "box": {
+            "xmax": 1.0,
+            "xmin": 0.0,
+            "ymax": 1.0,
+            "ymin": 0.0
+          },
+          "page": 1,
+          "range": {
+            "end": 135,
+            "start": 0
+          }
+        },
+        "status": "ok",
+        "type": "page"
+      }
+    ],
+    "type": "document"
+  }
+}

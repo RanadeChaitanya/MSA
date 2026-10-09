@@ -1,0 +1,75 @@
+{
+  "markdown": "c) 2-chloro-2-methylbutane\n[ILLEGIBLE_TEXT]\n\n\nd) 1-chloro-2-methylbutane\n1 1\n\n\n<!-- doc_id=parse-01m4dcns6v5j5sx04q2jt1658a -->",
+  "metadata": {
+    "job_id": "parse-01m4dcns6v5j5sx04q2jt1658a",
+    "model_version": "dpt-3-pro-20260710",
+    "page_count": 1,
+    "output_markdown_chars": 127,
+    "range_units": "unicode_codepoints",
+    "openapi_spec": "https://api.ade.landing.ai/openapi.json",
+    "failed_pages": [],
+    "duration_ms": 5366,
+    "billing": {
+      "service_tier": "priority",
+      "total_credits": 1.1
+    }
+  },
+  "structure": {
+    "children": [
+      {
+        "children": [
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.39626,
+                "xmin": 0.00699,
+                "ymax": 0.99998,
+                "ymin": 0.04122
+              },
+              "page": 1,
+              "range": {
+                "end": 44,
+                "start": 0
+              }
+            },
+            "id": "text-0",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.98854,
+                "xmin": 0.62162,
+                "ymax": 0.96766,
+                "ymin": 0.05444
+              },
+              "page": 1,
+              "range": {
+                "end": 77,
+                "start": 46
+              }
+            },
+            "id": "text-1",
+            "type": "text"
+          }
+        ],
+        "grounding": {
+          "box": {
+            "xmax": 1.0,
+            "xmin": 0.0,
+            "ymax": 1.0,
+            "ymin": 0.0
+          },
+          "page": 1,
+          "range": {
+            "end": 79,
+            "start": 0
+          }
+        },
+        "status": "ok",
+        "type": "page"
+      }
+    ],
+    "type": "document"
+  }
+}

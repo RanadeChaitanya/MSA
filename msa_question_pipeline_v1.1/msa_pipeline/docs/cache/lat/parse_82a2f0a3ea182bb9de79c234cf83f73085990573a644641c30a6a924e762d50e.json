@@ -1,0 +1,109 @@
+{
+  "markdown": "a) $CH_3OH$\n--- 1\n\n\nb) $C_2H_5OH$\n\n\nc) CH<sub>3</sub>CHO\n\n\nd) $CH_3COCH_3$\n\n\n<!-- doc_id=parse-01m4dchjhf5f4twstdqkq91744 -->",
+  "metadata": {
+    "job_id": "parse-01m4dchjhf5f4twstdqkq91744",
+    "model_version": "dpt-3-pro-20260710",
+    "page_count": 1,
+    "output_markdown_chars": 125,
+    "range_units": "unicode_codepoints",
+    "openapi_spec": "https://api.ade.landing.ai/openapi.json",
+    "failed_pages": [],
+    "duration_ms": 5495,
+    "billing": {
+      "service_tier": "priority",
+      "total_credits": 1.1
+    }
+  },
+  "structure": {
+    "children": [
+      {
+        "children": [
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.14519,
+                "xmin": 0.00468,
+                "ymax": 0.97316,
+                "ymin": 0.07387
+              },
+              "page": 1,
+              "range": {
+                "end": 18,
+                "start": 0
+              }
+            },
+            "id": "text-0",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.42546,
+                "xmin": 0.27173,
+                "ymax": 0.7803,
+                "ymin": 0.10207
+              },
+              "page": 1,
+              "range": {
+                "end": 34,
+                "start": 20
+              }
+            },
+            "id": "text-1",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.69832,
+                "xmin": 0.53836,
+                "ymax": 0.77469,
+                "ymin": 0.10127
+              },
+              "page": 1,
+              "range": {
+                "end": 57,
+                "start": 36
+              }
+            },
+            "id": "text-2",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.99228,
+                "xmin": 0.80797,
+                "ymax": 0.7765,
+                "ymin": 0.10069
+              },
+              "page": 1,
+              "range": {
+                "end": 75,
+                "start": 59
+              }
+            },
+            "id": "text-3",
+            "type": "text"
+          }
+        ],
+        "grounding": {
+          "box": {
+            "xmax": 1.0,
+            "xmin": 0.0,
+            "ymax": 1.0,
+            "ymin": 0.0
+          },
+          "page": 1,
+          "range": {
+            "end": 77,
+            "start": 0
+          }
+        },
+        "status": "ok",
+        "type": "page"
+      }
+    ],
+    "type": "document"
+  }
+}

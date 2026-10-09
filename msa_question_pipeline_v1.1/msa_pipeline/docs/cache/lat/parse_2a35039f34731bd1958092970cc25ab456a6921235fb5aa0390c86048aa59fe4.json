@@ -1,0 +1,228 @@
+{
+  "markdown": "<table>\n<tr><td>2.</td><td>Ethyl alcohol is industrially</td><td>prepared from the ethylene</td><td>by:</td></tr>\n<tr><td></td><td></td><td></td><td></td></tr>\n</table>\n\n<!-- doc_id=parse-01m4dcf4kc034f2zmv4gefdemt -->",
+  "metadata": {
+    "job_id": "parse-01m4dcf4kc034f2zmv4gefdemt",
+    "model_version": "dpt-3-pro-20260710",
+    "page_count": 1,
+    "output_markdown_chars": 218,
+    "range_units": "unicode_codepoints",
+    "openapi_spec": "https://api.ade.landing.ai/openapi.json",
+    "failed_pages": [],
+    "duration_ms": 4539,
+    "billing": {
+      "service_tier": "priority",
+      "total_credits": 1.2
+    }
+  },
+  "structure": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "col": 0,
+                "colspan": 1,
+                "grounding": {
+                  "box": {
+                    "xmax": 0.04787,
+                    "xmin": 0.00168,
+                    "ymax": 0.77383,
+                    "ymin": 0.00277
+                  },
+                  "page": 1,
+                  "range": {
+                    "end": 18,
+                    "start": 16
+                  }
+                },
+                "id": "table_cell-0",
+                "row": 0,
+                "rowspan": 1,
+                "type": "table_cell"
+              },
+              {
+                "col": 1,
+                "colspan": 1,
+                "grounding": {
+                  "box": {
+                    "xmax": 0.5005,
+                    "xmin": 0.04677,
+                    "ymax": 0.78049,
+                    "ymin": 0.00276
+                  },
+                  "page": 1,
+                  "range": {
+                    "end": 56,
+                    "start": 27
+                  }
+                },
+                "id": "table_cell-1",
+                "row": 0,
+                "rowspan": 1,
+                "type": "table_cell"
+              },
+              {
+                "col": 2,
+                "colspan": 1,
+                "grounding": {
+                  "box": {
+                    "xmax": 0.94201,
+                    "xmin": 0.49993,
+                    "ymax": 0.78699,
+                    "ymin": 0.00276
+                  },
+                  "page": 1,
+                  "range": {
+                    "end": 91,
+                    "start": 65
+                  }
+                },
+                "id": "table_cell-2",
+                "row": 0,
+                "rowspan": 1,
+                "type": "table_cell"
+              },
+              {
+                "col": 3,
+                "colspan": 1,
+                "grounding": {
+                  "box": {
+                    "xmax": 0.99938,
+                    "xmin": 0.94171,
+                    "ymax": 0.78784,
+                    "ymin": 0.00275
+                  },
+                  "page": 1,
+                  "range": {
+                    "end": 103,
+                    "start": 100
+                  }
+                },
+                "id": "table_cell-3",
+                "row": 0,
+                "rowspan": 1,
+                "type": "table_cell"
+              },
+              {
+                "col": 0,
+                "colspan": 1,
+                "grounding": {
+                  "box": {
+                    "xmax": 0.04677,
+                    "xmin": 0.0016,
+                    "ymax": 0.9997,
+                    "ymin": 0.77317
+                  },
+                  "page": 1,
+                  "range": {
+                    "end": 122,
+                    "start": 122
+                  }
+                },
+                "id": "table_cell-4",
+                "row": 1,
+                "rowspan": 1,
+                "type": "table_cell"
+              },
+              {
+                "col": 1,
+                "colspan": 1,
+                "grounding": {
+                  "box": {
+                    "xmax": 0.49993,
+                    "xmin": 0.04645,
+                    "ymax": 0.9997,
+                    "ymin": 0.77383
+                  },
+                  "page": 1,
+                  "range": {
+                    "end": 131,
+                    "start": 131
+                  }
+                },
+                "id": "table_cell-5",
+                "row": 1,
+                "rowspan": 1,
+                "type": "table_cell"
+              },
+              {
+                "col": 2,
+                "colspan": 1,
+                "grounding": {
+                  "box": {
+                    "xmax": 0.94171,
+                    "xmin": 0.49976,
+                    "ymax": 0.9997,
+                    "ymin": 0.78049
+                  },
+                  "page": 1,
+                  "range": {
+                    "end": 140,
+                    "start": 140
+                  }
+                },
+                "id": "table_cell-6",
+                "row": 1,
+                "rowspan": 1,
+                "type": "table_cell"
+              },
+              {
+                "col": 3,
+                "colspan": 1,
+                "grounding": {
+                  "box": {
+                    "xmax": 0.99938,
+                    "xmin": 0.94163,
+                    "ymax": 0.9997,
+                    "ymin": 0.78699
+                  },
+                  "page": 1,
+                  "range": {
+                    "end": 149,
+                    "start": 149
+                  }
+                },
+                "id": "table_cell-7",
+                "row": 1,
+                "rowspan": 1,
+                "type": "table_cell"
+              }
+            ],
+            "grounding": {
+              "box": {
+                "xmax": 0.99939,
+                "xmin": 0.0011,
+                "ymax": 0.99971,
+                "ymin": 0.00272
+              },
+              "page": 1,
+              "range": {
+                "end": 168,
+                "start": 0
+              }
+            },
+            "id": "table-0",
+            "type": "table"
+          }
+        ],
+        "grounding": {
+          "box": {
+            "xmax": 1.0,
+            "xmin": 0.0,
+            "ymax": 1.0,
+            "ymin": 0.0
+          },
+          "page": 1,
+          "range": {
+            "end": 170,
+            "start": 0
+          }
+        },
+        "status": "ok",
+        "type": "page"
+      }
+    ],
+    "type": "document"
+  }
+}

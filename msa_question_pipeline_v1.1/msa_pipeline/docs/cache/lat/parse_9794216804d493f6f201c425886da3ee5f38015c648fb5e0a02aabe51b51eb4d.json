@@ -1,0 +1,58 @@
+{
+  "markdown": "compound with a fruity smell was formed\n$H_{3}CHO$ + $CH_{3}COOH$\n\n\n<!-- doc_id=parse-01m4d1j20s4qs4kv99ywyp3492 -->",
+  "metadata": {
+    "job_id": "parse-01m4d1j20s4qs4kv99ywyp3492",
+    "model_version": "dpt-3-pro-20260710",
+    "page_count": 1,
+    "output_markdown_chars": 116,
+    "range_units": "unicode_codepoints",
+    "openapi_spec": "https://api.ade.landing.ai/openapi.json",
+    "failed_pages": [],
+    "duration_ms": 4680,
+    "billing": {
+      "service_tier": "priority",
+      "total_credits": 1.1
+    }
+  },
+  "structure": {
+    "children": [
+      {
+        "children": [
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.99974,
+                "xmin": 0.00199,
+                "ymax": 1.0,
+                "ymin": 0.00227
+              },
+              "page": 1,
+              "range": {
+                "end": 66,
+                "start": 0
+              }
+            },
+            "id": "text-0",
+            "type": "text"
+          }
+        ],
+        "grounding": {
+          "box": {
+            "xmax": 1.0,
+            "xmin": 0.0,
+            "ymax": 1.0,
+            "ymin": 0.0
+          },
+          "page": 1,
+          "range": {
+            "end": 68,
+            "start": 0
+          }
+        },
+        "status": "ok",
+        "type": "page"
+      }
+    ],
+    "type": "document"
+  }
+}

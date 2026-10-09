@@ -1,0 +1,143 @@
+{
+  "markdown": "12. Ether fire can be extinguished by:\n\n\na) Sand\n\n\nb) Pyrene\n\n\n13. Diethyl ether on reaction with CO in speci\n\n\na) Acetic acid\n\n\nb) Carbon dioxide\n\n\n<!-- doc_id=parse-01m4dcjm1r7dtbrmzqrj7e14tw -->",
+  "metadata": {
+    "job_id": "parse-01m4dcjm1r7dtbrmzqrj7e14tw",
+    "model_version": "dpt-3-pro-20260710",
+    "page_count": 1,
+    "output_markdown_chars": 197,
+    "range_units": "unicode_codepoints",
+    "openapi_spec": "https://api.ade.landing.ai/openapi.json",
+    "failed_pages": [],
+    "duration_ms": 6203,
+    "billing": {
+      "service_tier": "priority",
+      "total_credits": 1.1
+    }
+  },
+  "structure": {
+    "children": [
+      {
+        "children": [
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.81595,
+                "xmin": 0.01382,
+                "ymax": 0.2336,
+                "ymin": 0.00264
+              },
+              "page": 1,
+              "range": {
+                "end": 39,
+                "start": 0
+              }
+            },
+            "id": "text-0",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.26899,
+                "xmin": 0.09927,
+                "ymax": 0.4936,
+                "ymin": 0.24692
+              },
+              "page": 1,
+              "range": {
+                "end": 49,
+                "start": 41
+              }
+            },
+            "id": "text-1",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.8043,
+                "xmin": 0.58794,
+                "ymax": 0.49506,
+                "ymin": 0.25878
+              },
+              "page": 1,
+              "range": {
+                "end": 61,
+                "start": 51
+              }
+            },
+            "id": "text-2",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.99986,
+                "xmin": 0.01282,
+                "ymax": 0.74588,
+                "ymin": 0.50554
+              },
+              "page": 1,
+              "range": {
+                "end": 110,
+                "start": 63
+              }
+            },
+            "id": "text-3",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.39457,
+                "xmin": 0.10099,
+                "ymax": 0.99776,
+                "ymin": 0.75967
+              },
+              "page": 1,
+              "range": {
+                "end": 127,
+                "start": 112
+              }
+            },
+            "id": "text-4",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.98275,
+                "xmin": 0.5899,
+                "ymax": 0.99526,
+                "ymin": 0.76094
+              },
+              "page": 1,
+              "range": {
+                "end": 147,
+                "start": 129
+              }
+            },
+            "id": "text-5",
+            "type": "text"
+          }
+        ],
+        "grounding": {
+          "box": {
+            "xmax": 1.0,
+            "xmin": 0.0,
+            "ymax": 1.0,
+            "ymin": 0.0
+          },
+          "page": 1,
+          "range": {
+            "end": 149,
+            "start": 0
+          }
+        },
+        "status": "ok",
+        "type": "page"
+      }
+    ],
+    "type": "document"
+  }
+}

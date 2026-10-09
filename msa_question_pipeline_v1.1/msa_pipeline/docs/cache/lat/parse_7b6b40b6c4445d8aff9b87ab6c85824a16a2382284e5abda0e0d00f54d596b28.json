@@ -1,0 +1,143 @@
+{
+  "markdown": "50. The dehydration of neo-pentanol gives mainly\n\n\n<figure type=\"DIAGRAM\">\n\n<description>The figure displays a chemical structural formula consisting of a chain of four carbon atoms. The sequence is written as CH3-CH-CH=CH2. A vertical bond line extends downwards from the second carbon atom in the chain. The letter 'b' is partially visible in the bottom right corner of the image.</description></figure>\n\n<figure type=\"DIAGRAM\">\n\n<description>A chemical structural diagram showing a central carbon atom bonded to a methyl group (CH3) on the left, an ethyl group (CH2CH3) on the right, and a vertical bond extending downwards.</description> CH3—C—CH2CH3</figure>\n\n<figure type=\"DIAGRAM\">\n\n<description>The image displays the chemical formula 'CH3' in black, serif font against a white background. This represents a methyl group, a functional group consisting of one carbon atom bonded to three hydrogen atoms.</description> CH3</figure>\n\n<figure type=\"DIAGRAM\">\n\n<description>The image displays the chemical formula for a methyl group, written as 'CH3' in a black, serif font against a white background.</description>CH3</figure>\n\na)\n\n\n<!-- doc_id=parse-01m4dcwav9cwhk0ybe7g5wf0ak -->",
+  "metadata": {
+    "job_id": "parse-01m4dcwav9cwhk0ybe7g5wf0ak",
+    "model_version": "dpt-3-pro-20260710",
+    "page_count": 1,
+    "output_markdown_chars": 1185,
+    "range_units": "unicode_codepoints",
+    "openapi_spec": "https://api.ade.landing.ai/openapi.json",
+    "failed_pages": [],
+    "duration_ms": 6276,
+    "billing": {
+      "service_tier": "priority",
+      "total_credits": 1.6
+    }
+  },
+  "structure": {
+    "children": [
+      {
+        "children": [
+          {
+            "grounding": {
+              "box": {
+                "xmax": 1.0,
+                "xmin": 0.00884,
+                "ymax": 0.25659,
+                "ymin": 0.0
+              },
+              "page": 1,
+              "range": {
+                "end": 49,
+                "start": 0
+              }
+            },
+            "id": "text-0",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.5635,
+                "xmin": 0.14645,
+                "ymax": 0.76786,
+                "ymin": 0.30437
+              },
+              "page": 1,
+              "range": {
+                "end": 405,
+                "start": 51
+              }
+            },
+            "id": "figure-0",
+            "type": "figure"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.95099,
+                "xmin": 0.59664,
+                "ymax": 0.7641,
+                "ymin": 0.31132
+              },
+              "page": 1,
+              "range": {
+                "end": 663,
+                "start": 407
+              }
+            },
+            "id": "figure-1",
+            "type": "figure"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.35247,
+                "xmin": 0.26265,
+                "ymax": 1.0,
+                "ymin": 0.77183
+              },
+              "page": 1,
+              "range": {
+                "end": 937,
+                "start": 665
+              }
+            },
+            "id": "figure-2",
+            "type": "figure"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.79964,
+                "xmin": 0.71386,
+                "ymax": 0.99694,
+                "ymin": 0.77194
+              },
+              "page": 1,
+              "range": {
+                "end": 1130,
+                "start": 939
+              }
+            },
+            "id": "figure-3",
+            "type": "figure"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.13848,
+                "xmin": 0.09394,
+                "ymax": 0.76903,
+                "ymin": 0.53618
+              },
+              "page": 1,
+              "range": {
+                "end": 1135,
+                "start": 1132
+              }
+            },
+            "id": "text-1",
+            "type": "text"
+          }
+        ],
+        "grounding": {
+          "box": {
+            "xmax": 1.0,
+            "xmin": 0.0,
+            "ymax": 1.0,
+            "ymin": 0.0
+          },
+          "page": 1,
+          "range": {
+            "end": 1137,
+            "start": 0
+          }
+        },
+        "status": "ok",
+        "type": "page"
+      }
+    ],
+    "type": "document"
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "markdown": "a) Alkyl halides\nX\n\n\nb) Alcohols\n.1 C\n\n\nc) Aliphatic amines\n\n\nd) Aromatic amines\n\n\n<!-- doc_id=parse-01m4dcgg93sy0c9sj34v16b9d0 -->",
+  "metadata": {
+    "job_id": "parse-01m4dcgg93sy0c9sj34v16b9d0",
+    "model_version": "dpt-3-pro-20260710",
+    "page_count": 1,
+    "output_markdown_chars": 131,
+    "range_units": "unicode_codepoints",
+    "openapi_spec": "https://api.ade.landing.ai/openapi.json",
+    "failed_pages": [],
+    "duration_ms": 6159,
+    "billing": {
+      "service_tier": "priority",
+      "total_credits": 1.1
+    }
+  },
+  "structure": {
+    "children": [
+      {
+        "children": [
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.19836,
+                "xmin": 0.00304,
+                "ymax": 0.9477,
+                "ymin": 0.09318
+              },
+              "page": 1,
+              "range": {
+                "end": 19,
+                "start": 0
+              }
+            },
+            "id": "text-0",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.42275,
+                "xmin": 0.25634,
+                "ymax": 0.99848,
+                "ymin": 0.10216
+              },
+              "page": 1,
+              "range": {
+                "end": 38,
+                "start": 21
+              }
+            },
+            "id": "text-1",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.73971,
+                "xmin": 0.51285,
+                "ymax": 0.79187,
+                "ymin": 0.08304
+              },
+              "page": 1,
+              "range": {
+                "end": 60,
+                "start": 40
+              }
+            },
+            "id": "text-2",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.99252,
+                "xmin": 0.76817,
+                "ymax": 0.77139,
+                "ymin": 0.0841
+              },
+              "page": 1,
+              "range": {
+                "end": 81,
+                "start": 62
+              }
+            },
+            "id": "text-3",
+            "type": "text"
+          }
+        ],
+        "grounding": {
+          "box": {
+            "xmax": 1.0,
+            "xmin": 0.0,
+            "ymax": 1.0,
+            "ymin": 0.0
+          },
+          "page": 1,
+          "range": {
+            "end": 83,
+            "start": 0
+          }
+        },
+        "status": "ok",
+        "type": "page"
+      }
+    ],
+    "type": "document"
+  }
+}

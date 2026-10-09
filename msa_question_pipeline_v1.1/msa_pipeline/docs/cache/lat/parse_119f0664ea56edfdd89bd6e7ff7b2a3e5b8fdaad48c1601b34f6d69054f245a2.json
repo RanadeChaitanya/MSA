@@ -1,0 +1,177 @@
+{
+  "markdown": "a) 40% H<sub>2</sub>O\n\n\nb) 10% H<sub>2</sub>O\n\n\nc) 5% H<sub>2</sub>O\n\n\nd) 100% $C_2H_5OH$\n\n\nThe order of reactivity of the following alcohols\n\n\n<figure type=\"DIAGRAM\">\n\n<description>The figure shows a chemical structure labeled as (I). The structure consists of a central carbon atom bonded to a methyl group (CH3) at the top, a hydroxyl group (OH) at the bottom, and a CH2 group to the left, which is further bonded to a fluorine atom (F). The overall structure represents 1-fluoropropan-2-ol.</description> CH3 CH2 F OH (I)</figure>\n\n<figure type=\"DIAGRAM\">\n\n<description>A chemical structural formula diagram representing a specific organic molecule. The structure consists of a carbon backbone with a fluorine atom attached at one end, a hydroxyl group (-OH) attached to the second carbon, and a methyl group (-CH3) attached to the same second carbon. Below the chemical structure, the label '(II)' is present.</description> F \n\n CH3 \n\n OH \n\n (II)</figure>\n\n<figure type=\"DIAGRAM\">\n\n<description>The figure displays two chemical structures, labeled (III) and (IV).</description> Structure (III) shows an isopropyl group attached to a hydroxyl (-OH) group, representing isopropanol (propan-2-ol). The structure consists of a central carbon atom bonded to two methyl (CH3) groups, one hydrogen atom (implied), and one hydroxyl (-OH) group. Structure (IV) shows a phenylmethyl group (benzyl) attached to a hydroxyl group, representing benzyl alcohol (phenylmethanol). The structure consists of a Ph (phenyl) group attached to a CH2 group, which is then attached to an OH group.</figure>\n\n<!-- doc_id=parse-01m4ddh2s0q7d0w6phtj5ktfrv -->",
+  "metadata": {
+    "job_id": "parse-01m4ddh2s0q7d0w6phtj5ktfrv",
+    "model_version": "dpt-3-pro-20260710",
+    "page_count": 1,
+    "output_markdown_chars": 1637,
+    "range_units": "unicode_codepoints",
+    "openapi_spec": "https://api.ade.landing.ai/openapi.json",
+    "failed_pages": [],
+    "duration_ms": 6398,
+    "billing": {
+      "service_tier": "priority",
+      "total_credits": 1.9
+    }
+  },
+  "structure": {
+    "children": [
+      {
+        "children": [
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.1504,
+                "xmin": 0.00608,
+                "ymax": 0.25086,
+                "ymin": 0.02443
+              },
+              "page": 1,
+              "range": {
+                "end": 22,
+                "start": 0
+              }
+            },
+            "id": "text-0",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.41276,
+                "xmin": 0.26345,
+                "ymax": 0.24955,
+                "ymin": 0.02575
+              },
+              "page": 1,
+              "range": {
+                "end": 46,
+                "start": 24
+              }
+            },
+            "id": "text-1",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.65977,
+                "xmin": 0.52218,
+                "ymax": 0.25259,
+                "ymin": 0.02218
+              },
+              "page": 1,
+              "range": {
+                "end": 69,
+                "start": 48
+              }
+            },
+            "id": "text-2",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.99521,
+                "xmin": 0.78133,
+                "ymax": 0.26729,
+                "ymin": 0.01598
+              },
+              "page": 1,
+              "range": {
+                "end": 90,
+                "start": 71
+              }
+            },
+            "id": "text-3",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.55009,
+                "xmin": 0.007,
+                "ymax": 0.46335,
+                "ymin": 0.24828
+              },
+              "page": 1,
+              "range": {
+                "end": 142,
+                "start": 92
+              }
+            },
+            "id": "text-4",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.12095,
+                "xmin": 0.00476,
+                "ymax": 1.0,
+                "ymin": 0.46321
+              },
+              "page": 1,
+              "range": {
+                "end": 534,
+                "start": 144
+              }
+            },
+            "id": "figure-0",
+            "type": "figure"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.27544,
+                "xmin": 0.13477,
+                "ymax": 1.0,
+                "ymin": 0.48567
+              },
+              "page": 1,
+              "range": {
+                "end": 960,
+                "start": 536
+              }
+            },
+            "id": "figure-1",
+            "type": "figure"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.50849,
+                "xmin": 0.28951,
+                "ymax": 1.0,
+                "ymin": 0.47417
+              },
+              "page": 1,
+              "range": {
+                "end": 1587,
+                "start": 962
+              }
+            },
+            "id": "figure-2",
+            "type": "figure"
+          }
+        ],
+        "grounding": {
+          "box": {
+            "xmax": 1.0,
+            "xmin": 0.0,
+            "ymax": 1.0,
+            "ymin": 0.0
+          },
+          "page": 1,
+          "range": {
+            "end": 1589,
+            "start": 0
+          }
+        },
+        "status": "ok",
+        "type": "page"
+      }
+    ],
+    "type": "document"
+  }
+}

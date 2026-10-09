@@ -1,0 +1,779 @@
+{
+  "markdown": "**ACTIVE SITE TUTORIALS**\n\n\nDate : 23-07-2019 \nTime : 09:40:00 \nMarks : 2320 \n\nTEST ID: 186 \nCHEMISTRY \n\n11. ALCOHOLS, PHENOLS AND ETHERS\n\n\n1. An organic compound 'X' on treatment with pyridinium chloro chromate in\ndichloromethane gives compound 'Y'. Compound 'Y' reacts with I<sub>2</sub> and alkali to form\ntriiodomethane. The compound 'X' is\na) C<sub>2</sub>H<sub>5</sub>OH  b) CH<sub>3</sub>CHO  c) CH<sub>3</sub>COCH<sub>3</sub>  d) CH<sub>3</sub>COOH\n2. Ethyl alcohol is industrially prepared from the ethylene by:\n [ ] Permanganate oxidation\n [ ] Catalytic reduction\n [ ] Absorbing in sulphuric acid followed by hydrolysis\n [ ] Fermentation\n3. CH<sub>3</sub>ClCH<sub>2</sub>OH is stronger acid than CH<sub>3</sub>CH<sub>2</sub>OH because:\n [ ] +IE of Cl disperses -ve charge on O -atom to produce more stable anion\n [ ] -IE of Cl disperses -ve charge on O -atom to produce more stable anion\n [ ] +IE of Cl increases -ve charge on O -atom to alcohol\n [ ] None of the above\n4. Alcohol (CH<sub>3</sub>)<sub>2</sub>CHCH<sub>2</sub>OH cannot be obtained by\na) HCHO + (CH<sub>3</sub>)<sub>2</sub>CHCH<sub>2</sub>MgX  b) $CH<sub>2</sub>-CH<sub>2</sub> + (CH<sub>3</sub>)<sub>2</sub>CHMgX$\nc) (CH<sub>3</sub>)<sub>2</sub>CHCH<sub>2</sub>CH<sub>2</sub>MgX + O<sub>2</sub> air  d) (CH<sub>3</sub>)<sub>2</sub>CHCHO + CH<sub>3</sub>MgX\n5. Lucas reagent is used to distinguish among primary, secondary and tertiary:\na) Alkyl halides  b) Alcohols  c) Aliphatic amines  d) Aromatic amines\n6. Ketone upon treatment with Grignard reagent gives\na) Primary alcohol  b) Secondary alcohol  c) Tertiary alcohol  d) Aldehyde\n7. The starting material for the preparation of CH<sub>3</sub>I in one step reaction is:\na) CH<sub>3</sub>OH  b) C<sub>2</sub>H<sub>5</sub>OH  c) CH<sub>3</sub>CHO  d) CH<sub>3</sub>COCH<sub>3</sub>\n8. From methyl alcohol we get:\n [ ] Neoprene rubber\n [ ] Perspex rubber\n [ ] Bakelite a hard plastic\n [ ] Sponge rubber\n9. Which one of the following will most readily be dehydrated in acidic condition?\na) [VISUAL_TEXT]  b) [VISUAL_TEXT]  c) [VISUAL_TEXT]  d) [VISUAL_TEXT]\n10. Tert-butyl methyl ether on heating with anhydrous HI in ether gives\na) CH<sub>3</sub>OH + (CH<sub>3</sub>)<sub>3</sub>Cl b) CH<sub>3</sub>I + (CH<sub>3</sub>)<sub>3</sub>COH c) CH<sub>3</sub>I + (CH<sub>3</sub>)<sub>3</sub>Cl  d) None of the above\n11. Diethyl ether is decomposed on heating with:\na) NaOH  b) Water  c) KMnO<sub>4</sub>  d) HI\n12. Ether fire can be extinguished by:\na) Sand  b) Pyrene  c) CO<sub>2</sub>  d) All of these\n13. Diethyl ether on reaction with CO in specific conditions forms:\na) Acetic acid  b) Carbon dioxide  c) Ethyl propanoate  d) Acetyl chloride\n\n\n\n\nPage | 1\n\n\n<!-- doc_id=parse-01m4de6ctc5s7bs53b4v6te8kh -->",
+  "metadata": {
+    "job_id": "parse-01m4de6ctc5s7bs53b4v6te8kh",
+    "model_version": "dpt-3-pro-20260710",
+    "page_count": 1,
+    "output_markdown_chars": 2730,
+    "range_units": "unicode_codepoints",
+    "openapi_spec": "https://api.ade.landing.ai/openapi.json",
+    "failed_pages": [],
+    "duration_ms": 9841,
+    "billing": {
+      "service_tier": "priority",
+      "total_credits": 2.4
+    }
+  },
+  "structure": {
+    "children": [
+      {
+        "children": [
+          {
+            "atomic_grounding": [
+              {
+                "box": {
+                  "xmax": 0.73167,
+                  "xmin": 0.2689,
+                  "ymax": 0.08979,
+                  "ymin": 0.06407
+                },
+                "page": 1,
+                "range": {
+                  "end": 26,
+                  "start": 0
+                }
+              }
+            ],
+            "grounding": {
+              "box": {
+                "xmax": 0.73737,
+                "xmin": 0.26294,
+                "ymax": 0.0929,
+                "ymin": 0.05889
+              },
+              "page": 1,
+              "range": {
+                "end": 26,
+                "start": 0
+              }
+            },
+            "id": "text-0",
+            "type": "text"
+          },
+          {
+            "atomic_grounding": [
+              {
+                "box": {
+                  "xmax": 0.22561,
+                  "xmin": 0.05865,
+                  "ymax": 0.12175,
+                  "ymin": 0.10923
+                },
+                "page": 1,
+                "range": {
+                  "end": 46,
+                  "start": 28
+                }
+              },
+              {
+                "box": {
+                  "xmax": 0.20332,
+                  "xmin": 0.05861,
+                  "ymax": 0.13698,
+                  "ymin": 0.12443
+                },
+                "page": 1,
+                "range": {
+                  "end": 63,
+                  "start": 46
+                }
+              },
+              {
+                "box": {
+                  "xmax": 0.17317,
+                  "xmin": 0.05832,
+                  "ymax": 0.15237,
+                  "ymin": 0.13961
+                },
+                "page": 1,
+                "range": {
+                  "end": 77,
+                  "start": 63
+                }
+              }
+            ],
+            "grounding": {
+              "box": {
+                "xmax": 0.23009,
+                "xmin": 0.053,
+                "ymax": 0.15593,
+                "ymin": 0.10516
+              },
+              "page": 1,
+              "range": {
+                "end": 77,
+                "start": 28
+              }
+            },
+            "id": "text-1",
+            "type": "text"
+          },
+          {
+            "atomic_grounding": [
+              {
+                "box": {
+                  "xmax": 0.89712,
+                  "xmin": 0.78514,
+                  "ymax": 0.12118,
+                  "ymin": 0.10922
+                },
+                "page": 1,
+                "range": {
+                  "end": 92,
+                  "start": 79
+                }
+              },
+              {
+                "box": {
+                  "xmax": 0.88962,
+                  "xmin": 0.78527,
+                  "ymax": 0.13668,
+                  "ymin": 0.12464
+                },
+                "page": 1,
+                "range": {
+                  "end": 103,
+                  "start": 92
+                }
+              }
+            ],
+            "grounding": {
+              "box": {
+                "xmax": 0.90308,
+                "xmin": 0.77858,
+                "ymax": 0.14206,
+                "ymin": 0.10471
+              },
+              "page": 1,
+              "range": {
+                "end": 103,
+                "start": 79
+              }
+            },
+            "id": "text-2",
+            "type": "text"
+          },
+          {
+            "atomic_grounding": [
+              {
+                "box": {
+                  "xmax": 0.65554,
+                  "xmin": 0.34446,
+                  "ymax": 0.16832,
+                  "ymin": 0.15484
+                },
+                "page": 1,
+                "range": {
+                  "end": 138,
+                  "start": 105
+                }
+              }
+            ],
+            "grounding": {
+              "box": {
+                "xmax": 0.66312,
+                "xmin": 0.34035,
+                "ymax": 0.17285,
+                "ymin": 0.14955
+              },
+              "page": 1,
+              "range": {
+                "end": 138,
+                "start": 105
+              }
+            },
+            "id": "text-3",
+            "type": "text"
+          },
+          {
+            "atomic_grounding": [
+              {
+                "box": {
+                  "xmax": 0.72388,
+                  "xmin": 0.05764,
+                  "ymax": 0.21085,
+                  "ymin": 0.19463
+                },
+                "page": 1,
+                "range": {
+                  "end": 215,
+                  "start": 140
+                }
+              },
+              {
+                "box": {
+                  "xmax": 0.80326,
+                  "xmin": 0.09124,
+                  "ymax": 0.22677,
+                  "ymin": 0.21069
+                },
+                "page": 1,
+                "range": {
+                  "end": 309,
+                  "start": 215
+                }
+              },
+              {
+                "box": {
+                  "xmax": 0.40747,
+                  "xmin": 0.0918,
+                  "ymax": 0.24205,
+                  "ymin": 0.22639
+                },
+                "page": 1,
+                "range": {
+                  "end": 345,
+                  "start": 309
+                }
+              },
+              {
+                "box": {
+                  "xmax": 0.7826,
+                  "xmin": 0.09042,
+                  "ymax": 0.25988,
+                  "ymin": 0.24205
+                },
+                "page": 1,
+                "range": {
+                  "end": 457,
+                  "start": 345
+                }
+              },
+              {
+                "box": {
+                  "xmax": 0.58103,
+                  "xmin": 0.05596,
+                  "ymax": 0.27693,
+                  "ymin": 0.25977
+                },
+                "page": 1,
+                "range": {
+                  "end": 521,
+                  "start": 457
+                }
+              },
+              {
+                "box": {
+                  "xmax": 0.31858,
+                  "xmin": 0.09174,
+                  "ymax": 0.29409,
+                  "ymin": 0.27739
+                },
+                "page": 1,
+                "range": {
+                  "end": 549,
+                  "start": 521
+                }
+              },
+              {
+                "box": {
+                  "xmax": 0.27425,
+                  "xmin": 0.09202,
+                  "ymax": 0.31177,
+                  "ymin": 0.29526
+                },
+                "page": 1,
+                "range": {
+                  "end": 574,
+                  "start": 549
+                }
+              },
+              {
+                "box": {
+                  "xmax": 0.53886,
+                  "xmin": 0.09227,
+                  "ymax": 0.32956,
+                  "ymin": 0.31243
+                },
+                "page": 1,
+                "range": {
+                  "end": 630,
+                  "start": 574
+                }
+              },
+              {
+                "box": {
+                  "xmax": 0.22735,
+                  "xmin": 0.09234,
+                  "ymax": 0.34695,
+                  "ymin": 0.32993
+                },
+                "page": 1,
+                "range": {
+                  "end": 648,
+                  "start": 630
+                }
+              },
+              {
+                "box": {
+                  "xmax": 0.57535,
+                  "xmin": 0.05754,
+                  "ymax": 0.36449,
+                  "ymin": 0.34731
+                },
+                "page": 1,
+                "range": {
+                  "end": 746,
+                  "start": 648
+                }
+              },
+              {
+                "box": {
+                  "xmax": 0.69682,
+                  "xmin": 0.09246,
+                  "ymax": 0.38304,
+                  "ymin": 0.36591
+                },
+                "page": 1,
+                "range": {
+                  "end": 822,
+                  "start": 746
+                }
+              },
+              {
+                "box": {
+                  "xmax": 0.70952,
+                  "xmin": 0.09244,
+                  "ymax": 0.40081,
+                  "ymin": 0.38353
+                },
+                "page": 1,
+                "range": {
+                  "end": 898,
+                  "start": 822
+                }
+              },
+              {
+                "box": {
+                  "xmax": 0.54685,
+                  "xmin": 0.09245,
+                  "ymax": 0.41822,
+                  "ymin": 0.40132
+                },
+                "page": 1,
+                "range": {
+                  "end": 956,
+                  "start": 898
+                }
+              },
+              {
+                "box": {
+                  "xmax": 0.2674,
+                  "xmin": 0.09234,
+                  "ymax": 0.43449,
+                  "ymin": 0.41851
+                },
+                "page": 1,
+                "range": {
+                  "end": 979,
+                  "start": 956
+                }
+              },
+              {
+                "box": {
+                  "xmax": 0.5099,
+                  "xmin": 0.05784,
+                  "ymax": 0.45315,
+                  "ymin": 0.43552
+                },
+                "page": 1,
+                "range": {
+                  "end": 1059,
+                  "start": 979
+                }
+              },
+              {
+                "box": {
+                  "xmax": 0.73258,
+                  "xmin": 0.09317,
+                  "ymax": 0.49242,
+                  "ymin": 0.45637
+                },
+                "page": 1,
+                "range": {
+                  "end": 1189,
+                  "start": 1059
+                }
+              },
+              {
+                "box": {
+                  "xmax": 0.73068,
+                  "xmin": 0.09147,
+                  "ymax": 0.51531,
+                  "ymin": 0.49546
+                },
+                "page": 1,
+                "range": {
+                  "end": 1332,
+                  "start": 1189
+                }
+              },
+              {
+                "box": {
+                  "xmax": 0.72177,
+                  "xmin": 0.05827,
+                  "ymax": 0.533,
+                  "ymin": 0.51584
+                },
+                "page": 1,
+                "range": {
+                  "end": 1411,
+                  "start": 1332
+                }
+              },
+              {
+                "box": {
+                  "xmax": 0.82722,
+                  "xmin": 0.0921,
+                  "ymax": 0.55098,
+                  "ymin": 0.53331
+                },
+                "page": 1,
+                "range": {
+                  "end": 1482,
+                  "start": 1411
+                }
+              },
+              {
+                "box": {
+                  "xmax": 0.52284,
+                  "xmin": 0.05766,
+                  "ymax": 0.56827,
+                  "ymin": 0.55135
+                },
+                "page": 1,
+                "range": {
+                  "end": 1535,
+                  "start": 1482
+                }
+              },
+              {
+                "box": {
+                  "xmax": 0.76846,
+                  "xmin": 0.09182,
+                  "ymax": 0.58595,
+                  "ymin": 0.56845
+                },
+                "page": 1,
+                "range": {
+                  "end": 1610,
+                  "start": 1535
+                }
+              },
+              {
+                "box": {
+                  "xmax": 0.68236,
+                  "xmin": 0.05848,
+                  "ymax": 0.60339,
+                  "ymin": 0.58645
+                },
+                "page": 1,
+                "range": {
+                  "end": 1699,
+                  "start": 1610
+                }
+              },
+              {
+                "box": {
+                  "xmax": 0.78977,
+                  "xmin": 0.09129,
+                  "ymax": 0.62194,
+                  "ymin": 0.60335
+                },
+                "page": 1,
+                "range": {
+                  "end": 1809,
+                  "start": 1699
+                }
+              },
+              {
+                "box": {
+                  "xmax": 0.33086,
+                  "xmin": 0.05838,
+                  "ymax": 0.63874,
+                  "ymin": 0.62213
+                },
+                "page": 1,
+                "range": {
+                  "end": 1840,
+                  "start": 1809
+                }
+              },
+              {
+                "box": {
+                  "xmax": 0.25828,
+                  "xmin": 0.09282,
+                  "ymax": 0.65613,
+                  "ymin": 0.63938
+                },
+                "page": 1,
+                "range": {
+                  "end": 1861,
+                  "start": 1840
+                }
+              },
+              {
+                "box": {
+                  "xmax": 0.24219,
+                  "xmin": 0.09298,
+                  "ymax": 0.67379,
+                  "ymin": 0.65682
+                },
+                "page": 1,
+                "range": {
+                  "end": 1881,
+                  "start": 1861
+                }
+              },
+              {
+                "box": {
+                  "xmax": 0.29714,
+                  "xmin": 0.09335,
+                  "ymax": 0.69156,
+                  "ymin": 0.67427
+                },
+                "page": 1,
+                "range": {
+                  "end": 1910,
+                  "start": 1881
+                }
+              },
+              {
+                "box": {
+                  "xmax": 0.23791,
+                  "xmin": 0.09362,
+                  "ymax": 0.70904,
+                  "ymin": 0.69207
+                },
+                "page": 1,
+                "range": {
+                  "end": 1929,
+                  "start": 1910
+                }
+              },
+              {
+                "box": {
+                  "xmax": 0.74919,
+                  "xmin": 0.05737,
+                  "ymax": 0.72635,
+                  "ymin": 0.70875
+                },
+                "page": 1,
+                "range": {
+                  "end": 2012,
+                  "start": 1929
+                }
+              },
+              {
+                "box": {
+                  "xmax": 0.63748,
+                  "xmin": 0.08583,
+                  "ymax": 0.79004,
+                  "ymin": 0.72897
+                },
+                "page": 1,
+                "range": {
+                  "end": 2083,
+                  "start": 2012
+                }
+              },
+              {
+                "box": {
+                  "xmax": 0.65624,
+                  "xmin": 0.05852,
+                  "ymax": 0.81653,
+                  "ymin": 0.79792
+                },
+                "page": 1,
+                "range": {
+                  "end": 2155,
+                  "start": 2083
+                }
+              },
+              {
+                "box": {
+                  "xmax": 0.64302,
+                  "xmin": 0.09062,
+                  "ymax": 0.83482,
+                  "ymin": 0.81639
+                },
+                "page": 1,
+                "range": {
+                  "end": 2335,
+                  "start": 2155
+                }
+              },
+              {
+                "box": {
+                  "xmax": 0.47029,
+                  "xmin": 0.0591,
+                  "ymax": 0.8519,
+                  "ymin": 0.83479
+                },
+                "page": 1,
+                "range": {
+                  "end": 2384,
+                  "start": 2335
+                }
+              },
+              {
+                "box": {
+                  "xmax": 0.70982,
+                  "xmin": 0.09145,
+                  "ymax": 0.86986,
+                  "ymin": 0.85217
+                },
+                "page": 1,
+                "range": {
+                  "end": 2430,
+                  "start": 2384
+                }
+              },
+              {
+                "box": {
+                  "xmax": 0.37158,
+                  "xmin": 0.05897,
+                  "ymax": 0.88674,
+                  "ymin": 0.87015
+                },
+                "page": 1,
+                "range": {
+                  "end": 2469,
+                  "start": 2430
+                }
+              },
+              {
+                "box": {
+                  "xmax": 0.78035,
+                  "xmin": 0.09225,
+                  "ymax": 0.9048,
+                  "ymin": 0.88711
+                },
+                "page": 1,
+                "range": {
+                  "end": 2524,
+                  "start": 2469
+                }
+              },
+              {
+                "box": {
+                  "xmax": 0.60989,
+                  "xmin": 0.05823,
+                  "ymax": 0.92186,
+                  "ymin": 0.90515
+                },
+                "page": 1,
+                "range": {
+                  "end": 2592,
+                  "start": 2524
+                }
+              },
+              {
+                "box": {
+                  "xmax": 0.81314,
+                  "xmin": 0.09149,
+                  "ymax": 0.94026,
+                  "ymin": 0.922
+                },
+                "page": 1,
+                "range": {
+                  "end": 2667,
+                  "start": 2592
+                }
+              },
+              {
+                "box": {
+                  "xmax": 0.81845,
+                  "xmin": 0.65555,
+                  "ymax": 0.79115,
+                  "ymin": 0.72867
+                },
+                "page": 1,
+                "range": {
+                  "end": 2668,
+                  "start": 2667
+                }
+              },
+              {
+                "box": {
+                  "xmax": 0.83925,
+                  "xmin": 0.65483,
+                  "ymax": 0.83478,
+                  "ymin": 0.817
+                },
+                "page": 1,
+                "range": {
+                  "end": 2669,
+                  "start": 2668
+                }
+              }
+            ],
+            "grounding": {
+              "box": {
+                "xmax": 0.86315,
+                "xmin": 0.04774,
+                "ymax": 0.94794,
+                "ymin": 0.18676
+              },
+              "page": 1,
+              "range": {
+                "end": 2669,
+                "start": 140
+              }
+            },
+            "id": "text-4",
+            "type": "text"
+          },
+          {
+            "atomic_grounding": [
+              {
+                "box": {
+                  "xmax": 0.94172,
+                  "xmin": 0.85898,
+                  "ymax": 0.9776,
+                  "ymin": 0.96271
+                },
+                "page": 1,
+                "range": {
+                  "end": 2680,
+                  "start": 2671
+                }
+              }
+            ],
+            "grounding": {
+              "box": {
+                "xmax": 0.94664,
+                "xmin": 0.85424,
+                "ymax": 0.98071,
+                "ymin": 0.96043
+              },
+              "page": 1,
+              "range": {
+                "end": 2680,
+                "start": 2671
+              }
+            },
+            "id": "marginalia-0",
+            "type": "marginalia"
+          }
+        ],
+        "grounding": {
+          "box": {
+            "xmax": 1.0,
+            "xmin": 0.0,
+            "ymax": 1.0,
+            "ymin": 0.0
+          },
+          "page": 1,
+          "range": {
+            "end": 2682,
+            "start": 0
+          }
+        },
+        "status": "ok",
+        "type": "page"
+      }
+    ],
+    "type": "document"
+  }
+}

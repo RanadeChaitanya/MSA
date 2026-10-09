@@ -1,0 +1,109 @@
+{
+  "markdown": "c conditions forms:\n\n\nc) Ethyl propanoate\n\n\nd) Acetyl chloride\n\n\nPage | 1\n\n\n<!-- doc_id=parse-01m4ddfz9wsa04ags9ctgr6zty -->",
+  "metadata": {
+    "job_id": "parse-01m4ddfz9wsa04ags9ctgr6zty",
+    "model_version": "dpt-3-pro-20260710",
+    "page_count": 1,
+    "output_markdown_chars": 124,
+    "range_units": "unicode_codepoints",
+    "openapi_spec": "https://api.ade.landing.ai/openapi.json",
+    "failed_pages": [],
+    "duration_ms": 4940,
+    "billing": {
+      "service_tier": "priority",
+      "total_credits": 1.1
+    }
+  },
+  "structure": {
+    "children": [
+      {
+        "children": [
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.31237,
+                "xmin": 0.00264,
+                "ymax": 0.20121,
+                "ymin": 0.00255
+              },
+              "page": 1,
+              "range": {
+                "end": 20,
+                "start": 0
+              }
+            },
+            "id": "text-0",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.37545,
+                "xmin": 0.03281,
+                "ymax": 0.50419,
+                "ymin": 0.24221
+              },
+              "page": 1,
+              "range": {
+                "end": 42,
+                "start": 22
+              }
+            },
+            "id": "text-1",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.72789,
+                "xmin": 0.42259,
+                "ymax": 0.5001,
+                "ymin": 0.24018
+              },
+              "page": 1,
+              "range": {
+                "end": 63,
+                "start": 44
+              }
+            },
+            "id": "text-2",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.99518,
+                "xmin": 0.82121,
+                "ymax": 1.0,
+                "ymin": 0.81496
+              },
+              "page": 1,
+              "range": {
+                "end": 74,
+                "start": 65
+              }
+            },
+            "id": "text-3",
+            "type": "text"
+          }
+        ],
+        "grounding": {
+          "box": {
+            "xmax": 1.0,
+            "xmin": 0.0,
+            "ymax": 1.0,
+            "ymin": 0.0
+          },
+          "page": 1,
+          "range": {
+            "end": 76,
+            "start": 0
+          }
+        },
+        "status": "ok",
+        "type": "page"
+      }
+    ],
+    "type": "document"
+  }
+}

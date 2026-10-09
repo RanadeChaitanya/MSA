@@ -1,0 +1,160 @@
+{
+  "markdown": "7. The starting material for the preparation of\n\n\na) $CH_3OH$\n\n\nb) $C_2H_5OH$\n\n\nFrom methyl alcohol we get:\n\n\na) Neoprene rubber\nb) Perspex rubber\n\n\nc) Bakelite a hard plastic\nd) Sponge rubber\n\n\n8\n.\n\n\n<!-- doc_id=parse-01m4ddfexfvzbp8rhx84twxsgq -->",
+  "metadata": {
+    "job_id": "parse-01m4ddfexfvzbp8rhx84twxsgq",
+    "model_version": "dpt-3-pro-20260710",
+    "page_count": 1,
+    "output_markdown_chars": 249,
+    "range_units": "unicode_codepoints",
+    "openapi_spec": "https://api.ade.landing.ai/openapi.json",
+    "failed_pages": [],
+    "duration_ms": 6248,
+    "billing": {
+      "service_tier": "priority",
+      "total_credits": 1.2
+    }
+  },
+  "structure": {
+    "children": [
+      {
+        "children": [
+          {
+            "grounding": {
+              "box": {
+                "xmax": 1.0,
+                "xmin": 0.00764,
+                "ymax": 0.13792,
+                "ymin": 0.00116
+              },
+              "page": 1,
+              "range": {
+                "end": 48,
+                "start": 0
+              }
+            },
+            "id": "text-0",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.34336,
+                "xmin": 0.09909,
+                "ymax": 0.28437,
+                "ymin": 0.14696
+              },
+              "page": 1,
+              "range": {
+                "end": 62,
+                "start": 50
+              }
+            },
+            "id": "text-1",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.84251,
+                "xmin": 0.5791,
+                "ymax": 0.28422,
+                "ymin": 0.14961
+              },
+              "page": 1,
+              "range": {
+                "end": 78,
+                "start": 64
+              }
+            },
+            "id": "text-2",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.70536,
+                "xmin": 0.09929,
+                "ymax": 0.43106,
+                "ymin": 0.29438
+              },
+              "page": 1,
+              "range": {
+                "end": 108,
+                "start": 80
+              }
+            },
+            "id": "text-3",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.59192,
+                "xmin": 0.09717,
+                "ymax": 0.72219,
+                "ymin": 0.43808
+              },
+              "page": 1,
+              "range": {
+                "end": 147,
+                "start": 110
+              }
+            },
+            "id": "text-4",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.62056,
+                "xmin": 0.09942,
+                "ymax": 0.99994,
+                "ymin": 0.72733
+              },
+              "page": 1,
+              "range": {
+                "end": 193,
+                "start": 149
+              }
+            },
+            "id": "text-5",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.05802,
+                "xmin": 0.01522,
+                "ymax": 0.42033,
+                "ymin": 0.31642
+              },
+              "page": 1,
+              "range": {
+                "end": 199,
+                "start": 195
+              }
+            },
+            "id": "marginalia-0",
+            "type": "marginalia"
+          }
+        ],
+        "grounding": {
+          "box": {
+            "xmax": 1.0,
+            "xmin": 0.0,
+            "ymax": 1.0,
+            "ymin": 0.0
+          },
+          "page": 1,
+          "range": {
+            "end": 201,
+            "start": 0
+          }
+        },
+        "status": "ok",
+        "type": "page"
+      }
+    ],
+    "type": "document"
+  }
+}

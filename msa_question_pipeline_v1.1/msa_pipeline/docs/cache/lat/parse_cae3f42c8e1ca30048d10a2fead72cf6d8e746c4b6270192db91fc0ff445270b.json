@@ -1,0 +1,109 @@
+{
+  "markdown": "a) Primary alcohol\nb) S\nThe reaction is 1 for the\n\n\nb) Secondary alcohol\n\n\nc) Tertiary alcohol\nH H H\n\n\nd) Aldehyde\n\n\n<!-- doc_id=parse-01m4dch69jf1c1v0hsfkkp33wa -->",
+  "metadata": {
+    "job_id": "parse-01m4dch69jf1c1v0hsfkkp33wa",
+    "model_version": "dpt-3-pro-20260710",
+    "page_count": 1,
+    "output_markdown_chars": 165,
+    "range_units": "unicode_codepoints",
+    "openapi_spec": "https://api.ade.landing.ai/openapi.json",
+    "failed_pages": [],
+    "duration_ms": 5452,
+    "billing": {
+      "service_tier": "priority",
+      "total_credits": 1.1
+    }
+  },
+  "structure": {
+    "children": [
+      {
+        "children": [
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.32724,
+                "xmin": 0.00348,
+                "ymax": 1.0,
+                "ymin": 0.08721
+              },
+              "page": 1,
+              "range": {
+                "end": 50,
+                "start": 0
+              }
+            },
+            "id": "text-0",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.5424,
+                "xmin": 0.28248,
+                "ymax": 0.96868,
+                "ymin": 0.09828
+              },
+              "page": 1,
+              "range": {
+                "end": 73,
+                "start": 52
+              }
+            },
+            "id": "text-1",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.78885,
+                "xmin": 0.54853,
+                "ymax": 0.97257,
+                "ymin": 0.10258
+              },
+              "page": 1,
+              "range": {
+                "end": 101,
+                "start": 75
+              }
+            },
+            "id": "text-2",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.9916,
+                "xmin": 0.83558,
+                "ymax": 0.75142,
+                "ymin": 0.09284
+              },
+              "page": 1,
+              "range": {
+                "end": 115,
+                "start": 103
+              }
+            },
+            "id": "text-3",
+            "type": "text"
+          }
+        ],
+        "grounding": {
+          "box": {
+            "xmax": 1.0,
+            "xmin": 0.0,
+            "ymax": 1.0,
+            "ymin": 0.0
+          },
+          "page": 1,
+          "range": {
+            "end": 117,
+            "start": 0
+          }
+        },
+        "status": "ok",
+        "type": "page"
+      }
+    ],
+    "type": "document"
+  }
+}

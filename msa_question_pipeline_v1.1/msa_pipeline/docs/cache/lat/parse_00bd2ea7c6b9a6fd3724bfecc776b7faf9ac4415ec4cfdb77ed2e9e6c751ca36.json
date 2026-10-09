@@ -1,0 +1,58 @@
+{
+  "markdown": "24. Which of the property given below is not associated with glycerol?\n\n\n<!-- doc_id=parse-01m4dcp9p5jjmh48aspbh7jx4c -->",
+  "metadata": {
+    "job_id": "parse-01m4dcp9p5jjmh48aspbh7jx4c",
+    "model_version": "dpt-3-pro-20260710",
+    "page_count": 1,
+    "output_markdown_chars": 121,
+    "range_units": "unicode_codepoints",
+    "openapi_spec": "https://api.ade.landing.ai/openapi.json",
+    "failed_pages": [],
+    "duration_ms": 2466,
+    "billing": {
+      "service_tier": "priority",
+      "total_credits": 1.1
+    }
+  },
+  "structure": {
+    "children": [
+      {
+        "children": [
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.99929,
+                "xmin": 0.0,
+                "ymax": 1.0,
+                "ymin": 0.00134
+              },
+              "page": 1,
+              "range": {
+                "end": 71,
+                "start": 0
+              }
+            },
+            "id": "text-0",
+            "type": "text"
+          }
+        ],
+        "grounding": {
+          "box": {
+            "xmax": 1.0,
+            "xmin": 0.0,
+            "ymax": 1.0,
+            "ymin": 0.0
+          },
+          "page": 1,
+          "range": {
+            "end": 73,
+            "start": 0
+          }
+        },
+        "status": "ok",
+        "type": "page"
+      }
+    ],
+    "type": "document"
+  }
+}

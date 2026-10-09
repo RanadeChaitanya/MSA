@@ -1,0 +1,58 @@
+{
+  "markdown": "22. Which of the following reacts fastest with a mixture of anhydrous ZnCl<sub>2</sub> and conc. HCl?\n[ILLEGIBLE_TEXT]\n\n\n<!-- doc_id=parse-01m4dcnznhpgntspt8bwe6vn0v -->",
+  "metadata": {
+    "job_id": "parse-01m4dcnznhpgntspt8bwe6vn0v",
+    "model_version": "dpt-3-pro-20260710",
+    "page_count": 1,
+    "output_markdown_chars": 169,
+    "range_units": "unicode_codepoints",
+    "openapi_spec": "https://api.ade.landing.ai/openapi.json",
+    "failed_pages": [],
+    "duration_ms": 2718,
+    "billing": {
+      "service_tier": "priority",
+      "total_credits": 1.1
+    }
+  },
+  "structure": {
+    "children": [
+      {
+        "children": [
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.99989,
+                "xmin": 0.00054,
+                "ymax": 0.99903,
+                "ymin": 0.00133
+              },
+              "page": 1,
+              "range": {
+                "end": 119,
+                "start": 0
+              }
+            },
+            "id": "text-0",
+            "type": "text"
+          }
+        ],
+        "grounding": {
+          "box": {
+            "xmax": 1.0,
+            "xmin": 0.0,
+            "ymax": 1.0,
+            "ymin": 0.0
+          },
+          "page": 1,
+          "range": {
+            "end": 121,
+            "start": 0
+          }
+        },
+        "status": "ok",
+        "type": "page"
+      }
+    ],
+    "type": "document"
+  }
+}

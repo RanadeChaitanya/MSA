@@ -1,0 +1,126 @@
+{
+  "markdown": "inly:\n\n\n<figure type=\"DIAGRAM\">\n\n<description>The image displays a partial chemical structural formula. On the left is a methyl group, represented by the text 'CH3'. This is connected by a single bond to a central carbon atom, represented by 'C'. This central carbon atom is part of a double bond extending to the right, indicated by an equals sign '='. A single bond extends downwards from the central carbon atom.</description></figure>\n\nc)\n\n\n3\n\n\n<figure type=\"DIAGRAM\">The image displays the chemical formula \"CH3\" written in a bold, sans-serif font. \n\n<description>The text consists of the uppercase letters \"CH\" followed by the subscript number \"3\", representing a methyl group.</description></figure>\n\n<!-- doc_id=parse-01m4ddgneemfnbqz95yfgcas17 -->",
+  "metadata": {
+    "job_id": "parse-01m4ddgneemfnbqz95yfgcas17",
+    "model_version": "dpt-3-pro-20260710",
+    "page_count": 1,
+    "output_markdown_chars": 756,
+    "range_units": "unicode_codepoints",
+    "openapi_spec": "https://api.ade.landing.ai/openapi.json",
+    "failed_pages": [],
+    "duration_ms": 5454,
+    "billing": {
+      "service_tier": "priority",
+      "total_credits": 1.4
+    }
+  },
+  "structure": {
+    "children": [
+      {
+        "children": [
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.29148,
+                "xmin": 0.00029,
+                "ymax": 0.24607,
+                "ymin": 0.00217
+              },
+              "page": 1,
+              "range": {
+                "end": 6,
+                "start": 0
+              }
+            },
+            "id": "text-0",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.9859,
+                "xmin": 0.41632,
+                "ymax": 0.77158,
+                "ymin": 0.31992
+              },
+              "page": 1,
+              "range": {
+                "end": 438,
+                "start": 8
+              }
+            },
+            "id": "figure-0",
+            "type": "figure"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.37814,
+                "xmin": 0.24819,
+                "ymax": 0.7667,
+                "ymin": 0.54145
+              },
+              "page": 1,
+              "range": {
+                "end": 443,
+                "start": 440
+              }
+            },
+            "id": "text-1",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.07095,
+                "xmin": 0.00115,
+                "ymax": 0.55233,
+                "ymin": 0.40042
+              },
+              "page": 1,
+              "range": {
+                "end": 447,
+                "start": 445
+              }
+            },
+            "id": "logo-0",
+            "type": "logo"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.99816,
+                "xmin": 0.7586,
+                "ymax": 0.9992,
+                "ymin": 0.783
+              },
+              "page": 1,
+              "range": {
+                "end": 706,
+                "start": 449
+              }
+            },
+            "id": "figure-1",
+            "type": "figure"
+          }
+        ],
+        "grounding": {
+          "box": {
+            "xmax": 1.0,
+            "xmin": 0.0,
+            "ymax": 1.0,
+            "ymin": 0.0
+          },
+          "page": 1,
+          "range": {
+            "end": 708,
+            "start": 0
+          }
+        },
+        "status": "ok",
+        "type": "page"
+      }
+    ],
+    "type": "document"
+  }
+}

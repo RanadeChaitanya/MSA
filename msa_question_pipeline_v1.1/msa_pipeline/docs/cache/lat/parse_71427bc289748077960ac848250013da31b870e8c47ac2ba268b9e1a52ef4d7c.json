@@ -1,0 +1,92 @@
+{
+  "markdown": "a)\nBaking powder\nPlease add the baking powder\nb) Paints\n\n\nc)\nThermometers\n[ILLEGIBLE_TEXT]\n\n\nd) Weighing\n1 | Oil W1:\n\n\n<!-- doc_id=parse-01m4d1mwef9k4cqsz8sagpd8ek -->",
+  "metadata": {
+    "job_id": "parse-01m4d1mwef9k4cqsz8sagpd8ek",
+    "model_version": "dpt-3-pro-20260710",
+    "page_count": 1,
+    "output_markdown_chars": 167,
+    "range_units": "unicode_codepoints",
+    "openapi_spec": "https://api.ade.landing.ai/openapi.json",
+    "failed_pages": [],
+    "duration_ms": 5422,
+    "billing": {
+      "service_tier": "priority",
+      "total_credits": 1.1
+    }
+  },
+  "structure": {
+    "children": [
+      {
+        "children": [
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.38765,
+                "xmin": 0.00052,
+                "ymax": 0.99895,
+                "ymin": 0.05247
+              },
+              "page": 1,
+              "range": {
+                "end": 56,
+                "start": 0
+              }
+            },
+            "id": "text-0",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.78232,
+                "xmin": 0.54837,
+                "ymax": 0.99645,
+                "ymin": 0.08081
+              },
+              "page": 1,
+              "range": {
+                "end": 91,
+                "start": 58
+              }
+            },
+            "id": "text-1",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.99565,
+                "xmin": 0.83536,
+                "ymax": 0.99757,
+                "ymin": 0.06643
+              },
+              "page": 1,
+              "range": {
+                "end": 117,
+                "start": 93
+              }
+            },
+            "id": "text-2",
+            "type": "text"
+          }
+        ],
+        "grounding": {
+          "box": {
+            "xmax": 1.0,
+            "xmin": 0.0,
+            "ymax": 1.0,
+            "ymin": 0.0
+          },
+          "page": 1,
+          "range": {
+            "end": 119,
+            "start": 0
+          }
+        },
+        "status": "ok",
+        "type": "page"
+      }
+    ],
+    "type": "document"
+  }
+}

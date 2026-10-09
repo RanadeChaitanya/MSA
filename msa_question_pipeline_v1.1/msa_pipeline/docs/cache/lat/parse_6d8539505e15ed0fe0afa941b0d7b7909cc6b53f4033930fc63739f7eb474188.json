@@ -1,0 +1,75 @@
+{
+  "markdown": "c) Neutral $FeCl_3$\n---\n\n\nd) $Br_2/H_2O$\n\n\n<!-- doc_id=parse-01m4dcqdjvkxm6947zsxf302vr -->",
+  "metadata": {
+    "job_id": "parse-01m4dcqdjvkxm6947zsxf302vr",
+    "model_version": "dpt-3-pro-20260710",
+    "page_count": 1,
+    "output_markdown_chars": 91,
+    "range_units": "unicode_codepoints",
+    "openapi_spec": "https://api.ade.landing.ai/openapi.json",
+    "failed_pages": [],
+    "duration_ms": 4903,
+    "billing": {
+      "service_tier": "priority",
+      "total_credits": 1.1
+    }
+  },
+  "structure": {
+    "children": [
+      {
+        "children": [
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.30426,
+                "xmin": 0.01215,
+                "ymax": 0.94652,
+                "ymin": 0.13115
+              },
+              "page": 1,
+              "range": {
+                "end": 24,
+                "start": 0
+              }
+            },
+            "id": "text-0",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.98731,
+                "xmin": 0.78506,
+                "ymax": 0.8684,
+                "ymin": 0.16156
+              },
+              "page": 1,
+              "range": {
+                "end": 41,
+                "start": 26
+              }
+            },
+            "id": "text-1",
+            "type": "text"
+          }
+        ],
+        "grounding": {
+          "box": {
+            "xmax": 1.0,
+            "xmin": 0.0,
+            "ymax": 1.0,
+            "ymin": 0.0
+          },
+          "page": 1,
+          "range": {
+            "end": 43,
+            "start": 0
+          }
+        },
+        "status": "ok",
+        "type": "page"
+      }
+    ],
+    "type": "document"
+  }
+}

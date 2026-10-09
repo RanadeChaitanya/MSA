@@ -1,0 +1,126 @@
+{
+  "markdown": "a) Phenol\n\n\nb) *o*-cresol\n\n\nc) *p*-nitrophenol\n\n\nd) *p*-chlorophenol\n\n\nGlaze was dried at 110 °C.\n\n\n<!-- doc_id=parse-01m4dcvahsve9b3b8fzx736w0c -->",
+  "metadata": {
+    "job_id": "parse-01m4dcvahsve9b3b8fzx736w0c",
+    "model_version": "dpt-3-pro-20260710",
+    "page_count": 1,
+    "output_markdown_chars": 148,
+    "range_units": "unicode_codepoints",
+    "openapi_spec": "https://api.ade.landing.ai/openapi.json",
+    "failed_pages": [],
+    "duration_ms": 31972,
+    "billing": {
+      "service_tier": "priority",
+      "total_credits": 1.1
+    }
+  },
+  "structure": {
+    "children": [
+      {
+        "children": [
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.12431,
+                "xmin": 0.00577,
+                "ymax": 0.77664,
+                "ymin": 0.09966
+              },
+              "page": 1,
+              "range": {
+                "end": 10,
+                "start": 0
+              }
+            },
+            "id": "text-0",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.39396,
+                "xmin": 0.26221,
+                "ymax": 0.7619,
+                "ymin": 0.1225
+              },
+              "page": 1,
+              "range": {
+                "end": 26,
+                "start": 12
+              }
+            },
+            "id": "text-1",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.72277,
+                "xmin": 0.51989,
+                "ymax": 0.75759,
+                "ymin": 0.11046
+              },
+              "page": 1,
+              "range": {
+                "end": 47,
+                "start": 28
+              }
+            },
+            "id": "text-2",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.99477,
+                "xmin": 0.78078,
+                "ymax": 0.76004,
+                "ymin": 0.11494
+              },
+              "page": 1,
+              "range": {
+                "end": 69,
+                "start": 49
+              }
+            },
+            "id": "text-3",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.54038,
+                "xmin": 0.00375,
+                "ymax": 1.0,
+                "ymin": 0.8356
+              },
+              "page": 1,
+              "range": {
+                "end": 98,
+                "start": 71
+              }
+            },
+            "id": "text-4",
+            "type": "text"
+          }
+        ],
+        "grounding": {
+          "box": {
+            "xmax": 1.0,
+            "xmin": 0.0,
+            "ymax": 1.0,
+            "ymin": 0.0
+          },
+          "page": 1,
+          "range": {
+            "end": 100,
+            "start": 0
+          }
+        },
+        "status": "ok",
+        "type": "page"
+      }
+    ],
+    "type": "document"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "markdown": "15. In the fermentation of sugar molasses, t\n\n\n<!-- doc_id=parse-01m4d1hg068dr2e3gc3hs8f37p -->",
+  "metadata": {
+    "job_id": "parse-01m4d1hg068dr2e3gc3hs8f37p",
+    "model_version": "dpt-3-pro-20260710",
+    "page_count": 1,
+    "output_markdown_chars": 95,
+    "range_units": "unicode_codepoints",
+    "openapi_spec": "https://api.ade.landing.ai/openapi.json",
+    "failed_pages": [],
+    "duration_ms": 4607,
+    "billing": {
+      "service_tier": "priority",
+      "total_credits": 1.1
+    }
+  },
+  "structure": {
+    "children": [
+      {
+        "children": [
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.99948,
+                "xmin": 0.00092,
+                "ymax": 0.9999,
+                "ymin": 0.00175
+              },
+              "page": 1,
+              "range": {
+                "end": 45,
+                "start": 0
+              }
+            },
+            "id": "text-0",
+            "type": "text"
+          }
+        ],
+        "grounding": {
+          "box": {
+            "xmax": 1.0,
+            "xmin": 0.0,
+            "ymax": 1.0,
+            "ymin": 0.0
+          },
+          "page": 1,
+          "range": {
+            "end": 47,
+            "start": 0
+          }
+        },
+        "status": "ok",
+        "type": "page"
+      }
+    ],
+    "type": "document"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "markdown": "29. The factor adversely affecting the process of fermentation is:\n\n\n<!-- doc_id=parse-01m4d1k3v32be0dawqvq0mf725 -->",
+  "metadata": {
+    "job_id": "parse-01m4d1k3v32be0dawqvq0mf725",
+    "model_version": "dpt-3-pro-20260710",
+    "page_count": 1,
+    "output_markdown_chars": 117,
+    "range_units": "unicode_codepoints",
+    "openapi_spec": "https://api.ade.landing.ai/openapi.json",
+    "failed_pages": [],
+    "duration_ms": 2664,
+    "billing": {
+      "service_tier": "priority",
+      "total_credits": 1.1
+    }
+  },
+  "structure": {
+    "children": [
+      {
+        "children": [
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.99903,
+                "xmin": 0.00117,
+                "ymax": 0.99936,
+                "ymin": 0.0023
+              },
+              "page": 1,
+              "range": {
+                "end": 67,
+                "start": 0
+              }
+            },
+            "id": "text-0",
+            "type": "text"
+          }
+        ],
+        "grounding": {
+          "box": {
+            "xmax": 1.0,
+            "xmin": 0.0,
+            "ymax": 1.0,
+            "ymin": 0.0
+          },
+          "page": 1,
+          "range": {
+            "end": 69,
+            "start": 0
+          }
+        },
+        "status": "ok",
+        "type": "page"
+      }
+    ],
+    "type": "document"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "markdown": "36. Alcohol is sometimes used in:\n\n\n<!-- doc_id=parse-01m4d1mf3gev1t5h8j8fp476qf -->",
+  "metadata": {
+    "job_id": "parse-01m4d1mf3gev1t5h8j8fp476qf",
+    "model_version": "dpt-3-pro-20260710",
+    "page_count": 1,
+    "output_markdown_chars": 84,
+    "range_units": "unicode_codepoints",
+    "openapi_spec": "https://api.ade.landing.ai/openapi.json",
+    "failed_pages": [],
+    "duration_ms": 4762,
+    "billing": {
+      "service_tier": "priority",
+      "total_credits": 1.1
+    }
+  },
+  "structure": {
+    "children": [
+      {
+        "children": [
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.98168,
+                "xmin": 0.0147,
+                "ymax": 0.80856,
+                "ymin": 0.14587
+              },
+              "page": 1,
+              "range": {
+                "end": 34,
+                "start": 0
+              }
+            },
+            "id": "text-0",
+            "type": "text"
+          }
+        ],
+        "grounding": {
+          "box": {
+            "xmax": 1.0,
+            "xmin": 0.0,
+            "ymax": 1.0,
+            "ymin": 0.0
+          },
+          "page": 1,
+          "range": {
+            "end": 36,
+            "start": 0
+          }
+        },
+        "status": "ok",
+        "type": "page"
+      }
+    ],
+    "type": "document"
+  }
+}

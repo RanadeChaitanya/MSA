@@ -1,0 +1,58 @@
+{
+  "markdown": "<figure type=\"DIAGRAM\">\n\n<description>The figure displays four chemical structure diagrams arranged horizontally, labeled (I), (II), (III), and (IV) from left to right. Each structure contains a six-membered ring with an attached hydroxyl group (OH). Structure (I) shows a cyclohexanol derivative. Structure (II) shows a similar cyclohexanol structure. Structure (III) shows another cyclohexanol-like derivative. Structure (IV) shows a cyclohexanol structure with an additional H-OH label. Below the chemical structures, there is a partially visible line of text containing repeating Roman numerals: I, II, III, IV, I, III, II, IV.</description> (I) OH (II) OH (III) OH (IV) H-OH I II III IV I III II IV</figure>\n\n<!-- doc_id=parse-01m4ddgw2dt2nj14y2z3m7zt4p -->",
+  "metadata": {
+    "job_id": "parse-01m4ddgw2dt2nj14y2z3m7zt4p",
+    "model_version": "dpt-3-pro-20260710",
+    "page_count": 1,
+    "output_markdown_chars": 762,
+    "range_units": "unicode_codepoints",
+    "openapi_spec": "https://api.ade.landing.ai/openapi.json",
+    "failed_pages": [],
+    "duration_ms": 4805,
+    "billing": {
+      "service_tier": "priority",
+      "total_credits": 1.4
+    }
+  },
+  "structure": {
+    "children": [
+      {
+        "children": [
+          {
+            "grounding": {
+              "box": {
+                "xmax": 1.0,
+                "xmin": 0.00079,
+                "ymax": 1.0,
+                "ymin": 0.00035
+              },
+              "page": 1,
+              "range": {
+                "end": 712,
+                "start": 0
+              }
+            },
+            "id": "figure-0",
+            "type": "figure"
+          }
+        ],
+        "grounding": {
+          "box": {
+            "xmax": 1.0,
+            "xmin": 0.0,
+            "ymax": 1.0,
+            "ymin": 0.0
+          },
+          "page": 1,
+          "range": {
+            "end": 714,
+            "start": 0
+          }
+        },
+        "status": "ok",
+        "type": "page"
+      }
+    ],
+    "type": "document"
+  }
+}

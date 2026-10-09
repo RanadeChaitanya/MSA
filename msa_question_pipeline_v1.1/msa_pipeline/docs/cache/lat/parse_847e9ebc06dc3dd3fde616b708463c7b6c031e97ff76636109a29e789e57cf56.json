@@ -1,0 +1,126 @@
+{
+  "markdown": "d) Formation of an ester\n\n\nWhich of the following is tertiary alcohol?\n\n\n<figure type=\"DIAGRAM\">\n\n<description>A chemical structure fragment depicting a methyl group (CH3) at the top, with a single bond extending downwards, likely representing a substituent on a larger molecule.</description> CH3</figure>\n\n<figure type=\"DIAGRAM\">\n\n<description>A chemical structure diagram fragment showing a methyl group (CH3) at the top, connected by a single vertical bond extending downwards.</description> CH3 |</figure>\n\n<figure type=\"DIAGRAM\">\n\n<description>The image displays a partial chemical structure consisting of a hydroxymethyl group. The central carbon atom is bonded to two hydrogen atoms (CH2), a hydroxyl group (OH) to its right, and a vertical bond extending downwards, indicating it is attached to a larger molecule.</description> CH2-OH</figure>\n\n<!-- doc_id=parse-01m4d1najmtn3fzm5ehpqff1hf -->",
+  "metadata": {
+    "job_id": "parse-01m4d1najmtn3fzm5ehpqff1hf",
+    "model_version": "dpt-3-pro-20260710",
+    "page_count": 1,
+    "output_markdown_chars": 902,
+    "range_units": "unicode_codepoints",
+    "openapi_spec": "https://api.ade.landing.ai/openapi.json",
+    "failed_pages": [],
+    "duration_ms": 6007,
+    "billing": {
+      "service_tier": "priority",
+      "total_credits": 1.5
+    }
+  },
+  "structure": {
+    "children": [
+      {
+        "children": [
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.30002,
+                "xmin": 0.00785,
+                "ymax": 0.25242,
+                "ymin": 0.0154
+              },
+              "page": 1,
+              "range": {
+                "end": 25,
+                "start": 0
+              }
+            },
+            "id": "text-0",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.51764,
+                "xmin": 0.00773,
+                "ymax": 0.49648,
+                "ymin": 0.2491
+              },
+              "page": 1,
+              "range": {
+                "end": 71,
+                "start": 27
+              }
+            },
+            "id": "text-1",
+            "type": "text"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.51044,
+                "xmin": 0.45399,
+                "ymax": 1.0,
+                "ymin": 0.76041
+              },
+              "page": 1,
+              "range": {
+                "end": 306,
+                "start": 73
+              }
+            },
+            "id": "figure-0",
+            "type": "figure"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.72273,
+                "xmin": 0.66024,
+                "ymax": 0.95007,
+                "ymin": 0.5341
+              },
+              "page": 1,
+              "range": {
+                "end": 510,
+                "start": 308
+              }
+            },
+            "id": "figure-1",
+            "type": "figure"
+          },
+          {
+            "grounding": {
+              "box": {
+                "xmax": 0.99644,
+                "xmin": 0.86601,
+                "ymax": 1.0,
+                "ymin": 0.73825
+              },
+              "page": 1,
+              "range": {
+                "end": 852,
+                "start": 512
+              }
+            },
+            "id": "figure-2",
+            "type": "figure"
+          }
+        ],
+        "grounding": {
+          "box": {
+            "xmax": 1.0,
+            "xmin": 0.0,
+            "ymax": 1.0,
+            "ymin": 0.0
+          },
+          "page": 1,
+          "range": {
+            "end": 854,
+            "start": 0
+          }
+        },
+        "status": "ok",
+        "type": "page"
+      }
+    ],
+    "type": "document"
+  }
+}
