@@ -47,7 +47,7 @@ def test_full_pipeline(tmp_path, cfg):
         for a in list(q.question_images) + [o.image for o in q.options.values() if o.image]:
             assert not Path(a.path).is_absolute() and "\\" not in a.path       # relative, posix
             assert (cfg.data_dir / "t1" / a.path).exists() and a.width > 20
-    assert (cfg.data_dir / "t1" / "output" / "questions.json").exists()
+    assert (cfg.data_dir / "t1" / "document.json").exists() and (cfg.data_dir / "t1" / "image_descriptions.txt").exists()
     assert out.run["needs_review"] == 0, out.run
 
 

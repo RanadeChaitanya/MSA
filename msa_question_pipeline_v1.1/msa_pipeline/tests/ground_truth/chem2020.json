@@ -1,0 +1,406 @@
+{
+ "id": "chem2020",
+ "method": "manual reading of 110-dpi renders of the original PDF pages",
+ "questions": [
+  {
+   "page": 5,
+   "number": 1,
+   "order": 1,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 5,
+   "number": 2,
+   "order": 2,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false,
+   "texts": {
+    "A": "0.9, 0.1",
+    "B": "0.78, 0.22",
+    "C": "0.1, 0.9",
+    "D": "0.22, 0.78"
+   }
+  },
+  {
+   "page": 5,
+   "number": 3,
+   "order": 3,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false,
+   "texts": {
+    "A": "0.10 M",
+    "B": "0.02 M",
+    "C": "0.01 M",
+    "D": "0.001 M"
+   }
+  },
+  {
+   "page": 5,
+   "number": 4,
+   "order": 4,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false,
+   "texts": {
+    "A": "36 g",
+    "B": "72 g",
+    "C": "162 g",
+    "D": "144 g"
+   }
+  },
+  {
+   "page": 5,
+   "number": 5,
+   "order": 5,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false,
+   "texts": {
+    "A": "13.67 %",
+    "B": "7.0 %",
+    "C": "8.5 %",
+    "D": "10.0"
+   }
+  },
+  {
+   "page": 5,
+   "number": 6,
+   "order": 6,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false,
+   "texts": {
+    "A": "15.8 g",
+    "B": "19.5 g",
+    "C": "22.4 g",
+    "D": "10 g"
+   }
+  },
+  {
+   "page": 5,
+   "number": 7,
+   "order": 7,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false,
+   "texts": {
+    "A": "1.0 M",
+    "B": "0.1 M",
+    "C": "0.001 M",
+    "D": "0.01 M"
+   }
+  },
+  {
+   "page": 5,
+   "number": 8,
+   "order": 8,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 5,
+   "number": 9,
+   "order": 9,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false,
+   "texts": {
+    "A": "0.75",
+    "B": "1.0",
+    "C": "0.50",
+    "D": "0.25"
+   }
+  },
+  {
+   "page": 5,
+   "number": 10,
+   "order": 10,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false,
+   "texts": {
+    "A": "6.25 %",
+    "B": "35 %",
+    "C": "12.50 %",
+    "D": "25 %"
+   }
+  },
+  {
+   "page": 55,
+   "number": 27,
+   "order": 1,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 55,
+   "number": 28,
+   "order": 2,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false,
+   "texts": {
+    "A": "3 and 2",
+    "B": "3 and 1",
+    "C": "2 and 2",
+    "D": "4 and 2"
+   }
+  },
+  {
+   "page": 55,
+   "number": 29,
+   "order": 3,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false,
+   "texts": {
+    "A": "100 %",
+    "B": "12.5 %",
+    "C": "25 %",
+    "D": "75 %"
+   }
+  },
+  {
+   "page": 55,
+   "number": 30,
+   "order": 4,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 55,
+   "number": 31,
+   "order": 5,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false,
+   "texts": {
+    "A": "42.4 sec",
+    "B": "41.4 sec",
+    "C": "43.4 sec",
+    "D": "44.4 sec"
+   }
+  },
+  {
+   "page": 55,
+   "number": 32,
+   "order": 6,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false,
+   "note": "options are at the top of the right column"
+  },
+  {
+   "page": 55,
+   "number": 33,
+   "order": 7,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false,
+   "texts": {
+    "A": "transition state of 1st step",
+    "B": "formation of carbonation",
+    "C": "transition state of 2nd step",
+    "D": "products"
+   }
+  },
+  {
+   "page": 55,
+   "number": 34,
+   "order": 8,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false,
+   "texts": {
+    "A": "62.12 min",
+    "B": "38.31 min",
+    "C": "12.77 min",
+    "D": "48.12 min"
+   }
+  },
+  {
+   "page": 55,
+   "number": 35,
+   "order": 9,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false,
+   "texts": {
+    "A": "1",
+    "B": "4",
+    "C": "3",
+    "D": "2"
+   }
+  },
+  {
+   "page": 55,
+   "number": 36,
+   "order": 10,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 55,
+   "number": 37,
+   "order": 11,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  }
+ ]
+}

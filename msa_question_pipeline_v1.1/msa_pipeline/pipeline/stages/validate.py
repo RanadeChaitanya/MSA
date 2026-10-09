@@ -14,7 +14,8 @@ ERROR_RE = re.compile(r"^option_[A-D]_empty$")
 PAGE_ERRORS = {"parse_failed"}
 # Informational flags: they describe HOW something was derived and never reduce confidence.
 INFO_FLAGS = {"layout_from_spans", "region_from_spans", "ink_unconfirmed_question", "figure_found_by_repass",
-              "grounded_by_text_match", "options_from_table_cells"}
+              "grounded_by_text_match", "options_from_table_cells", "geometry_from_pdf", "page_inferred",
+              "number_mismatch_resolved"}
 
 
 def is_error(flag: str) -> bool:
@@ -37,7 +38,7 @@ def validate_drafts(drafts: list[QuestionDraft]) -> None:
         if 2 <= len(labels) < 4:
             _add(d.flags, "fewer_than_4_options")
         seen: dict[str, str] = {}
-        refs = [("q", r) for r in d.q_visuals] + [(f"opt_{L}", o.ref) for L, o in d.options.items() if o.ref]
+        refs = [("q", r) for r in d.q_visuals] + [(f"opt_{L}", r) for L, o in d.options.items() for r in o.refs]
         for role, r in refs:
             for sid in r.source_ids:
                 if sid in seen and seen[sid] != role:
@@ -71,7 +72,7 @@ def validate_final(questions: list[QuestionOut], page_sizes: dict[int, tuple[int
                    root: Path | None = None) -> None:
     for q in questions:
         W, H = page_sizes.get(q.page, (10 ** 9, 10 ** 9))
-        assets = list(q.question_images) + [o.image for o in q.options.values() if o.image]
+        assets = list(q.question_images) + [a for o in q.options.values() for a in o.images]
         for a in assets:
             ap = Path(a.path) if (a.path and (root is None or Path(a.path).is_absolute())) else (root / a.path if a.path else None)
             if ap is None or not ap.exists() or a.width == 0:
@@ -82,7 +83,7 @@ def validate_final(questions: list[QuestionOut], page_sizes: dict[int, tuple[int
             if x1 > W + 1 or y1 > H + 1 or x0 < -1 or y0 < -1:
                 _add(q.flags, "asset_out_of_bounds")
         for L, o in q.options.items():
-            if o.image_only and not o.image:
+            if o.image_only and not o.images:
                 _add(q.flags, "image_only_option_without_image")
         if q.ocr_confidence is not None and q.ocr_confidence < 0.8:
             _add(q.flags, "low_ocr_confidence")

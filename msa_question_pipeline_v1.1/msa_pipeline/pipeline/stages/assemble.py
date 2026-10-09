@@ -16,12 +16,14 @@ from ..config import Settings
 from ..models import OptionOut, QuestionOut
 from ..utils.geometry import Box
 from .crop import save_crop
+from .pdf_layer import is_digital, page_blocks
 from .options import RegionLayout, layout_from_spans, layout_region
 from .parse_stage import BatchResult
 from .segment import Region, segment_page
 from .semantics import run_semantics
 from .structure import mark_watermarks
-from .visuals import ImageCache, VisualRef, option_visual, question_visuals
+from .visuals import (ImageCache, RepassQueue, VisualRef, figure_description, mosaic_repass, option_visual,
+                      question_visuals)
 
 log = logging.getLogger("pipeline.assemble")
 LABELS = ["A", "B", "C", "D"]
@@ -31,7 +33,7 @@ LABELS = ["A", "B", "C", "D"]
 class OptionDraft:
     label: str
     text: str = ""
-    ref: Optional[VisualRef] = None
+    refs: list[VisualRef] = field(default_factory=list)      # zero, one or several images
     image_only: bool = False
     box: Optional[Box] = None
 
@@ -73,7 +75,8 @@ def _digits(x) -> str:
     return "".join(ch for ch in str(x or "") if ch.isdigit())
 
 
-def _synth_regions(sem, br: BatchResult, sizes, cfg: Settings, start_idx: int) -> dict[int, Region]:
+def _synth_regions(sem, br: BatchResult, sizes, cfg: Settings, start_idx: int,
+                   page_blocks_override: Optional[dict[int, list]] = None) -> dict[int, Region]:
     """Span-derived question regions for extracted items that no anchor-based region claimed.
     Items are grouped per page, split into left/right/full-width columns, and stacked vertically:
     region i spans from the top of item i to the top of the next item in the same column."""
@@ -104,7 +107,9 @@ def _synth_regions(sem, br: BatchResult, sizes, cfg: Settings, start_idx: int) -
                 groups.append((0, 0.0, float(W), wide))
         else:
             groups = [(0, 0.0, float(W), wide + narrow)]
-        pb = [b for b in br.blocks if b.page == page and b.type in LEAF and not b.watermark]
+        src = (page_blocks_override or {}).get(page)
+        pb = [b for b in (src if src is not None else br.blocks)
+              if b.page == page and b.type in LEAF and not b.watermark]
         for col, x0, x1, items in groups:
             items = sorted(items, key=lambda t: t[1].y0)
             for k, (i, ub) in enumerate(items):
@@ -124,7 +129,8 @@ def _synth_regions(sem, br: BatchResult, sizes, cfg: Settings, start_idx: int) -
     return out
 
 
-def _make_draft(region: Region, layout: RegionLayout, item: Optional[dict], geo, ctx, profile: str) -> QuestionDraft:
+def _make_draft(region: Region, layout: RegionLayout, item: Optional[dict], geo, ctx, profile: str,
+                queue: RepassQueue) -> QuestionDraft:
     cfg: Settings = ctx.cfg
     d = QuestionDraft(region=region, layout=layout, page=region.page, column=region.column, number=region.number,
                       number_text=region.number_text, profile=profile)
@@ -143,7 +149,10 @@ def _make_draft(region: Region, layout: RegionLayout, item: Optional[dict], geo,
         if n and not region.number:
             d.number, d.number_text = int(n), n
     stem = _clean((item or {}).get("stem"))
-    d.stem_text = stem or layout.stem_fallback_text
+    fallback = layout.stem_fallback_text
+    if region.inline_number and region.anchor is not None:        # "568.Picric acid is": the anchor line IS stem text
+        fallback = (re.sub(r"^\s*\d{1,3}\s*[.)]\s*", "", region.anchor.plain) + " " + fallback).strip()
+    d.stem_text = stem or fallback
     d.answer_text = " ".join(b.md for b in layout.answer_blocks if b.md).strip()
     ca = str((item or {}).get("correct_option") or "").strip().upper()[:1]
     d.correct_option = ca if ca in LABELS else ""
@@ -153,19 +162,124 @@ def _make_draft(region: Region, layout: RegionLayout, item: Optional[dict], geo,
         text = _opt_text(item, L) or (reg.fallback_text if reg else "")
         od = OptionDraft(label=L, text=text, box=reg.box if reg else None)
         if reg is not None:
-            od.ref, od.image_only = option_visual(ctx.client, ctx.images, region.page, reg, text, cfg, d.flags)
+            od.refs, od.image_only = option_visual(queue, ctx.images, region.page, reg, text, cfg, d.flags,
+                                                   exact=layout.exact, target=od)
         elif "no_geometry" not in layout.flags:
             d.flags.append(f"option_{L}_without_region")
-        if not od.text and od.ref is None:
+        if not od.text and not od.refs:
             d.flags.append(f"option_{L}_empty")
         d.options[L] = od
     if "no_geometry" not in layout.flags:
-        d.q_visuals = question_visuals(ctx.client, ctx.images, region.page, layout, cfg, d.flags)
+        d.q_visuals = question_visuals(queue, ctx.images, region.page, layout, cfg, d.flags)
     toks = d.stem_text.split()
     if toks and ((len(toks[-1]) == 1 and toks[-1].isalpha() and toks[-1].lower() not in ("a", "i"))
                  or toks[-1].endswith(("-", "…"))):
         d.flags.append("stem_possibly_truncated")
     return d
+
+
+def _line_weights(blocks, boxes) -> list[tuple[Box, float]]:
+    """Text lines (box, weight=chars) that make up a stem/option; weight 1 when the text length is unknown."""
+    out = [(b.box, float(max(1, len(b.plain or "")))) for b in blocks if b.type != "figure"]
+    out += [(bx, 1.0) for bx in boxes]
+    return out
+
+
+def _position(ref: VisualRef, lines: list[tuple[Box, float]]) -> tuple[float, bool]:
+    """Where the image sits in its owner's reading order: fraction of text weight before it, and whether that is
+    exact (all text strictly before or strictly after) or an estimate (text both above and below the image)."""
+    before = after = 0.0
+    for bx, w in lines:
+        if bx.overlap_ratio(ref.box) > 0.5:          # labels drawn inside the figure are part of the image
+            continue
+        if bx.y1 <= ref.box.y0 + 0.25 * bx.h:
+            before += w
+        elif bx.y0 >= ref.box.y1 - 0.25 * bx.h:
+            after += w
+        elif bx.cx < ref.box.x0:                     # same height: left of the image reads first
+            before += w
+        else:
+            after += w
+    if before + after == 0:
+        return 1.0, True
+    return before / (before + after), (before == 0 or after == 0)
+
+
+def _annotate_visuals(d: QuestionDraft, br: BatchResult) -> None:
+    """Fill reading-order position and Landing AI description for every image of a draft."""
+    if "no_geometry" in d.flags:
+        return
+    lay = d.layout
+    stem_lines = _line_weights(lay.stem_texts, lay.stem_mask_boxes)
+    if d.region.inline_number and d.region.anchor is not None:
+        stem_lines.append((d.region.anchor.box, float(max(1, len(d.region.anchor.plain or "")))))
+    figs = [b for b in br.blocks if b.type == "figure" and b.page == d.page]
+    for r in d.q_visuals:
+        r.pos, r.pos_exact = _position(r, stem_lines)
+    for L, od in d.options.items():
+        reg = lay.options.get(L)
+        lines = _line_weights(reg.texts, reg.geom_boxes) if reg is not None else []
+        for r in od.refs:
+            r.pos, r.pos_exact = _position(r, lines)
+    for r in list(d.q_visuals) + [r for od in d.options.values() for r in od.refs]:
+        if r.description or r.method in ("math_text_crop", "option_region", "ink_fallback"):
+            continue
+        best, score = None, 0.0                       # PDF-layer figure -> description of the Parse figure over it
+        for f in figs:
+            i = r.box.intersect(f.box)
+            if i is None:
+                continue
+            sc = i.area / max(1.0, min(r.box.area, f.box.area))
+            if sc > score:
+                best, score = f, sc
+        if best is not None and score > 0.5:
+            r.description = figure_description(best.md)
+            r.description_source = "parse_figure" if r.description else ""
+
+
+def _describe_missing(drafts: list[QuestionDraft], ctx) -> None:
+    """Images found from the PDF layer (or tables) have no Landing AI description: send all of a page's
+    undescribed crops as ONE mosaic and take the description Landing AI gives each tile. One call per such page,
+    cached like every other call; pages whose images are already described cost nothing."""
+    by_page: dict[int, list[VisualRef]] = {}
+    for d in drafts:
+        for r in list(d.q_visuals) + [r for od in d.options.values() for r in od.refs]:
+            if not r.description and r.method in ("pdf_figure", "parse_figure", "repass_figure", "table_crop"):
+                by_page.setdefault(d.page, []).append(r)
+    pad = 0.006 * max(1, max((ctx.records[p].width for p in by_page), default=1))
+    for page, refs in by_page.items():
+        results = mosaic_repass(ctx.client, ctx.images.rgb(page), [r.box.pad(pad) for r in refs], ctx.cfg)
+        for r, found in zip(refs, results):
+            desc = " ".join(dict.fromkeys(d for _, _, d in found if d))
+            if desc:
+                r.description, r.description_source = desc, "describe"
+
+
+def _pdf_geometry(br: BatchResult, ctx, sizes) -> dict[int, list]:
+    """Exact Blocks from the PDF for pages that were rendered from a born-digital PDF (not photos/scans)."""
+    pdf_path = getattr(ctx, "pdf_path", None)
+    kinds = getattr(ctx, "page_kinds", {}) or {}
+    # only pages whose questions are REAL text: on composite pages (pasted screenshots) every screenshot would
+    # look like a figure, and scans have no usable text layer
+    pages = [p for p in br.page_nums if ctx.records[p].source == "render" and not ctx.records[p].rectified
+             and kinds.get(p, "question_digital") == "question_digital"]
+    if pdf_path is None or not pages:
+        return {}
+    import pymupdf
+    out: dict[int, list] = {}
+    with pymupdf.open(str(pdf_path)) as doc:
+        for p in pages:
+            page = doc[p - 1]
+            if is_digital(page):
+                W, H = sizes[p]
+                out[p] = page_blocks(page, W, H, p, br.batch_id)
+    return out
+
+
+def _mark_exact(layout: RegionLayout, exact: bool) -> None:
+    if exact:
+        layout.exact = True
+        layout.flags.append("geometry_from_pdf")
 
 
 def build_drafts(br: BatchResult, ctx, profile: str = "default") -> tuple[list[QuestionDraft], dict[int, list[str]]]:
@@ -178,11 +292,17 @@ def build_drafts(br: BatchResult, ctx, profile: str = "default") -> tuple[list[Q
         page_issues.setdefault(p, []).append("parse_failed")
     regions: list[Region] = []
     hint = None
+    pdf_geo = _pdf_geometry(br, ctx, sizes)               # page -> exact blocks (digital pages only)
+    queue = RepassQueue()
     for p in br.page_nums:
         W, H = sizes[p]
-        pb = [b for b in br.blocks if b.page == p]
+        pb = pdf_geo.get(p) or [b for b in br.blocks if b.page == p]
         mark_watermarks(pb, cfg, W, H)
-        rs = segment_page(pb, W, H, cfg, p, br.batch_id, hint=(hint + 1) if hint else None)
+        # PDF text-layer numbers are real glyph runs at line starts (no stacked-fraction digits), so dense
+        # one-line questions only need a one-line gap; OCR blocks keep the conservative MIN_ANCHOR_GAP_FRAC.
+        rs = segment_page(pb, W, H, cfg, p, br.batch_id, hint=(hint + 1) if hint else None,
+                          min_gap_frac=0.008 if p in pdf_geo else None,
+                          min_cluster=1 if p in pdf_geo else None)       # one long question per page is common
         regions.extend(rs)
         if rs:
             hint = max(r.number for r in rs)
@@ -201,16 +321,21 @@ def build_drafts(br: BatchResult, ctx, profile: str = "default") -> tuple[list[Q
         item_idx = sem.matched.get(r.idx)
         item = sem.items[item_idx] if item_idx is not None else None
         geo = sem.geos[item_idx] if item_idx is not None else None
+        if item is None and (len([o for o in layout.options.values() if o.anchor]) < 3
+                             or "option_order_mismatch" in layout.flags):
+            continue      # a numbered line Extract did not call a question and without >=3 in-order a)-d) labels
+                          # is an answer-key/solution entry or a continuation, not an MCQ
         if "no_option_anchors" in layout.flags and geo is not None:
             alt = layout_from_spans(r, geo, cfg, W, H)
             if alt.options:
                 alt.flags = [f for f in layout.flags if f != "no_option_anchors"] + alt.flags
                 layout = alt
-        dr = _make_draft(r, layout, item, geo, ctx, profile)
+        _mark_exact(layout, r.page in pdf_geo)
+        dr = _make_draft(r, layout, item, geo, ctx, profile, queue)
         dr.order_idx = item_idx if item_idx is not None else 10 ** 6 + r.idx
         drafts.append(dr)
     # (b) extracted questions without an anchor region -> span-derived regions
-    synth = _synth_regions(sem, br, sizes, cfg, start_idx=len(regions))
+    synth = _synth_regions(sem, br, sizes, cfg, start_idx=len(regions), page_blocks_override=pdf_geo)
     for i in sem.unmatched:
         item, geo = sem.items[i], sem.geos[i]
         r = synth.get(i)
@@ -228,9 +353,19 @@ def build_drafts(br: BatchResult, ctx, profile: str = "default") -> tuple[list[Q
                 alt.flags = [f for f in layout.flags if f != "no_option_anchors"] + alt.flags
                 layout = alt
             layout.flags.append("region_from_spans")
-        dr = _make_draft(r, layout, item, geo, ctx, profile)
+            _mark_exact(layout, r.page in pdf_geo)
+        dr = _make_draft(r, layout, item, geo, ctx, profile, queue)
         dr.order_idx = i
         drafts.append(dr)
+    queue.flush(ctx.client, ctx.images, cfg)            # at most ONE mosaic repass call per photo page
+    for d in drafts:
+        _annotate_visuals(d, br)
+    if cfg.describe_images:
+        _describe_missing(drafts, ctx)
+    for p in pdf_geo:                                     # exact geometry: reading order is the page order
+        on_page = sorted((d for d in drafts if d.page == p), key=lambda d: (d.column, d.region.box.y0))
+        for k, d in enumerate(on_page):
+            d.order_idx = k
     pages_with = {d.page for d in drafts}
     for p in br.page_nums:
         if p not in pages_with:
@@ -238,28 +373,37 @@ def build_drafts(br: BatchResult, ctx, profile: str = "default") -> tuple[list[Q
     return drafts, page_issues
 
 
+def question_ids(drafts: list[QuestionDraft]) -> list[str]:
+    """Stable, human-readable ids: p<page>-q<printed number> (x<index> when no number); -2, -3 for duplicates."""
+    ids, seen = [], {}
+    for k, d in enumerate(drafts, 1):
+        base = f"p{d.page:04d}-q{d.number:03d}" if d.number else f"p{d.page:04d}-x{k:03d}"
+        n = seen.get(base, 0) + 1
+        seen[base] = n
+        ids.append(base if n == 1 else f"{base}-{n}")
+    return ids
+
+
 def materialize(drafts: list[QuestionDraft], ctx, assets_dir: Path) -> list[QuestionOut]:
     cfg: Settings = ctx.cfg
     drafts = sorted(drafts, key=lambda d: (d.page, d.order_idx, d.column, d.region.box.y0))
     out: list[QuestionOut] = []
-    for i, d in enumerate(drafts, 1):
-        qid = f"q_{i:04d}"
+    for qid, d in zip(question_ids(drafts), drafts):
         img = ctx.images.rgb(d.page)
         flags = list(dict.fromkeys(d.flags))
-        qimgs = []
-        for k, ref in enumerate(d.q_visuals, 1):
-            a = save_crop(img, ref, d.page, assets_dir / qid / f"question_{k}.png", f"{qid}_img_{k}", cfg.asset_pad_px)
-            qimgs.append(a)
+        if qid.count("-") > 1:
+            flags.append("duplicate_number")
+        qimgs = [save_crop(img, ref, d.page, assets_dir / qid / f"stem_{k}.png", f"{qid}/stem/{k}", cfg.asset_pad_px)
+                 for k, ref in enumerate(d.q_visuals, 1)]
         opts: dict[str, OptionOut] = {}
         for L, od in d.options.items():
-            asset = None
-            if od.ref is not None:
-                asset = save_crop(img, od.ref, d.page, assets_dir / qid / f"option_{L}.png", f"{qid}_opt_{L}",
-                                  cfg.asset_pad_px)
-            opts[L] = OptionOut(text=od.text, image=asset, image_only=od.image_only)
+            imgs = [save_crop(img, ref, d.page, assets_dir / qid / f"opt_{L}_{k}.png", f"{qid}/opt_{L}/{k}",
+                              cfg.asset_pad_px) for k, ref in enumerate(od.refs, 1)]
+            opts[L] = OptionOut(text=od.text, images=imgs, image_only=od.image_only)
         out.append(QuestionOut(qid=qid, number=d.number, number_text=d.number_text, page=d.page, column=d.column,
                                bbox_px=None if "no_geometry" in d.flags else d.region.box.to_list(), text=d.stem_text,
-                               correct_option=d.correct_option or None, answer_text=d.answer_text,
-                               question_images=qimgs, options=opts, flags=flags,
+                               correct_option=d.correct_option or None,
+                               answer_source="printed_inline" if d.correct_option else None,
+                               answer_text=d.answer_text, question_images=qimgs, options=opts, flags=flags,
                                ocr_confidence=d.ocr_conf, profile=d.profile))
     return out

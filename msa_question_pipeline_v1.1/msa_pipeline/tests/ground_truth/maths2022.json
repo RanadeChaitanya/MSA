@@ -1,0 +1,169 @@
+{
+ "id": "maths2022",
+ "method": "manual reading of 110-dpi renders of the original PDF pages",
+ "questions": [
+  {
+   "page": 3,
+   "number": 1,
+   "order": 1,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false,
+   "texts": {
+    "A": "T , T",
+    "B": "F , T",
+    "C": "T , F",
+    "D": "F , F"
+   }
+  },
+  {
+   "page": 3,
+   "number": 2,
+   "order": 2,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false,
+   "texts": {
+    "A": "I do not study and I do not fail.",
+    "B": "I study and I fail.",
+    "C": "I do not study and I fail.",
+    "D": "I study and I do not fail."
+   }
+  },
+  {
+   "page": 3,
+   "number": 3,
+   "order": 3,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false,
+   "note": "stem lists statements a)-d); the options A-D are on the right"
+  },
+  {
+   "page": 3,
+   "number": 4,
+   "order": 4,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 3,
+   "number": 5,
+   "order": 5,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 4,
+   "number": 6,
+   "order": 1,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 4,
+   "number": 7,
+   "order": 2,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 4,
+   "number": 8,
+   "order": 3,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 4,
+   "number": 9,
+   "order": 4,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 4,
+   "number": 10,
+   "order": 5,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  }
+ ]
+}

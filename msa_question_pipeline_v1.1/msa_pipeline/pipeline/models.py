@@ -26,17 +26,25 @@ class AssetRef(BaseModel):
     path: str
     page: int
     bbox_px: list[float]               # box on the canonical page image (before padding)
-    method: str                        # parse_figure | repass_figure | ink_fallback | math_text_crop | option_region
+    method: str                        # pdf_figure | parse_figure | repass_figure | table_crop | ink_fallback | ...
     source_block_ids: list[str] = Field(default_factory=list)
     sha256: str = ""
     width: int = 0
     height: int = 0
+    description: str = ""              # Landing AI figure description ("" if none)
+    certain: bool = True               # False: fallback crop (whole option cell / ink bbox)
+    pos: float = 1.0                   # fraction of the owner's text that precedes the image
+    pos_exact: bool = True
 
 
 class OptionOut(BaseModel):
     text: str = ""
-    image: Optional[AssetRef] = None
+    images: list[AssetRef] = Field(default_factory=list)      # zero, one or several images
     image_only: bool = False
+
+    @property
+    def image(self) -> Optional[AssetRef]:
+        return self.images[0] if self.images else None
 
 
 class QuestionOut(BaseModel):
@@ -48,7 +56,9 @@ class QuestionOut(BaseModel):
     bbox_px: Optional[list[float]] = None      # None when the question could not be located on the page
     text: str = ""
     correct_option: Optional[str] = None
+    answer_source: Optional[str] = None        # printed_inline | answer_key
     answer_text: str = ""
+    section: Optional[str] = None
     question_images: list[AssetRef] = Field(default_factory=list)
     options: dict[str, OptionOut] = Field(default_factory=dict)
     confidence: float = 1.0

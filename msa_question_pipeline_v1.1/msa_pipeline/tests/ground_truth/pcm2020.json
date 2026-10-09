@@ -1,0 +1,291 @@
+{
+ "id": "pcm2020",
+ "method": "manual reading of 110-dpi renders of the original PDF pages",
+ "questions": [
+  {
+   "page": 7,
+   "number": 1,
+   "order": 1,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 7,
+   "number": 2,
+   "order": 2,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false,
+   "texts": {
+    "A": "480 N",
+    "B": "240 N",
+    "C": "360 N",
+    "D": "120 N"
+   }
+  },
+  {
+   "page": 7,
+   "number": 3,
+   "order": 3,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 7,
+   "number": 4,
+   "order": 4,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 7,
+   "number": 5,
+   "order": 5,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false,
+   "texts": {
+    "A": "63 J",
+    "B": "42 J",
+    "C": "31.5 J",
+    "D": "21 J"
+   }
+  },
+  {
+   "page": 7,
+   "number": 6,
+   "order": 6,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 7,
+   "number": 7,
+   "order": 7,
+   "complete": true,
+   "stem_images": 1,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 7,
+   "number": 8,
+   "order": 8,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false,
+   "texts": {
+    "A": "0.8 m",
+    "B": "0.6 m",
+    "C": "0.2 m",
+    "D": "0.4 m"
+   }
+  },
+  {
+   "page": 8,
+   "number": 9,
+   "order": 1,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 8,
+   "number": 10,
+   "order": 2,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false,
+   "texts": {
+    "A": "0.4",
+    "B": "0.8",
+    "C": "0.5",
+    "D": "0.6"
+   }
+  },
+  {
+   "page": 8,
+   "number": 11,
+   "order": 3,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false,
+   "texts": {
+    "A": "12 m/s",
+    "B": "3 m/s",
+    "C": "6 m/s",
+    "D": "18 m/s"
+   }
+  },
+  {
+   "page": 8,
+   "number": 12,
+   "order": 4,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 8,
+   "number": 13,
+   "order": 5,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 8,
+   "number": 14,
+   "order": 6,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 8,
+   "number": 15,
+   "order": 7,
+   "complete": true,
+   "stem_images": 1,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 8,
+   "number": 16,
+   "order": 8,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 8,
+   "number": 17,
+   "order": 9,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  }
+ ]
+}

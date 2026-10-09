@@ -14,7 +14,7 @@ import logging
 import re
 from dataclasses import dataclass, field
 from io import BytesIO
-from typing import Optional
+from typing import Callable, Optional
 
 import cv2
 import numpy as np
@@ -37,6 +37,48 @@ class VisualRef:
     box: Box
     source_ids: list[str] = field(default_factory=list)
     method: str = "parse_figure"
+    description: str = ""            # Landing AI's figure description (parse or repass), "" if none
+    description_source: str = ""     # parse_figure | repass | ""
+    pos: float = 1.0                 # fraction of the owner's text that precedes this image (0 = before, 1 = after)
+    pos_exact: bool = True           # False when the image sits between text lines and the split is estimated
+    certain: bool = True             # False: the box is a fallback (whole cell / ink bbox), not a detected figure
+
+
+_TAGS = re.compile(r"<[^>]+>")
+from .structure import KEY_TABLE as _KEY_TABLE  # noqa: E402
+_DESC = re.compile(r"<description>(.*?)</description>", re.S | re.I)
+
+
+def figure_description(md: str) -> str:
+    """Plain-text description of a Landing AI figure block (its <description> or, failing that, its text)."""
+    if not md:
+        return ""
+    m = _DESC.search(md)
+    body = m.group(1) if m else _TAGS.sub(" ", md)
+    return re.sub(r"\s+", " ", _TAGS.sub(" ", body)).strip()
+
+
+def _merge_overlapping(blocks: list) -> list[list]:
+    """Group figure blocks that overlap (Parse sometimes splits one diagram); separate figures stay separate."""
+    groups: list[list] = []
+    for b in sorted(blocks, key=lambda b: (b.box.y0, b.box.x0)):
+        for g in groups:
+            if any(b.box.iou(o.box) > 0.3 or b.box.overlap_ratio(o.box) > 0.7 or o.box.overlap_ratio(b.box) > 0.7
+                   for o in g):
+                g.append(b)
+                break
+        else:
+            groups.append([b])
+    return groups
+
+
+def refs_from_figs(figs: list, method: str) -> list[VisualRef]:
+    out = []
+    for g in _merge_overlapping(figs):
+        desc = " ".join(d for d in (figure_description(b.md) for b in g) if d)
+        out.append(VisualRef(Box.union_all([b.box for b in g]), [b.uid for b in g], method, description=desc,
+                             description_source="parse_figure" if desc else ""))
+    return out
 
 
 class ImageCache:
@@ -102,87 +144,225 @@ def residual_ink(gray: np.ndarray, area: Box, mask_boxes: list[Box], cfg: Settin
     return sig, (ub if sig else None)
 
 
-def repass_region(client, img: Image.Image, box: Box, cfg: Settings) -> list[tuple[Box, str]]:
-    """Send a tight crop to Landing AI as its own one-page image; return figure boxes in page px."""
+@dataclass
+class _Pending:
+    page: int
+    box: Box
+    found: Callable[[list[tuple[Box, str, str]]], None]
+    missing: Callable[[], None]
+
+
+class RepassQueue:
+    """Collects repass candidates while drafts are built, then sends ONE mosaic image per page to Landing AI.
+    Only photo/scan pages ever queue anything (digital pages have exact figures from the PDF layer), only
+    image-only options and figure-sized stem ink qualify, and at most REPASS_MAX_PER_PAGE regions per page go."""
+
+    def __init__(self) -> None:
+        self.items: list[_Pending] = []
+
+    def add(self, page: int, box: Box, found, missing) -> None:
+        self.items.append(_Pending(page, box, found, missing))
+
+    def flush(self, client, images, cfg: Settings) -> None:
+        by_page: dict[int, list[_Pending]] = {}
+        for it in self.items:
+            by_page.setdefault(it.page, []).append(it)
+        self.items = []
+        for page, items in by_page.items():
+            items.sort(key=lambda it: it.box.area, reverse=True)
+            n = max(0, cfg.repass_max_per_page)
+            keep, rest = items[:n], items[n:]
+            if rest:
+                log.info("page %d: %d repass candidate(s) over budget, using ink fallback", page, len(rest))
+            for it in rest:
+                it.missing()
+            if not keep:
+                continue
+            results = mosaic_repass(client, images.rgb(page), [it.box for it in keep], cfg)
+            for it, found in zip(keep, results):
+                if found:
+                    it.found(found)
+                else:
+                    it.missing()
+
+
+def _element_md(el: dict, out: dict) -> str:
+    """An element's markdown: inline when present, else its grounding range in the response markdown
+    (repass/describe calls use inline_markdown=false)."""
+    if el.get("markdown"):
+        return el["markdown"]
+    r = (el.get("grounding") or {}).get("range")
+    md = out.get("markdown") or ""
+    if isinstance(r, dict) and "start" in r and "end" in r:
+        return md[r["start"]:r["end"]]
+    if isinstance(r, (list, tuple)) and len(r) == 2:
+        return md[r[0]:r[1]]
+    return ""
+
+
+def mosaic_repass(client, img: Image.Image, boxes: list[Box], cfg: Settings) -> list[list[tuple[Box, str, str]]]:
+    """Stack the (upscaled) crops vertically on white with gaps, parse ONCE, map each figure back to the crop
+    whose tile holds its centre: page_px = crop_origin + (mosaic_px - tile_origin) / tile_scale."""
     W, H = img.size
-    b = box.clamp(W, H)
-    x0, y0, x1, y1 = b.int_tuple()
-    if x1 - x0 < 20 or y1 - y0 < 20:
-        return []
-    crop = img.crop((x0, y0, x1, y1))
-    s = max(1.0, cfg.repass_min_side / max(1, min(crop.size)))
-    s = min(s, 4.0, 4000.0 / max(crop.size))
-    if s > 1.01:
-        crop = crop.resize((int(crop.width * s), int(crop.height * s)), Image.LANCZOS)
+    tiles: list = []
+    for box in boxes:
+        x0, y0, x1, y1 = box.clamp(W, H).int_tuple()
+        if x1 - x0 < 20 or y1 - y0 < 20:
+            tiles.append(None)
+            continue
+        crop = img.crop((x0, y0, x1, y1))
+        s = max(1.0, cfg.repass_min_side / max(1, min(crop.size)))
+        s = min(s, 4.0, 4000.0 / max(crop.size))
+        tiles.append((crop, x0, y0, s))
+    live = [t for t in tiles if t is not None]
+    if not live:
+        return [[] for _ in boxes]
+    total = sum(t[0].height * t[3] for t in live)
+    shrink = min(1.0, 9000.0 / total)                   # keep the mosaic within a comfortable upload size
+    gap = 60 if len(live) > 1 else 0
+    placed, y = [], 0
+    for t in tiles:
+        if t is None:
+            placed.append(None)
+            continue
+        crop, ox, oy, s = t
+        s *= shrink
+        tw, th = max(1, int(crop.width * s)), max(1, int(crop.height * s))
+        im = crop.resize((tw, th), Image.LANCZOS) if (tw, th) != crop.size else crop
+        placed.append((im, ox, oy, tw / crop.width, th / crop.height, y))
+        y += th + gap
+    MW, MH = max(p[0].width for p in placed if p), y - gap
+    mosaic = Image.new("RGB", (MW, MH), "white")
+    for p in placed:
+        if p:
+            mosaic.paste(p[0], (0, p[5]))
     buf = BytesIO()
-    crop.save(buf, format="PNG")
+    mosaic.save(buf, format="PNG")
     try:
-        out = client.parse(buf.getvalue(), "region.png", options={"inline_markdown": False, "atomic_grounding": False})
+        out = client.parse(buf.getvalue(), "region.png" if len(live) == 1 else "mosaic.png",
+                           options={"inline_markdown": False, "atomic_grounding": False})
     except Exception as e:                       # a failed repass degrades to ink_fallback, never kills the run
-        log.warning("repass_region failed: %s", e)
-        return []
-    cw, ch = x1 - x0, y1 - y0
-    found = []
+        log.warning("mosaic repass failed: %s", e)
+        return [[] for _ in boxes]
+    res: list[list[tuple[Box, str, str]]] = [[] for _ in boxes]
     for el in iter_nodes(out.get("structure") or {}):
-        if el.get("type") == "figure":
-            g = el["grounding"]["box"]
-            found.append((Box(x0 + g["xmin"] * cw, y0 + g["ymin"] * ch, x0 + g["xmax"] * cw, y0 + g["ymax"] * ch),
-                          f"repass:{el['id']}"))
-    return found
+        if el.get("type") != "figure":
+            continue
+        g = el["grounding"]["box"]
+        fb = Box(g["xmin"] * MW, g["ymin"] * MH, g["xmax"] * MW, g["ymax"] * MH)
+        for k, p in enumerate(placed):
+            if not p:
+                continue
+            im, ox, oy, sx, sy, ty = p
+            tile = Box(0, ty, im.width, ty + im.height)
+            if not tile.contains_point(fb.cx, fb.cy):
+                continue
+            i = fb.intersect(tile)
+            if i is not None:
+                res[k].append((Box(ox + i.x0 / sx, oy + (i.y0 - ty) / sy, ox + i.x1 / sx, oy + (i.y1 - ty) / sy),
+                               f"repass:{el['id']}", figure_description(_element_md(el, out))))
+            break
+    return res
 
 
-def question_visuals(client, images, page: int, layout, cfg: Settings, flags: list[str]) -> list[VisualRef]:
+def _line_height(boxes: list[Box], H: int) -> float:
+    hs = sorted(b.h for b in boxes if 0 < b.h < 0.05 * H)
+    return hs[len(hs) // 2] if hs else 0.012 * H
+
+
+def question_visuals(queue: RepassQueue, images, page: int, layout, cfg: Settings, flags: list[str]) -> list[VisualRef]:
     stem_box, stem_texts, stem_figs = layout.stem_box, layout.stem_texts, layout.stem_figs
-    refs = [VisualRef(f.box, [f.uid], "parse_figure") for f in stem_figs]
-    gray = images.gray(page)
-    if not layout.has_stem_coverage and not refs:
+    refs = refs_from_figs(stem_figs, "pdf_figure" if layout.exact else "parse_figure")
+    # tables in the stem are kept as images (their text also stays in the stem as an HTML table component);
+    # not answer-key grids, and not tables that ARE the question layout (MSA / OneNote boxes around everything)
+    for t in stem_texts:
+        if t.type != "table" or not stem_box.area or _KEY_TABLE.search(t.plain or t.md or ""):
+            continue
+        if t.box.overlap_ratio(stem_box) > 0.7 and t.box.area < 0.75 * stem_box.area:
+            refs.append(VisualRef(t.box, [t.uid], "table_crop"))
+    if not layout.exact and stem_box.area > 0:
+        text_boxes = [t.box for t in stem_texts] + list(layout.stem_mask_boxes)
+        for r in [x for x in refs if x.method != "table_crop"]:
+            if r.box.overlap_ratio(stem_box) < 0.5 and stem_box.overlap_ratio(r.box) < 0.5:
+                continue
+            if any(tb.overlap_ratio(r.box) < 0.5 for tb in text_boxes):
+                continue                       # the stem's text is outside the figure: a real diagram
+            # a "figure" covering most of the stem is the whole question (text + diagram) swallowed by Parse:
+            # keep it only as an uncertain fallback and let the page's single repass isolate the real diagram
+            r.certain = False
+            flags.append("figure_contains_text")
+
+            def found(fs, r=r, refs=refs, flags=flags):
+                if r in refs:
+                    refs.remove(r)
+                refs.extend(VisualRef(b, [sid], "repass_figure", description=d or r.description,
+                                      description_source="repass" if d else r.description_source)
+                            for b, sid, d in fs)
+                flags.append("figure_found_by_repass")
+            queue.add(page, r.box, found, lambda: None)
+    if layout.exact or refs:
+        # exact (PDF-layer) figures or Parse figures already answer the question: text-only stems cost nothing
+        return refs
+    if not layout.has_stem_coverage:
         # Without knowing where the text is, ink analysis would mistake text for figures (this was a real bug).
         flags.append("stem_geometry_unknown")
         return refs
-    mask = [t.box for t in stem_texts] + list(layout.stem_mask_boxes) + [f.box for f in stem_figs]
+    gray = images.gray(page)
+    atoms = [a["box"] for t in stem_texts for a in t.atomic]
+    lh = _line_height(atoms + list(layout.stem_mask_boxes), gray.shape[0])
+    # an "atomic line" several line-heights tall is a diagram whose labels Parse read as text: not a mask
+    mask = [b for b in atoms if b.h <= 2.5 * lh] + \
+        [t.box for t in stem_texts if not t.atomic] + list(layout.stem_mask_boxes)
     sig, ink_box = residual_ink(gray, stem_box, mask, cfg)
-    if sig and not refs:
-        found = repass_region(client, images.rgb(page), ink_box.pad(0.01 * gray.shape[1]), cfg)
-        if found:
-            refs = [VisualRef(b, [sid], "repass_figure") for b, sid in found]
+    if sig and ink_box.h >= 2.0 * lh and ink_box.w >= 2.0 * lh:     # figure-sized, not a stray formula/arrow
+        def found(fs, refs=refs, flags=flags):
+            refs.extend(VisualRef(b, [sid], "repass_figure", description=d, description_source="repass" if d else "")
+                        for b, sid, d in fs)
             flags.append("figure_found_by_repass")
-        else:
-            flags.append("ink_unconfirmed_question")        # reported, but NO junk crop is produced
-    elif sig and refs:
-        flags.append("unexplained_ink_in_stem")
+
+        def missing(flags=flags):
+            flags.append("ink_unconfirmed_question")         # reported, but NO junk crop is produced
+        queue.add(page, ink_box.pad(0.01 * gray.shape[1]), found, missing)
     return refs
 
 
-def option_visual(client, images, page: int, opt: OptionRegion, text: str, cfg: Settings,
-                  flags: list[str]) -> tuple[Optional[VisualRef], bool]:
-    """Returns (visual ref or None, image_only)."""
-    gray = images.gray(page)
-    W = gray.shape[1]
-    label_box = [opt.anchor.box] if opt.anchor is not None else []
+def option_visual(queue: RepassQueue, images, page: int, opt: OptionRegion, text: str, cfg: Settings,
+                  flags: list[str], exact: bool = False, target=None) -> tuple[list[VisualRef], bool]:
+    """Returns (image refs - zero, one or several, image_only). A queued repass later replaces `target.refs`."""
     has_text = bool(text.strip())
     ref: Optional[VisualRef] = None
     if opt.figs:
-        ub = Box.union_all([f.box for f in opt.figs])
-        ref = VisualRef(ub, [f.uid for f in opt.figs], "parse_figure")
-    else:
+        refs = refs_from_figs(opt.figs, "pdf_figure" if exact else "parse_figure")
+        return refs, not has_text
+    elif not has_text and not exact:
+        # image-only option that Parse did not mark as a figure (photos): the only option case that may repass
+        gray = images.gray(page)
+        W = gray.shape[1]
+        label_box = [opt.anchor.box] if opt.anchor is not None else []
         mask = label_box + [t.box for t in opt.texts] + list(opt.mask_boxes)
         area = Box(opt.box.x0 + 3, opt.box.y0 + 3, opt.box.x1 - 3, opt.box.y1 - 3)
-        if mask or not has_text:                      # only analyse ink when we know where the text is
-            sig, ink_box = residual_ink(gray, area, mask, cfg)
-            if sig:
-                found = repass_region(client, images.rgb(page), ink_box.pad(0.008 * W), cfg)
-                if found:
-                    ref = VisualRef(Box.union_all([b for b, _ in found]), [s for _, s in found], "repass_figure")
-                    flags.append(f"opt_{opt.label}_figure_by_repass")
-                elif not has_text:
-                    ref = VisualRef(ink_box, [], "ink_fallback")
-                    flags.append(f"opt_{opt.label}_ink_fallback")
+        sig, ink_box = residual_ink(gray, area, mask, cfg)
+        if sig:
+            ref = VisualRef(ink_box, [], "ink_fallback", certain=False)
+            flags.append(f"opt_{opt.label}_ink_fallback")
+            if target is not None:
+                L = opt.label
+
+                def found(fs, target=target, flags=flags, L=L):
+                    target.refs = [VisualRef(b, [sid], "repass_figure", description=d,
+                                             description_source="repass" if d else "") for b, sid, d in fs]
+                    target.image_only = True
+                    if f"opt_{L}_ink_fallback" in flags:
+                        flags.remove(f"opt_{L}_ink_fallback")
+                    flags.append(f"opt_{L}_figure_by_repass")
+                queue.add(page, ink_box.pad(0.008 * W), found, lambda: None)
     mode = cfg.option_image_mode
     # An option with no text but a known cell IS an image option, whatever the default policy says
     # (Extract returns null for it, e.g. "option_d was not found in the document").
     if ref is None and (mode != "visual_only" or not has_text):
         want = (mode == "always") or (not has_text) or bool(MATH_RE.search(text))
         if want:
+            W = images.gray(page).shape[1]
             inset = Box(opt.box.x0 + 3, opt.box.y0 + 3, opt.box.x1 - 3, opt.box.y1 - 3)
             cbx = opt.content_box
             if has_text and cbx is not None:
@@ -191,5 +371,6 @@ def option_visual(client, images, page: int, opt: OptionRegion, text: str, cfg: 
                 cb = inset                                   # image-only option: the whole grid cell
             else:
                 cb = cbx
-            ref = VisualRef(cb, [t.uid for t in opt.texts], "math_text_crop" if has_text else "option_region")
-    return ref, (ref is not None and not has_text)
+            ref = VisualRef(cb, [t.uid for t in opt.texts], "math_text_crop" if has_text else "option_region",
+                            certain=has_text)
+    return ([ref] if ref is not None else []), (ref is not None and not has_text)

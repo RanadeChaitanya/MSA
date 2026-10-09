@@ -1,0 +1,391 @@
+{
+ "id": "alcohols",
+ "method": "manual reading of 110-dpi renders of the original PDF pages",
+ "foreign_images": {
+  "6": 4
+ },
+ "questions": [
+  {
+   "page": 6,
+   "number": 59,
+   "order": 1,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 6,
+   "number": 60,
+   "order": 2,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 6,
+   "number": 61,
+   "order": 3,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 6,
+   "number": 62,
+   "order": 4,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 6,
+   "number": 63,
+   "order": 5,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {
+    "A": 1,
+    "B": 1,
+    "C": 1
+   },
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 6,
+   "number": 64,
+   "order": 6,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 6,
+   "number": 65,
+   "order": 7,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {
+    "A": 1,
+    "B": 1,
+    "C": 1,
+    "D": 1
+   },
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 6,
+   "number": 66,
+   "order": 8,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false,
+   "texts": {
+    "A": "Alcohols",
+    "B": "Ethers",
+    "C": "Ethers and alcohols",
+    "D": "Alcohols and acetone"
+   }
+  },
+  {
+   "page": 6,
+   "number": 67,
+   "order": 9,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 6,
+   "number": 68,
+   "order": 10,
+   "complete": false,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [],
+   "table": true
+  },
+  {
+   "page": 42,
+   "number": 517,
+   "order": 1,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false,
+   "texts": {
+    "A": "Methane thiol",
+    "B": "Ethane thiol",
+    "C": "Isobutyl thiol",
+    "D": "Propyl thiol"
+   }
+  },
+  {
+   "page": 42,
+   "number": 518,
+   "order": 2,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 42,
+   "number": 519,
+   "order": 3,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 42,
+   "number": 520,
+   "order": 4,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 42,
+   "number": 521,
+   "order": 5,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 42,
+   "number": 522,
+   "order": 6,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 42,
+   "number": 523,
+   "order": 7,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 42,
+   "number": 524,
+   "order": 8,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 42,
+   "number": 525,
+   "order": 9,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false,
+   "texts": {
+    "A": "Acetone",
+    "B": "Ethanol",
+    "C": "Glycerol",
+    "D": "Glycol"
+   }
+  },
+  {
+   "page": 42,
+   "number": 526,
+   "order": 10,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 42,
+   "number": 527,
+   "order": 11,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 42,
+   "number": 528,
+   "order": 12,
+   "complete": true,
+   "stem_images": 1,
+   "opt_images": {
+    "A": 1,
+    "B": 1,
+    "C": 1,
+    "D": 1
+   },
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 42,
+   "number": 529,
+   "order": 13,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 42,
+   "number": 530,
+   "order": 14,
+   "complete": false,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [],
+   "table": false
+  }
+ ]
+}

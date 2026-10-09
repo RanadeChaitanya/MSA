@@ -1,0 +1,174 @@
+{
+ "id": "chem2022",
+ "method": "manual reading of 110-dpi renders of the original PDF pages",
+ "questions": [
+  {
+   "page": 3,
+   "number": 1,
+   "order": 1,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 3,
+   "number": 2,
+   "order": 2,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 3,
+   "number": 3,
+   "order": 3,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false,
+   "texts": {
+    "A": "30 %",
+    "B": "26 %",
+    "C": "47.64 %",
+    "D": "32 %"
+   }
+  },
+  {
+   "page": 3,
+   "number": 4,
+   "order": 4,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 3,
+   "number": 5,
+   "order": 5,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 4,
+   "number": 6,
+   "order": 1,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 4,
+   "number": 7,
+   "order": 2,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false,
+   "texts": {
+    "A": "74 %",
+    "B": "52.36 %",
+    "C": "68 %",
+    "D": "80 %"
+   }
+  },
+  {
+   "page": 4,
+   "number": 8,
+   "order": 3,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 4,
+   "number": 9,
+   "order": 4,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false,
+   "texts": {
+    "A": "6",
+    "B": "8",
+    "C": "4",
+    "D": "12"
+   }
+  },
+  {
+   "page": 4,
+   "number": 10,
+   "order": 5,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  }
+ ]
+}

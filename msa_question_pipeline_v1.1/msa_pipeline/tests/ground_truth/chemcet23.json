@@ -1,0 +1,120 @@
+{
+ "id": "chemcet23",
+ "method": "manual reading of 110-dpi renders of the original PDF pages",
+ "questions": [
+  {
+   "page": 3,
+   "number": null,
+   "order": 1,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": true,
+   "texts": {
+    "A": "A",
+    "B": "B",
+    "C": "C",
+    "D": "D"
+   }
+  },
+  {
+   "page": 3,
+   "number": null,
+   "order": 2,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 3,
+   "number": null,
+   "order": 3,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false,
+   "texts": {
+    "A": "Glass",
+    "B": "Plastic",
+    "C": "Rubber",
+    "D": "Diamond"
+   }
+  },
+  {
+   "page": 4,
+   "number": null,
+   "order": 1,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false,
+   "texts": {
+    "A": "ionic solid",
+    "B": "covalent network solid",
+    "C": "molecular solid",
+    "D": "metallic solid"
+   }
+  },
+  {
+   "page": 4,
+   "number": null,
+   "order": 2,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 4,
+   "number": null,
+   "order": 3,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false,
+   "texts": {
+    "A": "473 · 2 pm",
+    "B": "334 · 6 pm",
+    "C": "386 · 3 pm",
+    "D": "836 · 5 pm"
+   }
+  }
+ ]
+}

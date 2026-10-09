@@ -8,10 +8,17 @@ from typing import Optional
 from ..config import Settings
 from ..utils.geometry import Box
 
-LEAF = {"text", "marginalia", "table_cell", "figure"}
+LEAF = {"text", "marginalia", "table_cell", "figure", "table"}   # tables: cropped as images, never anchors
 TEXTLIKE = {"text", "marginalia", "table_cell"}
 
 _COMMENT = re.compile(r"<!--.*?-->", re.S)
+# answer-key grids ("Q. NO 1 2 3 / ANS A B C", "ANSWER KEY"): their numbers are not questions
+KEY_TABLE = re.compile(r"answer\s*key|q\s*\.\s*no\b|\bans\b", re.I)
+
+
+def key_table_ids(blocks: list) -> set:
+    """Ids of answer-key tables (and of their cells' parents) among Parse blocks."""
+    return {b.id for b in blocks if b.type == "table" and KEY_TABLE.search(b.plain or b.md or "")}
 _ANCHOR = re.compile(r"<a id=['\"][^'\"]*['\"]></a>")
 _TAG = re.compile(r"<[^>]+>")
 _WS = re.compile(r"\s+")

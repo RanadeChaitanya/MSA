@@ -10,7 +10,7 @@ OPTION_LABELS = ["A", "B", "C", "D"]
 
 def _opt(label: str) -> dict:
     return {
-        "type": "string",
+        "type": ["string", "null"],          # null for image-only options (else Extract reports a schema violation)
         "description": (
             f"Verbatim text of option {label} (math as LaTeX). Empty string if option {label} "
             "contains only an image/diagram. Do not include the letter label itself."

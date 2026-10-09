@@ -23,6 +23,7 @@ from ..lat.schemas import QUESTION_SCHEMA
 from ..utils.geometry import Box
 from .parse_stage import BatchResult
 from .segment import Region
+from .structure import key_table_ids
 
 log = logging.getLogger("pipeline.semantics")
 
@@ -103,7 +104,10 @@ def ground_span(br: BatchResult, s: int, e: int) -> list[Piece]:
     """Pixel pieces covering markdown [s,e). Most specific geometry wins."""
     hits = [b for b in br.blocks if not b.watermark and b.rng[0] < e and b.rng[1] > s and b.type != "figure"]
     if not hits:
-        return []
+        # Parse sometimes swallows a whole question (text + diagram) into one figure; its box is still where the
+        # question is (coarse), which beats having no geometry at all
+        figs = [b for b in br.blocks if not b.watermark and b.type == "figure" and b.rng[0] < e and b.rng[1] > s]
+        return [Piece(b.page, b.box, False, False, line=None) for b in figs]
     child_parents = {b.parent for b in hits if b.parent}
     pieces: list[Piece] = []
     for b in hits:
@@ -240,6 +244,12 @@ def run_semantics(client, br: BatchResult, regions: list[Region], sizes: dict[in
     log.info("Extract: %d questions in batch %d (pages %s-%s)", len(res.items), br.batch_id,
              br.page_nums[0], br.page_nums[-1])
 
+    keys = key_table_ids(br.blocks)
+    key_boxes = [(b.page, b.box) for b in br.blocks if b.id in keys]
+
+    def in_key_table(pc: Piece) -> bool:
+        return any(pg == pc.page and bx.contains_point(pc.box.cx, pc.box.cy) for pg, bx in key_boxes)
+
     for i, item in enumerate(res.items):
         meta = meta_items[i] if i < len(meta_items) and isinstance(meta_items[i], dict) else {}
         geo = ItemGeo()
@@ -251,9 +261,12 @@ def run_semantics(client, br: BatchResult, regions: list[Region], sizes: dict[in
                 if name.startswith("option_"):
                     s, e = narrow_option_span(br.markdown, s, e, name[-1], item.get(name))
                 pcs.extend(ground_span(br, s, e))
+            pcs = [pc for pc in pcs if not in_key_table(pc)]      # "1" also matches the answer-key grid
             if pcs:
                 geo.fields[name] = pcs
-        pages = [p.page for p in geo.all_pieces()]
+        # the page is where the question's TEXT is: the stem decides, numbers/options only break ties
+        stem_pages = [p.page for p in geo.fields.get("stem", [])]
+        pages = stem_pages or [p.page for p in geo.all_pieces()]
         geo.page = max(set(pages), key=pages.count) if pages else None
         res.geos.append(geo)
 
@@ -289,20 +302,32 @@ def run_semantics(client, br: BatchResult, regions: list[Region], sizes: dict[in
         if geo.page is None:
             geo.page, geo.page_inferred = br.page_nums[0], True
 
-    # bind items to anchor-based regions by votes of grounded piece centres
+    # bind items to anchor-based regions. The printed question number is the primary key when exactly one
+    # region carries it (PDF-layer numbers are exact; OCR boxes can sit a line off and mis-vote on dense pages);
+    # otherwise votes of grounded piece centres decide.
     taken: dict[int, tuple[int, int]] = {}
+    by_num: dict[str, list[Region]] = {}
+    for r in regions:
+        if r.number:
+            by_num.setdefault(str(r.number), []).append(r)
     for i, geo in enumerate(res.geos):
+        num = "".join(ch for ch in str(res.items[i].get("number", "")) if ch.isdigit())
+        same = by_num.get(num.lstrip("0") or num, []) if num else []
+        # the number only decides within the page the item's own text was found on: numbering restarts per
+        # chapter and answer-key tables repeat every number, so a page-less match would bind across pages
+        if geo.page is not None and not geo.page_inferred:
+            same = [r for r in same if r.page == geo.page]
+        elif not (len(same) == 1 and same[0].anchor is not None and same[0].anchor.uid.startswith("pdf")):
+            same = []                           # page unknown: only an exact PDF-text-layer number is unambiguous
+        if len(same) == 1 and same[0].idx not in taken:
+            taken[same[0].idx] = (10 ** 6, i)              # a number match outranks any vote count
+            continue
         votes: dict[int, int] = {}
         for pc in geo.all_pieces():
             for r in regions:
                 if r.page == pc.page and r.box.contains_point(pc.box.cx, pc.box.cy):
                     votes[r.idx] = votes.get(r.idx, 0) + 1
                     break
-        if not votes:
-            num = "".join(ch for ch in str(res.items[i].get("number", "")) if ch.isdigit())
-            same = [r for r in regions if num and str(r.number) == num and (geo.page in (None, r.page))]
-            if len(same) == 1:
-                votes[same[0].idx] = 1
         if votes:
             ridx = max(votes, key=votes.get)
             if ridx not in taken or votes[ridx] > taken[ridx][0]:

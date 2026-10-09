@@ -1,0 +1,522 @@
+{
+  "$defs": {
+    "Answer": {
+      "additionalProperties": false,
+      "properties": {
+        "label": {
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "title": "Label",
+          "type": "string"
+        },
+        "source": {
+          "enum": [
+            "printed_inline",
+            "answer_key"
+          ],
+          "title": "Source",
+          "type": "string"
+        }
+      },
+      "required": [
+        "label",
+        "source"
+      ],
+      "title": "Answer",
+      "type": "object"
+    },
+    "Asset": {
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "description": "relative to the document directory, '/' only",
+          "pattern": "^assets/[^\\\\:]+\\.png$",
+          "title": "Path",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "width": {
+          "exclusiveMinimum": 0,
+          "title": "Width",
+          "type": "integer"
+        },
+        "height": {
+          "exclusiveMinimum": 0,
+          "title": "Height",
+          "type": "integer"
+        },
+        "page": {
+          "minimum": 1,
+          "title": "Page",
+          "type": "integer"
+        },
+        "bbox": {
+          "description": "[x0,y0,x1,y1] as page fractions",
+          "items": {
+            "type": "number"
+          },
+          "maxItems": 4,
+          "minItems": 4,
+          "title": "Bbox",
+          "type": "array"
+        },
+        "owner": {
+          "$ref": "#/$defs/Owner"
+        },
+        "method": {
+          "enum": [
+            "pdf_figure",
+            "parse_figure",
+            "repass_figure",
+            "table_crop",
+            "ink_fallback",
+            "math_text_crop",
+            "option_region"
+          ],
+          "title": "Method",
+          "type": "string"
+        },
+        "certain": {
+          "description": "false: fallback crop (whole option cell / ink bbox) or estimated association",
+          "title": "Certain",
+          "type": "boolean"
+        },
+        "description": {
+          "default": "",
+          "description": "Landing AI figure description; '' if none was produced",
+          "title": "Description",
+          "type": "string"
+        }
+      },
+      "required": [
+        "path",
+        "sha256",
+        "width",
+        "height",
+        "page",
+        "bbox",
+        "owner",
+        "method",
+        "certain"
+      ],
+      "title": "Asset",
+      "type": "object"
+    },
+    "EquationComponent": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "equation",
+          "default": "equation",
+          "title": "Type",
+          "type": "string"
+        },
+        "latex": {
+          "description": "display equation, without the $$ delimiters",
+          "minLength": 1,
+          "title": "Latex",
+          "type": "string"
+        }
+      },
+      "required": [
+        "latex"
+      ],
+      "title": "EquationComponent",
+      "type": "object"
+    },
+    "ImageComponent": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "image",
+          "default": "image",
+          "title": "Type",
+          "type": "string"
+        },
+        "asset_id": {
+          "title": "Asset Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "asset_id"
+      ],
+      "title": "ImageComponent",
+      "type": "object"
+    },
+    "Option": {
+      "additionalProperties": false,
+      "properties": {
+        "label": {
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "title": "Label",
+          "type": "string"
+        },
+        "content": {
+          "description": "ordered; may hold 0..n image components",
+          "items": {
+            "discriminator": {
+              "mapping": {
+                "equation": "#/$defs/EquationComponent",
+                "image": "#/$defs/ImageComponent",
+                "table": "#/$defs/TableComponent",
+                "text": "#/$defs/TextComponent"
+              },
+              "propertyName": "type"
+            },
+            "oneOf": [
+              {
+                "$ref": "#/$defs/TextComponent"
+              },
+              {
+                "$ref": "#/$defs/EquationComponent"
+              },
+              {
+                "$ref": "#/$defs/TableComponent"
+              },
+              {
+                "$ref": "#/$defs/ImageComponent"
+              }
+            ]
+          },
+          "title": "Content",
+          "type": "array"
+        }
+      },
+      "required": [
+        "label",
+        "content"
+      ],
+      "title": "Option",
+      "type": "object"
+    },
+    "Owner": {
+      "additionalProperties": false,
+      "properties": {
+        "qid": {
+          "title": "Qid",
+          "type": "string"
+        },
+        "role": {
+          "enum": [
+            "stem",
+            "option"
+          ],
+          "title": "Role",
+          "type": "string"
+        },
+        "option": {
+          "anyOf": [
+            {
+              "enum": [
+                "A",
+                "B",
+                "C",
+                "D",
+                "E"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Option"
+        }
+      },
+      "required": [
+        "qid",
+        "role"
+      ],
+      "title": "Owner",
+      "type": "object"
+    },
+    "Question": {
+      "additionalProperties": false,
+      "properties": {
+        "qid": {
+          "description": "stable within the document",
+          "pattern": "^p\\d{4}-[qx]\\d{3}(-\\d+)?$",
+          "title": "Qid",
+          "type": "string"
+        },
+        "number": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "printed question number",
+          "title": "Number"
+        },
+        "section": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "chapter/section title printed in the PDF, if detected",
+          "title": "Section"
+        },
+        "source": {
+          "$ref": "#/$defs/SourceRef"
+        },
+        "stem": {
+          "items": {
+            "discriminator": {
+              "mapping": {
+                "equation": "#/$defs/EquationComponent",
+                "image": "#/$defs/ImageComponent",
+                "table": "#/$defs/TableComponent",
+                "text": "#/$defs/TextComponent"
+              },
+              "propertyName": "type"
+            },
+            "oneOf": [
+              {
+                "$ref": "#/$defs/TextComponent"
+              },
+              {
+                "$ref": "#/$defs/EquationComponent"
+              },
+              {
+                "$ref": "#/$defs/TableComponent"
+              },
+              {
+                "$ref": "#/$defs/ImageComponent"
+              }
+            ]
+          },
+          "title": "Stem",
+          "type": "array"
+        },
+        "options": {
+          "description": "in label order A, B, C, D",
+          "items": {
+            "$ref": "#/$defs/Option"
+          },
+          "title": "Options",
+          "type": "array"
+        },
+        "answer": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Answer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "confidence": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "flags": {
+          "description": "warnings/errors; see README section 8",
+          "items": {
+            "type": "string"
+          },
+          "title": "Flags",
+          "type": "array"
+        }
+      },
+      "required": [
+        "qid",
+        "source",
+        "stem",
+        "options",
+        "confidence"
+      ],
+      "title": "Question",
+      "type": "object"
+    },
+    "SourceDoc": {
+      "additionalProperties": false,
+      "properties": {
+        "filename": {
+          "title": "Filename",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "page_count": {
+          "minimum": 1,
+          "title": "Page Count",
+          "type": "integer"
+        },
+        "pages_processed": {
+          "items": {
+            "type": "integer"
+          },
+          "title": "Pages Processed",
+          "type": "array"
+        }
+      },
+      "required": [
+        "filename",
+        "sha256",
+        "page_count",
+        "pages_processed"
+      ],
+      "title": "SourceDoc",
+      "type": "object"
+    },
+    "SourceRef": {
+      "additionalProperties": false,
+      "properties": {
+        "pages": {
+          "description": "1-based PDF page numbers the question occupies",
+          "items": {
+            "type": "integer"
+          },
+          "minItems": 1,
+          "title": "Pages",
+          "type": "array"
+        },
+        "bbox": {
+          "anyOf": [
+            {
+              "description": "[x0,y0,x1,y1] as page fractions",
+              "items": {
+                "type": "number"
+              },
+              "maxItems": 4,
+              "minItems": 4,
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "question region on pages[0]; null if not located",
+          "title": "Bbox"
+        }
+      },
+      "required": [
+        "pages"
+      ],
+      "title": "SourceRef",
+      "type": "object"
+    },
+    "TableComponent": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "table",
+          "default": "table",
+          "title": "Type",
+          "type": "string"
+        },
+        "html": {
+          "description": "<table>...</table> exactly as extracted",
+          "minLength": 1,
+          "title": "Html",
+          "type": "string"
+        }
+      },
+      "required": [
+        "html"
+      ],
+      "title": "TableComponent",
+      "type": "object"
+    },
+    "TextComponent": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "text",
+          "default": "text",
+          "title": "Type",
+          "type": "string"
+        },
+        "text": {
+          "minLength": 1,
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "text"
+      ],
+      "title": "TextComponent",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "2.0",
+      "default": "2.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "doc_id": {
+      "title": "Doc Id",
+      "type": "string"
+    },
+    "source": {
+      "$ref": "#/$defs/SourceDoc"
+    },
+    "text_format": {
+      "const": "md_latex",
+      "default": "md_latex",
+      "title": "Text Format",
+      "type": "string"
+    },
+    "questions": {
+      "items": {
+        "$ref": "#/$defs/Question"
+      },
+      "title": "Questions",
+      "type": "array"
+    },
+    "assets": {
+      "additionalProperties": {
+        "$ref": "#/$defs/Asset"
+      },
+      "description": "asset_id -> asset; every asset is referenced exactly once",
+      "title": "Assets",
+      "type": "object"
+    }
+  },
+  "required": [
+    "doc_id",
+    "source",
+    "questions",
+    "assets"
+  ],
+  "title": "Document",
+  "type": "object"
+}

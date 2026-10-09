@@ -25,7 +25,26 @@ def main(argv=None) -> int:
     dg = sub.add_parser("diagnose", help="explain block types/geometry found per page for an already-processed doc")
     dg.add_argument("doc_id")
     dg.add_argument("--env", default=".env")
+    vf = sub.add_parser("verify", help="check document.json against its assets (paths, sha256, owners, orphans)")
+    vf.add_argument("doc_dir")
+    sh = sub.add_parser("show", help="rebuild one question from document.json and print it as markdown")
+    sh.add_argument("doc_dir")
+    sh.add_argument("qid")
+    sub.add_parser("schema", help="print the JSON Schema of document.json")
     args = ap.parse_args(argv)
+    if args.cmd == "schema":
+        from .schema import json_schema
+        print(json.dumps(json_schema(), indent=2))
+        return 0
+    if args.cmd in ("verify", "show"):
+        from .reconstruct import load_document, reconstruct, to_markdown, verify
+        doc = load_document(Path(args.doc_dir))
+        if args.cmd == "show":
+            print(to_markdown(reconstruct(doc, args.qid, Path(args.doc_dir))))
+            return 0
+        problems = verify(doc, Path(args.doc_dir))
+        print("\n".join(problems) if problems else f"OK: {len(doc.questions)} questions, {len(doc.assets)} assets")
+        return 1 if problems else 0
     cfg = Settings.load(args.env)
     if args.cmd == "diagnose":
         from .diagnose import diagnose

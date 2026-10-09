@@ -1,0 +1,16 @@
+{
+  "_comment": "Representative 2-page samples per PDF. Paths are relative to the PDF roots given to scripts/bench.py.",
+  "samples": [
+    {"id": "alcohols",      "pdf": "downloads:ALCOHOLS, PHENOLS AND ETHERS-1 (1)-compressed.pdf", "pages": [6, 42],  "type": "digital"},
+    {"id": "chem2020",      "pdf": "testers:Copy of CHEMISTRY 2020.pdf",                         "pages": [5, 55],  "type": "digital_boxed"},
+    {"id": "pcm2020",       "pdf": "testers:Copy of PCM 2020.pdf",                               "pages": [7, 8],   "type": "digital_math"},
+    {"id": "chem2021",      "pdf": "testers:Copy of Chemistry 2021.pdf",                         "pages": [3, 4],   "type": "composite"},
+    {"id": "chem2022",      "pdf": "testers:Copy of Chemistry 2022.pdf",                         "pages": [3, 4],   "type": "composite"},
+    {"id": "maths2021",     "pdf": "testers:Copy of Maths 2021.pdf",                             "pages": [3, 4],   "type": "composite"},
+    {"id": "maths2022",     "pdf": "testers:Copy of Maths 2022.pdf",                             "pages": [3, 4],   "type": "composite"},
+    {"id": "physics2021",   "pdf": "testers:Copy of Physics 2021.pdf",                           "pages": [3, 73],  "type": "composite"},
+    {"id": "physics2022",   "pdf": "testers:Copy of Physics 2022.pdf",                           "pages": [3, 83],  "type": "composite"},
+    {"id": "msa2023phy",    "pdf": "testers:Copy of MHT-CET 2023 PHYSICS PYQs.pdf",              "pages": [1, 2],   "type": "scanned"},
+    {"id": "chemcet23",     "pdf": "testers:Copy of CHEM-MHT-CET_23 PYQ_.pdf",                   "pages": [3, 4],   "type": "composite_boxed"}
+  ]
+}

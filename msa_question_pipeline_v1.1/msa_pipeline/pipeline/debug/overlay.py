@@ -33,8 +33,8 @@ def draw_overlays(ctx, drafts_by_page: dict[int, list], issues: dict[int, list[s
             for r in d.q_visuals:
                 rect(r.box, (220, 30, 30), 4)
             for L, o in d.options.items():
-                if o.ref is not None:
-                    rect(o.ref.box, (255, 140, 0), 3)
+                for r in o.refs:
+                    rect(r.box, (255, 140, 0), 3)
             if d.flags:
                 dr.text((d.region.box.x0 * sc + 40, d.region.box.y0 * sc + 2), ",".join(d.flags)[:70], fill=(200, 0, 0))
         if issues.get(p):

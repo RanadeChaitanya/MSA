@@ -1,0 +1,133 @@
+{
+ "id": "physics2021",
+ "method": "manual reading of 110-dpi renders of the original PDF pages",
+ "questions": [
+  {
+   "page": 3,
+   "number": 1,
+   "order": 1,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false,
+   "texts": {
+    "A": "1 N",
+    "B": "8 N",
+    "C": "4 N",
+    "D": "2 N"
+   }
+  },
+  {
+   "page": 3,
+   "number": 2,
+   "order": 2,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 3,
+   "number": 3,
+   "order": 3,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false,
+   "note": "stem text cut at the right edge in the source"
+  },
+  {
+   "page": 3,
+   "number": 4,
+   "order": 4,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false,
+   "note": "stem text cut at the right edge in the source"
+  },
+  {
+   "page": 3,
+   "number": 5,
+   "order": 5,
+   "complete": true,
+   "stem_images": 0,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false
+  },
+  {
+   "page": 73,
+   "number": 18,
+   "order": 1,
+   "complete": true,
+   "stem_images": 1,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false,
+   "texts": {
+    "A": "1.6 A",
+    "B": "3.0 A",
+    "C": "2.4 A",
+    "D": "2.0 A"
+   },
+   "note": "option labels almost invisible"
+  },
+  {
+   "page": 73,
+   "number": 19,
+   "order": 2,
+   "complete": true,
+   "stem_images": 1,
+   "opt_images": {},
+   "options": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "table": false,
+   "texts": {
+    "A": "3.4 A",
+    "B": "2.5 A",
+    "C": "3.0 A",
+    "D": "1.5 A"
+   },
+   "note": "option labels almost invisible"
+  }
+ ]
+}

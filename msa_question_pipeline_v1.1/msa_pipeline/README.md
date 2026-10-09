@@ -27,9 +27,12 @@ python -m pipeline.cli run my.pdf --pages 1-2       # real run on 2 pages (spike
 python -m pipeline.cli run my.pdf                   # full run
 pytest -q                                           # tests
 ```
-Outputs land in `data/<doc_id>/`:
-`canonical/` (page images) · `lat_raw/` (raw API responses) · `assets/q_0001/question_1.png, option_B.png …` ·
-`output/questions.json` · `output/review_queue.json` · `output/pages.json` · `debug/overlays/overlay_page_0001.png`.
+Outputs land in `data/<doc_id>/` (see section 19 for the schema):
+`document.json` (canonical questions + asset registry) · `image_descriptions.txt` · `assets/<qid>/stem_1.png, opt_B_1.png …` ·
+`output/run_report.json` (statistics, page issues, review list) · working files: `canonical/`, `lat_raw/`,
+`debug/overlays/` (only pages with errors unless `OVERLAYS_ALL=true`).
+`python -m pipeline.cli verify data/<doc_id>` checks every reference; `python -m pipeline.cli show data/<doc_id> <qid>`
+rebuilds one question.
 
 **Always open the overlays after a run.** Blue = question region, green = option cells, red = question image,
 orange = option image, red text = flags. They show every decision the pipeline made.
@@ -40,17 +43,21 @@ orange = option image, red text = flags. They show every decision the pipeline m
 
 ```
 PDF
- └─[0 CANONICALIZE]  embedded photo at native res, else render 300 DPI; bake EXIF; rectify perspective (photos);
+ └─[0 CANONICALIZE]  (full repair only for photo/scan pages; digital pages are a plain render used for crops)
+                     embedded photo at native res, else render 300 DPI; bake EXIF; rectify perspective (photos);
                      de-shadow; deskew; blur/resolution gate.  ==> ONE canonical PNG per page (THE coordinate space)
- └─[1 PARSE]         canonical PNGs -> batch PDF (<=BATCH_PAGES) -> POST /v2/parse (DPT-3 Pro)
+ └─[1 PARSE]         batch PDF (<=BATCH_PAGES): ORIGINAL vector pages for digital pages, canonical PNGs for
+                     photos -> POST /v2/parse (DPT-3 Pro)
                      => markdown + structure tree (blocks with page, range, box [+ atomic grounding])
  └─[2 SEMANTICS]     POST /v2/extract(markdown, schema) => question stem / options A-D / correct option + spans
                      spans overlapped with block ranges (client-side grounding) => which blocks belong to which question
- └─[3 BOXES]         QUESTION BOX RETRIEVAL : gutter numbers -> column regions            (stages/segment.py)
+ └─[3 BOXES]         digital pages: numbers, a)-d) labels, text lines, figures FROM THE PDF  (stages/pdf_layer.py)
+                     QUESTION BOX RETRIEVAL : gutter numbers -> column regions            (stages/segment.py)
                      OPTION BOX RETRIEVAL   : A/B/C/D label glyphs -> option cells         (stages/options.py)
  └─[4 ROUTER]        per question: text-only | question-image | option-image | both
                      figure blocks + residual-ink check (+ math policy for options)        (stages/visuals.py)
- └─[5 REPASS]       (gated) tight upscaled crop of region -> POST /v2/parse as image -> figure boxes
+ └─[5 REPASS]       photo pages only, image-only options / figure-sized stem ink only; all candidates of a
+                     page in ONE mosaic image (<= REPASS_MAX_PER_PAGE) -> POST /v2/parse -> figure boxes
                      mapped back: page_px = crop_origin + norm_box * crop_size
  └─[6 CROP]         crop from the SAME canonical image -> assets/…png, sha256, bbox, method   (stages/crop.py)
  └─[7 LINK/JSON]    qid / asset ids / options keyed by LABEL                                  (stages/assemble.py)
@@ -119,6 +126,7 @@ msa_pipeline/
 │   │   ├── structure.py      flatten structure -> pixel-space Block objects; watermark marking; text cleaning
 │   │   ├── segment.py        stage 3a: question regions from gutter numbers (cluster, consecutive, gap guards)
 │   │   ├── options.py        stage 3b: option anchors -> option cells; stem/option/answer bucketing; table fallback
+│   │   ├── pdf_layer.py     born-digital pages: numbers, a)-d) labels, text lines, exact figure boxes from the PDF
 │   │   ├── semantics.py      stage 2: Extract + client-side span grounding -> binds extracted questions to regions
 │   │   ├── visuals.py        stage 4/5: routing, residual-ink check, region repass, math-option policy, ImageCache
 │   │   ├── crop.py           stage 6: padded crop from canonical image, sha256, AssetRef
@@ -188,7 +196,7 @@ Padded crop of the canonical image → `assets/q_0003/option_C.png`. IDs: `q_000
 
 ---------------------------------------------------------------------------------------------------
 
-## 6. Output JSON (`output/questions.json`, abridged)
+## 6. Output JSON (v1, superseded by section 19)
 
 ```json
 {
@@ -215,7 +223,8 @@ Padded crop of the canonical image → `assets/q_0003/option_C.png`. IDs: `q_000
   "page_issues": {}, "run": {"credits": 12.5, "api_calls": {"parse": 2, "extract": 1}, "needs_review": 0}
 }
 ```
-`method` ∈ `parse_figure | repass_figure | ink_fallback | math_text_crop | option_region`.
+`method` ∈ `pdf_figure | parse_figure | repass_figure | ink_fallback | math_text_crop | option_region`
+(`pdf_figure` = exact box of an embedded image / vector drawing from a born-digital PDF).
 Math options are stored as **LaTeX text (from Extract) and** an image crop under the default policy; set
 `OPTION_IMAGE_MODE=visual_only` to get images only for real diagrams.
 
@@ -259,7 +268,8 @@ are cached in `data/cache/lat/` keyed by content hash, so re-runs cost nothing; 
 Key groups: Landing AI (`LANDING_API_KEY`, `LANDING_BASE_URL`, models) · canonicalization (`RENDER_DPI`,
 `PHOTO_RECTIFY`, `NORMALIZE_ILLUMINATION`, `DESKEW`, `BLUR_THRESHOLD`…) · batching (`BATCH_PAGES`, `MAX_UPLOAD_MB`) ·
 geometry (`GUTTER_CLUSTER_TOL`, `MIN_ANCHOR_GAP_FRAC`, `MIN_CLUSTER_SIZE`, `LAST_REGION_PAD_FRAC`) ·
-visuals (`INK_THRESHOLD`, `INK_MIN_BBOX_FRAC`, `REPASS_MIN_SIDE`, `ASSET_PAD_PX`, `OPTION_IMAGE_MODE`) ·
+visuals (`INK_THRESHOLD`, `INK_MIN_BBOX_FRAC`, `REPASS_MIN_SIDE`, `REPASS_MAX_PER_PAGE`, `ASSET_PAD_PX`,
+`OPTION_IMAGE_MODE`) · upload (`PARSE_SOURCE=auto|canonical`) ·
 patterns (`WATERMARK_PATTERNS`, `ANSWER_MARKERS`, `||`-separated regexes) · extras (`QA_VERITY`, `LADDER_*`, `DEBUG_OVERLAYS`).
 
 ---------------------------------------------------------------------------------------------------
@@ -371,4 +381,96 @@ scripts; change the module and run `pytest -q`.
 Replay result (pages 1-5, recorded real responses, no network): **57/57 questions**, 2 need review. Remaining
 real-data weaknesses: span-derived regions can end above the last option line (`d)` partly outside the blue box),
 and 8/57 questions use the equal-split option grid because Extract grounded an option to several lines.
+
+
+---------------------------------------------------------------------------------------------------
+
+## 18. v1.2 — fewer calls, exact images on digital PDFs
+
+Live test (pages 6, 7, 42, 46, 58 of the chemistry PDF, v1.1.1): 42/50 questions, **70 Parse calls for 5 pages**
+(69 region repasses, 24 of which found nothing), 120 credits, 8 min. Parse also silently dropped text (p6 Q66d-Q68
+missing from its markdown with status `ok`) and folded Q528-530 into one figure; Extract dropped Q568 and its
+four structures were attached to Q567.
+
+### What changed
+| Change | Effect |
+|---|---|
+| **PDF-layer geometry** (`stages/pdf_layer.py`) for born-digital pages: question numbers, `a)`-`d)` labels, text lines and figures come from the PDF's own text layer, embedded images and vector strokes | exact per-structure boxes (`pdf_figure`); questions Parse/Extract lost are still emitted (text from the PDF, flag `extract_missing`); **no ink analysis, no repass** on these pages |
+| Item binding by printed question number first, votes only as fallback | fixes off-by-one stem/option assignment on dense pages |
+| Numbered regions without an Extract item need >=3 in-order option labels | answer-key / solution pages produce no junk questions |
+| Original vector pages uploaded for digital pages (`PARSE_SOURCE=auto`) | ~3x smaller uploads, text layer intact; photos still use the canonical PNG |
+| Batch PDFs are byte-deterministic (`no_new_id`) | **re-runs hit the Parse cache** (before, a random PDF `/ID` changed the key every run) |
+| Repass only on photo pages, only for image-only options or figure-sized stem ink, **one mosaic call per page**, capped by `REPASS_MAX_PER_PAGE` | text-only questions never cost an extra call |
+| Option fields nullable in the Extract schema | no `schema_violation` for image-only options |
+
+### Measured on the same 5 pages (offline replay of the recorded live responses)
+| | v1.1.1 live | v1.2 |
+|---|---|---|
+| API calls | 72 (70 parse + 1 extract + ...) | **2** (1 parse + 1 extract) |
+| Questions (50 printed; 81, 530, 575 continue on the next page) | 42 | **46** (all on-page MCQs) |
+| Wrong image assignment | Q567 got Q568's structures; Q73 A crop contained B | none seen |
+| Needs review | 12 | 6 (4 are numbering gaps at the seams of the hand-picked pages) |
+
+### What to expect
+* **Digital PDFs** (like the chemistry book): `2 x ceil(pages / BATCH_PAGES)` calls -> 16 calls for 75 pages.
+  Credits ~ 2.5/page Parse + ~5.5/page Extract (Extract is now ~70% of the bill). Re-runs: 0 credits.
+* **Photo/scan PDFs**: the same 2 calls per batch + at most 1 mosaic call per page that has an unlabelled
+  image-only option or a figure-sized unexplained drawing. Text-only pages add nothing.
+* Unverified until the next live run: Parse on original PDF pages (`PARSE_SOURCE=canonical` restores the old upload),
+  and the mosaic repass against the real API (covered by offline tests only).
+* Still open: questions spanning two pages, 2-D formulas typed as text (`CH3-CH-CH3` with `|` / `OH` underneath) stay
+  text, and the next big cost lever is Extract (see the summary in the PR).
+
+
+---------------------------------------------------------------------------------------------------
+
+## 19. v2 output: `document.json` (local JSON, no database)
+
+Schema: `pipeline/schema.py` (strict pydantic, unknown fields rejected), published as `schemas/document.schema.json`
+(`python -m pipeline.cli schema`). Reading side + constructor contract: `pipeline/reconstruct.py`.
+
+```
+data/<doc_id>/
+  document.json            schema_version "2.0": source, questions[], assets{}
+  image_descriptions.txt   one "=== <asset_id> === ... === end ===" entry per asset (generated from document.json)
+  assets/<qid>/stem_1.png, opt_A_1.png, opt_A_2.png ...   (PNG; paths in JSON are relative, '/' only)
+  output/run_report.json   run statistics, page issues, skipped pages, review list (not needed to rebuild)
+```
+Question (real example, Alcohols p42 Q528 - stem and all four options are pictures):
+```json
+{"qid": "p0042-q528", "number": 528, "section": null,
+ "source": {"pages": [42], "bbox": [0.05445, 0.67649, 1.0, 0.87239]},
+ "stem": [{"type": "image", "asset_id": "p0042-q528/stem/1"}],
+ "options": [{"label": "A", "content": [{"type": "image", "asset_id": "p0042-q528/opt_A/1"}]}, "... B, C, D ..."],
+ "answer": null, "confidence": 0.95, "flags": ["extract_missing"]}
+```
+Asset:
+```json
+"p0042-q528/opt_A/1": {"path": "assets/p0042-q528/opt_A_1.png", "sha256": "124ea84b...", "width": 583, "height": 201,
+  "page": 42, "bbox": [0.11467, 0.74879, 0.34268, 0.80137],
+  "owner": {"qid": "p0042-q528", "role": "option", "option": "A"},
+  "method": "pdf_figure", "certain": true,
+  "description": "The figure displays the structural formula of ... 2-methylbutane ..."}
+```
+Rules: `stem` and each option's `content` are ORDERED lists of `text` (md_latex: inline `$..$`, `<sub>/<sup>`),
+`equation` (display LaTeX), `table` (HTML) and `image` components; an option holds 0..n images; every asset is referenced
+exactly once and names its owner; `certain:false` marks fallback crops (whole option cell / ink box) and estimated
+positions add the question flag `component_order_estimated`. Tables in a stem are ALSO saved as an image
+(`method: table_crop`). `answer.source` is `answer_key` (the chapter's printed key, read locally) or `printed_inline`.
+
+Writes are safe: crops go to `assets.staging/`, the document is validated and integrity-checked against it, then
+swapped in atomically; a failed check leaves the previous output untouched; re-running is idempotent.
+
+### Measured accuracy (22 sample pages from all 11 PDFs, 137 hand-checked questions; `scripts/bench.py`)
+| metric | baseline (pipeline as of the spec) | v2 |
+|---|---|---|
+| question boundaries recall / precision | 94.9 % / 94.9 % | **100 % / 100 %** |
+| complete questions with all 4 options non-empty | 128 / 128 found | **135 / 135** |
+| option text match (176 checked texts) | 96.6 % | 96.6 % |
+| real pictures: precision / recall (19 in GT) | 13.3 % / 84.2 % | **94.7 % / 94.7 %** |
+| picture on the right question/option | 13.3 % | **94.7 %** |
+| rebuildable with all images resolved | - | **100 %**, 0 integrity problems |
+| answers equal to the chapter's printed key | - | 62 / 62 |
+Ground truth: `tests/ground_truth/*.json` (from 110-dpi renders of the original pages, see `build_ground_truth.py`).
+Run: `python scripts/bench.py run --out <dir> --testers <folder>` then `python scripts/bench.py score --out <dir>`.
 

@@ -62,6 +62,9 @@ class Settings:
     asset_pad_px: int = 8
     min_asset_px: int = 24
     repass_min_side: int = 1000
+    repass_max_per_page: int = 4         # photo pages only; all candidates of a page go in ONE mosaic call
+    describe_images: bool = True         # one mosaic call per page whose images Landing AI has not described yet
+    parse_source: str = "auto"           # auto: digital pages are uploaded as original PDF pages | canonical
     ink_threshold: int = 120
     ink_min_bbox_frac: float = 0.002
     gutter_cluster_tol: float = 0.025
@@ -73,6 +76,7 @@ class Settings:
     ladder_profiles: list[str] = field(default_factory=lambda: ["no_rectify", "force_rectify", "hires"])
     ladder_max_pages: int = 20
     debug_overlays: bool = True
+    overlays_all: bool = False           # False: overlays only for pages with errors (rendering every page is slow)
     log_level: str = "INFO"
     watermark_patterns: list[str] = field(default_factory=lambda: [r"matrix\s*science\s*academy", r"^\s*MSA\s*$"])
     answer_markers: list[str] = field(default_factory=lambda: [r"correct\s*option", r"^\s*answer\s*[:.]", r"^\s*ans\s*[:.]"])
@@ -105,6 +109,9 @@ class Settings:
             asset_pad_px=_int("ASSET_PAD_PX", d.asset_pad_px),
             min_asset_px=_int("MIN_ASSET_PX", d.min_asset_px),
             repass_min_side=_int("REPASS_MIN_SIDE", d.repass_min_side),
+            repass_max_per_page=_int("REPASS_MAX_PER_PAGE", d.repass_max_per_page),
+            describe_images=_bool("DESCRIBE_IMAGES", d.describe_images),
+            parse_source=_env("PARSE_SOURCE", d.parse_source),
             ink_threshold=_int("INK_THRESHOLD", d.ink_threshold),
             ink_min_bbox_frac=_float("INK_MIN_BBOX_FRAC", d.ink_min_bbox_frac),
             gutter_cluster_tol=_float("GUTTER_CLUSTER_TOL", d.gutter_cluster_tol),
@@ -115,6 +122,7 @@ class Settings:
             ladder_profiles=[x.strip() for x in _env("LADDER_PROFILES", ",".join(d.ladder_profiles)).split(",") if x.strip()],
             ladder_max_pages=_int("LADDER_MAX_PAGES", d.ladder_max_pages),
             debug_overlays=_bool("DEBUG_OVERLAYS", d.debug_overlays),
+            overlays_all=_bool("OVERLAYS_ALL", d.overlays_all),
             log_level=_env("LOG_LEVEL", d.log_level),
             watermark_patterns=_list("WATERMARK_PATTERNS", d.watermark_patterns),
             answer_markers=_list("ANSWER_MARKERS", d.answer_markers),

@@ -14,10 +14,10 @@ from dataclasses import dataclass, field
 
 from ..config import Settings
 from ..utils.geometry import Box
-from .structure import LEAF, TEXTLIKE, Block
+from .structure import LEAF, TEXTLIKE, Block, key_table_ids
 
-PURE = re.compile(r"^(\d{1,3})[.)]?$")
-START = re.compile(r"^(\d{1,3})[.)]\s+\S")
+PURE = re.compile(r"^\(?(\d{1,3})[.)]?$")                # "10", "10.", "10)", "(10)"
+START = re.compile(r"^\(?(\d{1,3})[.)]\s*[^\d\s.,)]")   # "12. text", "568.Picric", "(27) text"; not "2.5"
 
 
 @dataclass
@@ -32,6 +32,15 @@ class Region:
     batch_id: int = 0
     blocks: list[Block] = field(default_factory=list)   # leaf blocks whose centre is inside box (anchor excluded)
     inline_number: bool = False
+
+
+def _style(b: Block) -> str:
+    """How a question number is printed: (12) | 12. | 12) | 12. Fraction digits / superscripts are 'bare'."""
+    t = re.sub(r"\s+", "", b.plain or "")
+    if t.startswith("("):
+        return "paren"
+    m = re.match(r"^\d{1,3}([.)])", t)
+    return {".": "dot", ")": "bracket"}.get(m.group(1), "bare") if m else "bare"
 
 
 def _chains(cands: list[tuple[int, Block, bool]], min_gap: float, min_size: int):
@@ -62,11 +71,13 @@ def _chains(cands: list[tuple[int, Block, bool]], min_gap: float, min_size: int)
 
 
 def segment_page(blocks: list[Block], W: int, H: int, cfg: Settings, page: int, batch_id: int,
-                 hint: int | None = None) -> list[Region]:
+                 hint: int | None = None, min_gap_frac: float | None = None,
+                 min_cluster: int | None = None) -> list[Region]:
     leaf = [b for b in blocks if b.type in LEAF and not b.watermark]
+    keys = key_table_ids(blocks)
     cands: list[tuple[int, Block, bool]] = []
     for b in leaf:
-        if b.type not in TEXTLIKE or not b.plain:
+        if b.type not in TEXTLIKE or not b.plain or (b.parent and b.parent in keys):
             continue
         t = re.sub(r"\s+", "", b.plain)
         m = PURE.match(t)
@@ -87,14 +98,29 @@ def segment_page(blocks: list[Block], W: int, H: int, cfg: Settings, page: int, 
             groups[-1].append(c)
         else:
             groups.append([c])
-    cols = []
-    leftovers = []
-    for g in groups:
-        chain = _chains(g, cfg.min_anchor_gap_frac * H, cfg.min_cluster_size)
-        if chain:
-            cols.append(sorted(chain, key=lambda c: c[1].box.y0))
-        else:
-            leftovers.append(g)
+    gap = cfg.min_anchor_gap_frac if min_gap_frac is None else min_gap_frac
+
+    def build(min_size: int):
+        cs, lo = [], []
+        for g in groups:
+            chain = _chains(g, gap * H, min_size)
+            if chain:
+                cs.append(sorted(chain, key=lambda c: c[1].box.y0))
+            else:
+                lo.append(g)
+        return cs, lo
+
+    cols, leftovers = build(cfg.min_cluster_size)
+    if not cols and min_cluster is not None and min_cluster < cfg.min_cluster_size:
+        cols, leftovers = build(min_cluster)        # a page holding one single (long) question
+    # one page prints its question numbers in ONE style: on a page numbered "(1) (2) ..." a bare "22" is a
+    # superscript and "12"/"13" are the digits of a stacked fraction, not questions
+    styles = [_style(c[1]) for ch in cols for c in ch]
+    marked = [s for s in styles if s != "bare"]
+    if marked:
+        dominant = max(set(marked), key=marked.count)
+        cols = [ch for ch in cols if sum(_style(c[1]) == dominant for c in ch) * 2 > len(ch)]
+        leftovers = [[c for c in g if _style(c[1]) == dominant] for g in leftovers]
     # continuity rule: a lone number is a real question number if it continues the numbering of another
     # column on this page (or the previous page's last number, `hint`).
     accept = {hint} if hint else set()

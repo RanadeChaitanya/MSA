@@ -48,6 +48,7 @@ class RegionLayout:
     answer_blocks: list[Block]
     flags: list[str] = field(default_factory=list)
     stem_mask_boxes: list[Box] = field(default_factory=list)
+    exact: bool = False          # geometry from the PDF text/vector layer: figures are exact, no ink analysis
 
     @property
     def stem_fallback_text(self) -> str:
@@ -158,6 +159,9 @@ def layout_region(region: Region, cfg: Settings, W: int, H: int) -> RegionLayout
                     flags.append("text_between_options")
     for f in figs:
         placed = False
+        if f.box.overlap_ratio(region.box) > 0.6 and f.box.area > 0.5 * region.box.area:
+            stem_figs.append(f)                 # whole question swallowed into one figure -> stem level
+            continue
         for L, o in options.items():
             if o.box.contains_point(f.box.cx, f.box.cy):
                 o.figs.append(f)
@@ -300,6 +304,14 @@ def layout_from_spans(region: Region, geo, cfg: Settings, W: int, H: int) -> Reg
         if b.type != "figure":
             continue
         placed = False
+        if b.box.overlap_ratio(region.box) > 0.6 and b.box.area > 0.5 * region.box.area:
+            figs_stem.append(b)                 # whole question swallowed into one figure -> stem level
+            continue
+        spanned = sum(1 for o in options.values()
+                      if (i := b.box.intersect(o.box)) is not None and i.area > 0.2 * b.box.area)
+        if spanned >= 2:
+            figs_stem.append(b)                 # one diagram beside/over several options belongs to the stem
+            continue
         for o in options.values():
             if o.box.contains_point(b.box.cx, b.box.cy):
                 o.figs.append(b)

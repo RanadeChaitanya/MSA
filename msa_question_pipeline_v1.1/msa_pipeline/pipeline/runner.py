@@ -18,7 +18,9 @@ from .stages.assemble import QuestionDraft, build_drafts, materialize
 from .stages.canonicalize import canonicalize_page, canonicalize_pdf
 from .stages.parse_stage import parse_pages
 from .stages.qa_confidence import run_verity_qa
-from .stages.validate import error_count, is_error, validate_drafts, validate_final
+from .stages.validate import PAGE_ERRORS, error_count, is_error, validate_drafts, validate_final
+from .triage import triage
+from . import export
 from .stages.visuals import ImageCache
 import os
 
@@ -53,6 +55,7 @@ class Ctx:
     records: dict[int, PageRecord]
     images: ImageCache = None            # type: ignore[assignment]
     pdf_path: Path = None                # type: ignore[assignment]
+    page_kinds: dict = field(default_factory=dict)      # triage kind per page
 
 
 def parse_page_spec(spec: Optional[str], n_pages: int) -> Optional[list[int]]:
@@ -71,7 +74,7 @@ def parse_page_spec(spec: Optional[str], n_pages: int) -> Optional[list[int]]:
 
 def process_pages(ctx: Ctx, page_nums: list[int]) -> dict[int, tuple[list[QuestionDraft], list[str]]]:
     recs = [ctx.records[p] for p in page_nums]
-    brs = parse_pages(ctx.client, recs, ctx.cfg, ctx.paths.lat_raw)
+    brs = parse_pages(ctx.client, recs, ctx.cfg, ctx.paths.lat_raw, src_pdf=ctx.pdf_path)
     out: dict[int, tuple[list[QuestionDraft], list[str]]] = {p: ([], []) for p in page_nums}
     for br in brs:
         drafts, issues = build_drafts(br, ctx)
@@ -92,15 +95,25 @@ def process_document(pdf_path: Path, cfg: Settings, client=None, doc_id: Optiona
     paths = DocPaths.create(cfg.data_dir, doc_id)
     log.info("doc_id=%s", doc_id)
 
+    # ---- free local triage: which pages hold questions, chapters, printed answer keys (no API calls)
+    tri = triage(pdf_path)
+    skipped: dict[int, str] = {}
+    if pages is None:
+        pages = tri.question_pages()
+        skipped = {p: i.kind for p, i in tri.pages.items() if not i.is_question}
+        log.info("triage: %d question page(s), %d skipped (%s)", len(pages), len(skipped), tri.summary()["kinds"])
+
     # ---- stage 0
-    records_list = canonicalize_pdf(pdf_path, paths.canonical, cfg, pages=pages)
+    records_list = canonicalize_pdf(pdf_path, paths.canonical, cfg, pages=pages) if pages else []
     records = {r.page_no: r for r in records_list}
-    write_json(paths.output / "pages.json", [r.model_dump() for r in records_list])
-    if stop_after == "canonicalize":
+    if stop_after == "canonicalize" or not records:
+        write_json(paths.output / "run_report.json", {"pages": [r.model_dump() for r in records_list],
+                                                      "skipped_pages": skipped})
         return DocumentOut(doc_id=doc_id, source_pdf=str(pdf_path), page_count=len(records_list),
                            pages=records_list, questions=[])
     client = client or LatClient(cfg)
-    ctx = Ctx(cfg=cfg, client=client, paths=paths, records=records, pdf_path=pdf_path)
+    ctx = Ctx(cfg=cfg, client=client, paths=paths, records=records, pdf_path=pdf_path,
+              page_kinds={p: i.kind for p, i in tri.pages.items()})
     ctx.images = ImageCache(ctx.records)
 
     # ---- stages 1-5 (+ validation)
@@ -158,16 +171,31 @@ def process_document(pdf_path: Path, cfg: Settings, client=None, doc_id: Optiona
         except Exception as e:
             log.warning("verity QA skipped: %s", e)
 
-    # ---- numbering gap check across the whole document after ladder, then materialise
+    # ---- numbering gap check across the whole document after ladder, then materialise into a staging area
     all_drafts = [d for p in page_nums for d in drafts_by_page[p]]
     validate_drafts(all_drafts)
-    questions = materialize(all_drafts, ctx, paths.assets)
-    validate_final(questions, {p: (r.width, r.height) for p, r in ctx.records.items()}, cfg, root=paths.root)
-    _relativize(questions, paths.root)
+    staging = export.prepare(paths.root)
+    questions = materialize(all_drafts, ctx, staging)
+    for q in questions:                                   # chapter + printed answer key (local, free)
+        chap = tri.chapter_of_page.get(q.page)
+        q.section = chap if chap and not chap.startswith("part ") else None
+        key = tri.keys.get(chap or "", {}) if q.section else {}
+        if q.number in key:
+            # the chapter's printed key wins: Extract maps any answer table in the batch by number alone and
+            # was observed taking another chapter's key
+            q.correct_option, q.answer_source = key[q.number], "answer_key"
+        elif q.correct_option and tri.keys:
+            q.correct_option, q.answer_source = None, None   # keys exist, none for this chapter: don't guess
+    sizes = {p: (r.width, r.height) for p, r in ctx.records.items()}
+    validate_final(questions, sizes, cfg)
 
+    issue_pages = {p for p, iss in issues_by_page.items() if any(i in PAGE_ERRORS for i in iss)}
+    issue_pages |= {q.page for q in questions if any(is_error(f) for f in q.flags)}
     overlays: list[str] = []
-    if cfg.debug_overlays:
-        overlays = draw_overlays(ctx, drafts_by_page, issues_by_page, paths.debug / "overlays")
+    if cfg.debug_overlays and (issue_pages or cfg.overlays_all):
+        overlay_pages = page_nums if cfg.overlays_all else sorted(issue_pages)
+        overlays = draw_overlays(ctx, {p: drafts_by_page[p] for p in overlay_pages},
+                                 {p: issues_by_page[p] for p in overlay_pages}, paths.debug / "overlays")
 
     review = [{"qid": q.qid, "number": q.number, "page": q.page, "confidence": q.confidence,
                "flags": [f for f in q.flags if is_error(f) or f in ("low_ocr_confidence", "stem_possibly_truncated")]}
@@ -175,20 +203,24 @@ def process_document(pdf_path: Path, cfg: Settings, client=None, doc_id: Optiona
               if any(is_error(f) for f in q.flags) or q.confidence < 0.7
               or "stem_possibly_truncated" in q.flags]
     bad_pages = {str(p): [i for i in iss if i] for p, iss in issues_by_page.items() if iss}
-    doc_out = DocumentOut(
-        doc_id=doc_id, source_pdf=str(pdf_path), page_count=len(records),
-        pages=[ctx.records[p].model_copy(update={"canonical_path": _rel(ctx.records[p].canonical_path, paths.root)})
-               for p in page_nums],
-        questions=questions, page_issues=bad_pages,
-        run={"seconds": round(time.time() - t0, 1), "questions": len(questions), "needs_review": len(review),
-             "credits": round(getattr(client, "credits", 0.0), 2), "api_calls": dict(getattr(client, "calls", {})),
-             "cache_hits": getattr(client, "cache_hits", 0),
-             "overlay_dir": (str(Path(overlays[0]).parent.relative_to(paths.root).as_posix()) if overlays else None),
-             "overlay_count": len(overlays)})
-    write_json(paths.output / "questions.json", doc_out.model_dump())
-    write_json(paths.output / "questions_slim.json", slim_export(doc_out))
-    write_json(paths.output / "review_queue.json", {"questions": review, "page_issues": bad_pages})
-    log.info("done: %d questions, %d need review, credits=%.2f", len(questions), len(review), doc_out.run["credits"])
+    run = {"seconds": round(time.time() - t0, 1), "questions": len(questions), "needs_review": len(review),
+           "credits": round(getattr(client, "credits", 0.0), 2), "api_calls": dict(getattr(client, "calls", {})),
+           "cache_hits": getattr(client, "cache_hits", 0), "overlay_count": len(overlays)}
+    with pymupdf.open(str(pdf_path)) as _d:
+        n_pages = _d.page_count
+    document = export.build_document(doc_id, pdf_path, n_pages, page_nums, questions, sizes, staging)
+    report = {"doc_id": doc_id, "run": run, "page_issues": bad_pages, "review": review,
+              "skipped_pages": {str(p): k for p, k in skipped.items()},
+              "pages": [{"page": p, "source": ctx.records[p].source, "profile": ctx.records[p].profile,
+                         "kind": tri.pages[p].kind, "flags": ctx.records[p].flags} for p in page_nums]}
+    export.commit(paths.root, document, report)
+    for q in questions:                                   # in-memory result now points at the committed files
+        for a in list(q.question_images) + [a for o in q.options.values() for a in o.images]:
+            if a.path:
+                a.path = export._rel(a.path, staging)
+    doc_out = DocumentOut(doc_id=doc_id, source_pdf=str(pdf_path), page_count=len(records),
+                          pages=[ctx.records[p] for p in page_nums], questions=questions, page_issues=bad_pages, run=run)
+    log.info("done: %d questions, %d need review, credits=%.2f", len(questions), len(review), run["credits"])
     return doc_out
 
 
@@ -199,24 +231,3 @@ def _rel(path: str, root: Path) -> str:
         return Path(os.path.relpath(path, root)).as_posix()
     except ValueError:                       # different drive on Windows
         return Path(path).as_posix()
-
-
-def _relativize(questions, root: Path) -> None:
-    """All paths in the JSON are relative to the doc folder (data/<doc_id>/) and use forward slashes."""
-    for q in questions:
-        for a in list(q.question_images) + [o.image for o in q.options.values() if o.image]:
-            a.path = _rel(a.path, root)
-
-
-def slim_export(doc: DocumentOut) -> list[dict]:
-    """Minimal consumer-friendly view: text where text, image path only where an image exists."""
-    out = []
-    for q in doc.questions:
-        item = {"number": q.number, "page": q.page, "question": q.text,
-                "question_images": [a.path for a in q.question_images],
-                "options": {L: {"text": o.text, "image": (o.image.path if o.image else None)}
-                            for L, o in sorted(q.options.items())},
-                "correct_option": q.correct_option, "confidence": q.confidence,
-                "needs_review": any(is_error(f) for f in q.flags) or q.confidence < 0.7}
-        out.append(item)
-    return out
