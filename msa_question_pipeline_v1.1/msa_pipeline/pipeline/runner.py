@@ -1,4 +1,4 @@
-﻿"""Orchestrator: PDF -> questions.json (+ assets, overlays, review queue, run report)."""
+"""Orchestrator: PDF -> questions.json (+ assets, overlays, review queue, run report)."""
 from __future__ import annotations
 
 import logging
@@ -99,7 +99,7 @@ def process_document(pdf_path: Path, cfg: Settings, client=None, doc_id: Optiona
     if stop_after == "canonicalize":
         return DocumentOut(doc_id=doc_id, source_pdf=str(pdf_path), page_count=len(records_list),
                            pages=records_list, questions=[])
-    client = client or LatClient(cfg.api_key)
+    client = client or LatClient(cfg)
     ctx = Ctx(cfg=cfg, client=client, paths=paths, records=records, pdf_path=pdf_path)
     ctx.images = ImageCache(ctx.records)
 

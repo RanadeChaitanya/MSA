@@ -36,3 +36,27 @@ def test_ladder_survives_exception():
         raise RuntimeError("x")
     res = run_ladder([1], ["p1"], boom, lambda d, i: 1, cur)
     assert res[1][2] == "rec0"
+
+
+def test_shared_line_option_ranges_are_narrowed():
+    # the live Extract gives every option the range of the whole "a) .. b) .. c) .. d) .." line
+    from pipeline.stages.semantics import narrow_option_span
+    md = "Q1 a) C<sub>2</sub>H<sub>5</sub>OH  b) CH<sub>3</sub>CHO  c) 12  d) 12\n"
+    s, e = 3, len(md) - 1
+    got = {L: md[slice(*narrow_option_span(md, s, e, L, v))] for L, v in
+           (("a", "C<sub>2</sub>H<sub>5</sub>OH"), ("b", "CH<sub>3</sub>CHO"), ("c", "12"), ("d", "12"))}
+    assert got == {"a": "C<sub>2</sub>H<sub>5</sub>OH", "b": "CH<sub>3</sub>CHO", "c": "12", "d": "12"}
+    assert narrow_option_span(md, s, e, "d", "not there") == (s, e)
+
+
+def test_infer_cells_never_returns_inverted_boxes():
+    from pipeline.stages.options import infer_cells
+    region = Box(0, 870, 2481, 1197)
+    same = Box(224, 849, 1945, 912)                            # all options grounded to the same line
+    for known in ({L: same for L in "ABCD"},
+                  {"A": Box(227, 973, 789, 1032), "B": Box(142, 1035, 1818, 1808),
+                   "C": Box(229, 1097, 1337, 1157), "D": Box(228, 1158, 566, 1217)}):
+        notes: list[str] = []
+        cells = infer_cells(known, region, 3509, notes)
+        assert cells and all(c.x1 > c.x0 and c.y1 > c.y0 for c in cells.values()), cells
+        assert notes == ["option_cells_equal_split"]

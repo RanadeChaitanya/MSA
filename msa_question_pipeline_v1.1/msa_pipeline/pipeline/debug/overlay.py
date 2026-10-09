@@ -18,7 +18,9 @@ def draw_overlays(ctx, drafts_by_page: dict[int, list], issues: dict[int, list[s
         dr = ImageDraw.Draw(img)
 
         def rect(b, color, w=3):
-            dr.rectangle([b.x0 * sc, b.y0 * sc, b.x1 * sc, b.y1 * sc], outline=color, width=w)
+            x0, x1 = sorted((b.x0 * sc, b.x1 * sc))      # a degenerate box must never abort the whole run
+            y0, y1 = sorted((b.y0 * sc, b.y1 * sc))
+            dr.rectangle([x0, y0, x1, y1], outline=color, width=w)
 
         for d in drafts_by_page.get(p, []):
             if "no_geometry" in d.flags:

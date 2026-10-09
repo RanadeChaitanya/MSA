@@ -187,7 +187,7 @@ def _rel(a: Box, b: Box, tol_y: float, tol_x: float) -> str:
     return "diag"
 
 
-def infer_cells(known: dict[str, Box], region: Box, H: float) -> dict[str, Box]:
+def infer_cells(known: dict[str, Box], region: Box, H: float, notes: Optional[list[str]] = None) -> dict[str, Box]:
     """Grid cells (A..D) from the content boxes of the options we could ground. Supports 2x2, 1x4, 4x1.
     Missing options (image-only) get the cell their slot implies."""
     if len(known) < 2:
@@ -252,10 +252,18 @@ def infer_cells(known: dict[str, Box], region: Box, H: float) -> dict[str, Box]:
     fill(rowr, nrows, region.y0, region.y1)
 
     def bounds(rng: dict[int, tuple[float, float]], n: int, lo: float, hi: float) -> list[float]:
+        hi = max(hi, lo + 1.0)
         b = [lo]
         for k in range(n - 1):
             b.append((rng[k][1] + rng[k + 1][0]) / 2)
         b.append(hi)
+        # Out-of-order grounding (e.g. option C's slice landing right of D) or a pitch extrapolated past the
+        # region gives non-increasing bounds -> inverted cells that break cropping. Fall back to an equal split.
+        min_gap = 8.0                                  # px; anything thinner is not a real cell
+        if any(b1 - b0 < min_gap for b0, b1 in zip(b, b[1:])):
+            if notes is not None and "option_cells_equal_split" not in notes:
+                notes.append("option_cells_equal_split")
+            b = [lo + (hi - lo) * k / n for k in range(n + 1)]
         return b
     top = min(b.y0 for b in known.values()) - 0.012 * H
     xb = bounds(colr, ncols, region.x0, region.x1)
@@ -280,7 +288,7 @@ def layout_from_spans(region: Region, geo, cfg: Settings, W: int, H: int) -> Reg
     known = {L: Box.union_all(bs) for L, bs in opt_lines.items() if bs}
     stem_lines = [p.line for p in pcs("stem") if p.line is not None] + \
                  [p.line for p in pcs("number") if p.line is not None]
-    cells = infer_cells(known, region.box, H) if len(known) >= 2 else {}
+    cells = infer_cells(known, region.box, H, flags) if len(known) >= 2 else {}
     if not cells:
         flags.append("no_option_cells")
     options = {L: OptionRegion(L, c, mask_boxes=opt_masks.get(L, []), geom_boxes=opt_lines.get(L, []),

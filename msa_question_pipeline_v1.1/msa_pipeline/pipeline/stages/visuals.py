@@ -118,10 +118,9 @@ def repass_region(client, img: Image.Image, box: Box, cfg: Settings) -> list[tup
     crop.save(buf, format="PNG")
     try:
         out = client.parse(buf.getvalue(), "region.png", options={"inline_markdown": False, "atomic_grounding": False})
-    except Exception as e:
-        import logging
-        logging.warning(f"repass_region failed cleanly: {e}")
-        return None
+    except Exception as e:                       # a failed repass degrades to ink_fallback, never kills the run
+        log.warning("repass_region failed: %s", e)
+        return []
     cw, ch = x1 - x0, y1 - y0
     found = []
     for el in iter_nodes(out.get("structure") or {}):

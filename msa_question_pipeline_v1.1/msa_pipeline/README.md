@@ -8,7 +8,9 @@ a few deterministic local steps (page repair, cropping, validation) surround it.
 > * Built and tested **offline** against a fake Landing AI client that reproduces the *documented* Gen2
 >   response shapes (`structure` tree, markdown ranges, Extract `spans`). 7/7 tests pass.
 > * First real run (75-page chemistry PDF) exposed serious defects; **v1.1 fixes them — see section 16.**
->   v1.1 is again verified offline only (9 tests incl. a regression that reproduces the real failure).
+> * v1.1.1 (section 17) repairs regressions introduced by ad-hoc patch scripts (Extract always failed → 0 questions)
+>   and two bugs only visible on real responses. Verified by 17 offline tests **and** an offline replay of the
+>   recorded real Parse/Extract responses for pages 1-5 (57/57 questions).
 > * Your API key goes in `.env` (`LANDING_API_KEY=APIKEYHERE` is a placeholder; the client refuses to start with it).
 
 ---------------------------------------------------------------------------------------------------
@@ -74,7 +76,7 @@ question; an image can never hold two roles — validated).
 | Call | Request | Response used |
 |---|---|---|
 | `POST {BASE}/v2/parse` | multipart `document` (PDF/PNG), `model`, `options` (JSON string) | `markdown`, `structure` (pages → blocks), `metadata.failed_pages`, billing |
-| `POST {BASE}/v2/extract` | multipart `markdown` (file part), `schema` (JSON string), `model`, `options={"strict":false}` | `extraction`, `extraction_metadata` (per leaf `{value, spans}`), warnings, `schema_violation_error` |
+| `POST {BASE}/v2/extract` | multipart `markdown` (file part), `schema` (JSON string), `model`, `options={"strict":false}` | `extraction`, `extraction_metadata` (per leaf `{value, ranges:[{start,end}]}`), warnings, `schema_violation_error` |
 | `POST {BASE}/v2/ground` | JSON `extraction_metadata` + `structure` | **not used by default** (client-side overlap is free, one fewer call, works for ZDR orgs; method kept in client) |
 
 * Auth: `Authorization: Bearer <key>`. Status: 200 ok · **206 partial (`failed_pages`, 1-indexed)** · 422 validation · 429 rate limit.
@@ -278,7 +280,7 @@ patterns (`WATERMARK_PATTERNS`, `ANSWER_MARKERS`, `||`-separated regexes) · ext
 ---------------------------------------------------------------------------------------------------
 
 ## 11. Known limitations (honest list)
-1. Never run against the live API yet (section 3 lists what to verify).
+1. Live API verified for Parse + Extract (cached responses under `data/cache/lat/`); Ground and Verity still unverified.
 2. Questions that **continue onto the next page/column** are not stitched; the fragment gets flags and goes to review.
 3. A page with a single numbered question in a column and no numbering continuity may be missed → `no_questions_found`.
 4. Option labels must exist as printed glyphs (A/B/C/D, (A), A.). Unlabelled options → table-cell fallback or review.
@@ -341,3 +343,32 @@ figures-inside-tables are represented, which is the one thing still inferred rat
 * Images **inside table cells** that Parse doesn't list as `figure` blocks are found only when ink analysis is
   possible (line-level geometry present) — then via repass. If your `diagnose` output shows opaque tables without
   atomic lines, expect missed images there and `coarse_geometry` flags.
+
+
+---------------------------------------------------------------------------------------------------
+
+## 17. v1.1.1 — failure scan of the latest run and fixes
+
+Latest run (`ALCOHOLS, PHENOLS AND ETHERS-1 (1)-compressed.pdf`, pages 1-5) produced **0 questions**:
+`page_issues["1"] = "extract_failed: all JSON text shapes failed on /v2/extract"`, `credits: 0`, `api_calls: {}`.
+
+| # | Symptom | Root cause | Fix |
+|---|---|---|---|
+| 1 | Every Extract call fails → 0 questions | `lat/client.py` had been rewritten to POST the markdown as a **JSON string field** to guessed endpoints (`/v1/extract`, `/v2/parse/extract`) with the **parse model** (`dpt-3-pro-latest`). Extract needs multipart `markdown` as a *file part* + `model=extract-latest` (section 3; proven by the cached real responses) | Client restored to the documented contract: `LatClient(cfg)`, `parse(data, filename, model, options)`, `extract(markdown, schema)` |
+| 2 | No cache, no credit/call counting, 429 not retried, placeholder key accepted | Same rewrite dropped the disk cache, billing tally, `Retry-After`, 5xx/429 retry and the `APIKEYHERE` guard | Restored (re-runs of cached pages are free again) |
+| 3 | 200-DPI renders, no photo rectification / illumination / blur gate, ladder crashed (`dict("no_rectify")`), accepted pages overwritten (`page_001.png`) | `stages/canonicalize.py` replaced by a stub returning a different record type | Real stage 0 restored (`PageRecord`, `PROFILES`, `page_0001__<profile>.png`) |
+| 4 | `profile` was a dict in `questions.json`; `models.py` loosened to `Any` | Knock-on of #3 | `profile: str`, `DocumentOut.pages: list[PageRecord]` again |
+| 5 | Deskew crashed on OpenCV 5 | `HoughLinesP` returns `(N,4)` in OpenCV 5 vs `(N,1,4)` before | `reshape(-1, 4)` (the only patch-script change kept) |
+| 6 | A failed region repass would crash with `TypeError` | patched `repass_region` returned `None` | returns `[]` → falls back to `ink_fallback` |
+| 7 | (real data) all 4 options of a line got the *same* box → zero-width cells | live Extract returns the **whole line** range for each option of `a) X  b) Y  c) Z  d) W` | `semantics.narrow_option_span`: narrows each option range to its own (label-anchored) text before grounding |
+| 8 | (real data) overlay crash `y1 must be greater than or equal to y0`; inverted crops | `infer_cells` produced non-monotonic bounds for out-of-order grounding / rows extrapolated past the region | bounds validated; equal split fallback flagged `option_cells_equal_split` (warning); overlay normalises boxes |
+| 9 | Real API key committed in `.env.example` / `.env.bak_v1_2` | patch scripts copied `.env` | placeholder restored; **rotate the key** — it is in git history and on GitHub |
+
+The one-off patch scripts (`fix_*.py`, `patch_network_safety.py`, `repair_canonicalize.py`, `apply_*.py`) and
+`*.bak_*` files were removed: re-running them would re-introduce #1-#4. Do not edit `pipeline/` with regex patch
+scripts; change the module and run `pytest -q`.
+
+Replay result (pages 1-5, recorded real responses, no network): **57/57 questions**, 2 need review. Remaining
+real-data weaknesses: span-derived regions can end above the last option line (`d)` partly outside the blue box),
+and 8/57 questions use the equal-split option grid because Extract grounded an option to several lines.
+

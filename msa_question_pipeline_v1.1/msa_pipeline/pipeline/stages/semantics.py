@@ -1,4 +1,4 @@
-﻿"""STAGE 2 - Question semantics via Landing AI Extract, grounded CLIENT-SIDE. (Semantic-first)
+"""STAGE 2 - Question semantics via Landing AI Extract, grounded CLIENT-SIDE. (Semantic-first)
 
 Extract(markdown, schema) -> per-field {value, spans}; spans are [start,end) code-point offsets into the markdown
 we sent. Parse blocks (and their atomic lines) carry ranges in the same coordinate system, so each field is
@@ -13,7 +13,6 @@ Extract is the SOURCE OF TRUTH for which questions exist. Geometry is attached a
 No extracted question is ever dropped for lack of geometry.
 """
 from __future__ import annotations
-from pathlib import Path
 
 import logging
 import re
@@ -81,6 +80,23 @@ def _spans_of(leaf) -> list[tuple[int, int]]:
         if isinstance(r, dict) and "start" in r and "end" in r:
             out.append((int(r["start"]), int(r["end"])))
     return out
+
+
+def narrow_option_span(md: str, s: int, e: int, label: str, value) -> tuple[int, int]:
+    """The live Extract returns the WHOLE shared line ("a) X  b) Y  c) Z  d) W") as the range of every option.
+    Narrow it to this option's own text so ground_span can slice the line per option. Label-anchored match
+    first ("b) Y", "(b) Y", "B. Y"), then a unique plain match; otherwise the range is left as it was."""
+    v = str(value or "").strip()
+    if not v or e - s <= len(v) + 4:
+        return s, e
+    seg = md[s:e]
+    m = re.search(r"[\(\[]?[" + label.lower() + label.upper() + r"][\)\].]\s*(" + re.escape(v) + ")", seg)
+    if m:
+        return s + m.start(1), s + m.end(1)
+    if seg.count(v) == 1:
+        i = seg.index(v)
+        return s + i, s + i + len(v)
+    return s, e
 
 
 def ground_span(br: BatchResult, s: int, e: int) -> list[Piece]:
@@ -211,7 +227,7 @@ def run_semantics(client, br: BatchResult, regions: list[Region], sizes: dict[in
     if len((br.markdown or "").strip()) < 20:
         return res
     try:
-        ext = client.extract(text=br.markdown, schema=QUESTION_SCHEMA)
+        ext = client.extract(br.markdown, QUESTION_SCHEMA)
     except Exception as e:
         res.notes.append(f"extract_failed:{str(e)[:100]}")
         log.error("Extract failed: %s", e)
@@ -232,6 +248,8 @@ def run_semantics(client, br: BatchResult, regions: list[Region], sizes: dict[in
                 continue
             pcs: list[Piece] = []
             for s, e in _spans_of(leaf):
+                if name.startswith("option_"):
+                    s, e = narrow_option_span(br.markdown, s, e, name[-1], item.get(name))
                 pcs.extend(ground_span(br, s, e))
             if pcs:
                 geo.fields[name] = pcs

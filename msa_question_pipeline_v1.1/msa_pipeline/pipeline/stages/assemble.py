@@ -10,7 +10,7 @@ import logging
 import re
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any, Optional
+from typing import Optional
 
 from ..config import Settings
 from ..models import OptionOut, QuestionOut
@@ -51,7 +51,7 @@ class QuestionDraft:
     q_visuals: list[VisualRef] = field(default_factory=list)
     flags: list[str] = field(default_factory=list)
     ocr_conf: Optional[float] = None
-    profile: Any = None
+    profile: str = "default"
     order_idx: int = 0            # position in Extract's reading order (reliable) - drives output order
 
 

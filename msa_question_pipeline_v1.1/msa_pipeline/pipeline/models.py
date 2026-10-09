@@ -1,7 +1,7 @@
 """Pydantic data contracts that cross stage boundaries and the final JSON output."""
 from __future__ import annotations
 
-from typing import Any, Optional
+from typing import Optional
 
 from pydantic import BaseModel, Field
 
@@ -53,7 +53,7 @@ class QuestionOut(BaseModel):
     options: dict[str, OptionOut] = Field(default_factory=dict)
     confidence: float = 1.0
     ocr_confidence: Optional[float] = None
-    profile: Any = None
+    profile: str = "default"
     flags: list[str] = Field(default_factory=list)
 
 
@@ -61,7 +61,7 @@ class DocumentOut(BaseModel):
     doc_id: str
     source_pdf: str
     page_count: int
-    pages: list[Any] = []
+    pages: list[PageRecord]
     questions: list[QuestionOut]
     page_issues: dict[str, list[str]] = Field(default_factory=dict)
     run: dict = Field(default_factory=dict)
