@@ -361,10 +361,18 @@ def _item_page(i: int, res: SemanticResult, meta: list, spans: list) -> Optional
     return None
 
 
-def _check_local(res: SemanticResult, ext: dict, regions: list[Region], br: BatchResult) -> dict[int, str]:
+def _check_local(res: SemanticResult, ext: dict, regions: list[Region], br: BatchResult,
+                 item_bad: Optional[dict[int, str]] = None) -> dict[int, str]:
     """Pages whose local split is not proven right -> reason. A page passes only if every question region on it
     is matched by a local item that is structurally complete AND whose every text piece lies inside that region
-    (catches headers, the other column's text and merged questions, which structure alone cannot see)."""
+    (catches headers, the other column's text and merged questions, which structure alone cannot see).
+    With `item_bad`, failures of ONE numbered question go there (item index -> reason) instead of failing its page,
+    so the fallback can re-extract just that question."""
+    def fail(i: int, page: int, why: str) -> None:
+        if item_bad is not None and res.items[i].get("number"):
+            item_bad.setdefault(i, why)
+        else:
+            bad.setdefault(page, why)
     from .local_extract import validate
     meta = (ext.get("extraction_metadata") or {}).get("questions") or []
     spans = _page_spans(br)
@@ -383,7 +391,7 @@ def _check_local(res: SemanticResult, ext: dict, regions: list[Region], br: Batc
         one = {"extraction": {"questions": [item]}}
         why = validate(one, set())
         if why:
-            bad.setdefault(page, why)
+            fail(i, page, why)
             continue
         r = region_of.get(i)
         if r is None:
@@ -399,7 +407,7 @@ def _check_local(res: SemanticResult, ext: dict, regions: list[Region], br: Batc
             out = [pc for pc in pcs if not r.box.contains_point(pc.box.cx, pc.box.cy) and
                    any(o.page == pc.page and o.box.contains_point(pc.box.cx, pc.box.cy) for o in others)]
             if out:
-                bad.setdefault(page, f"q{item.get('number')}: {name} text outside its question")
+                fail(i, page, f"q{item.get('number')}: {name} text outside its question")
                 break
     return bad
 
@@ -414,8 +422,10 @@ def run_semantics(client, br: BatchResult, regions: list[Region], sizes: dict[in
         loc = local_extract(br.markdown)
         res = _ground(loc, br)
         _bind(res, regions)
-        bad = _check_local(res, loc, regions, br)
-        if not bad or mode == "local":
+        item_bad: dict[int, str] = {}
+        bad = _check_local(res, loc, regions, br, None if (br.metadata or {}).get("source") == "pdf_text_layer"
+                           else item_bad)
+        if not bad and not item_bad or mode == "local":
             res.notes.append("text_source:local" if not bad else "text_source:local_unverified")
             return res
         if (br.metadata or {}).get("source") == "pdf_text_layer":
@@ -425,19 +435,33 @@ def run_semantics(client, br: BatchResult, regions: list[Region], sizes: dict[in
         # per-page fallback: Extract only reads the markdown of the pages that failed (cost ~ text length)
         spans = _page_spans(br)
         meta = (loc.get("extraction_metadata") or {}).get("questions") or []
-        keep = [i for i in range(len(res.items)) if _item_page(i, res, meta, spans) not in bad]
+        page_of = {i: _item_page(i, res, meta, spans) for i in range(len(res.items))}
+        from .local_extract import _KEY, _TABLE
+        keys = [m.start() for m in _TABLE.finditer(br.markdown) if _KEY.search(m.group(0))]   # never send a key grid
+        item_bad = {i: w for i, w in item_bad.items() if page_of[i] not in bad}
+        keep = [i for i in range(len(res.items)) if page_of[i] not in bad and i not in item_bad]
         merged_items = [loc["extraction"]["questions"][i] for i in keep]
         merged_meta = [meta[i] for i in keep]
-        for page, a, b in spans:
-            if page not in bad:
+        starts = keys + sorted(min((s0 for leaf in m.values() for s0, _ in _spans_of(leaf)), default=10 ** 9) for m in meta)
+        jobs = [(a, b, None) for page, a, b in spans if page in bad]
+        for i in item_bad:                            # one question's slice: Extract cost ~ its output, ~1/3 of a page
+            a = min((s0 for leaf in meta[i].values() for s0, _ in _spans_of(leaf)), default=None)
+            pa, pb = next(((x, y) for pg, x, y in spans if pg == page_of[i]), (0, len(br.markdown)))
+            if a is None:
                 continue
+            b = min([x for x in starts if x > a] + [pb])
+            jobs.append((a, b, str(res.items[i].get("number"))))
+        for a, b, number in jobs:
             try:
                 ext = client.extract(br.markdown[a:b], QUESTION_SCHEMA)
             except Exception as e:
-                log.error("Extract fallback failed for page %s: %s", page, e)
+                log.error("Extract fallback failed for markdown %d-%d: %s", a, b, e)
                 continue
             its = (ext.get("extraction") or {}).get("questions") or []
             mts = (ext.get("extraction_metadata") or {}).get("questions") or []
+            if number is not None:                    # a question slice: keep only that question
+                pick = [k for k, it in enumerate(its) if str(it.get("number") or "").strip() == number] or its[:1]
+                its, mts = [its[k] for k in pick], [mts[k] for k in pick if k < len(mts)]
             for k, it in enumerate(its):
                 mt = mts[k] if k < len(mts) and isinstance(mts[k], dict) else {}
                 shifted = {}
@@ -460,7 +484,9 @@ def run_semantics(client, br: BatchResult, regions: list[Region], sizes: dict[in
                   "extraction_metadata": {"questions": [merged_meta[k] for k in order]}}
         res = _ground(merged, br)
         _bind(res, regions)
-        res.notes.append("text_source:local+extract_pages:" + ",".join(f"{p}({w[:40]})" for p, w in sorted(bad.items())))
+        res.notes.append("text_source:local+extract_pages:" + ",".join(f"{p}({w[:40]})" for p, w in sorted(bad.items()))
+                         + ";extract_questions:" + ",".join(f"{res.items[i].get('number')}({w[:40]})"
+                                                            for i, w in sorted(item_bad.items())))
         return res
     try:
         ext = client.extract(br.markdown, QUESTION_SCHEMA)

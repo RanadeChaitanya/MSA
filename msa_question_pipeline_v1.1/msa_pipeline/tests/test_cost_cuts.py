@@ -39,3 +39,25 @@ def test_pdf_text_ranges_point_at_their_text(tmp_path):
             assert got == b.plain.strip() or got.endswith(")"), (b.plain, got)
     qs = {q["number"]: q for q in local_extract(br.markdown)["extraction"]["questions"]}
     assert qs["1"]["option_a"] == "Ethane" and qs["3"]["option_d"] == "None"
+
+
+def test_local_split_value_printed_before_its_bare_label():
+    md = ("1 Truth values of p and q are\nT, T\n [ ] A)\n [ ] B) F, T\n [ ] C) T, F\nF, F\n [ ] D)\n\n"
+          "2 Volume occupied in bcc?\n74%\n [ ] A)\n52.36%\n [ ] B)\n68%\n [ ] C)\n80%\n [ ] D)\n\n"
+          "3 Which?\n A)\n B) x\n C) y\n D) z\n")
+    qs = {q["number"]: q for q in local_extract(md)["extraction"]["questions"]}
+    assert [qs["1"][f"option_{L}"] for L in "abcd"] == ["T, T", "F, T", "T, F", "F, F"]
+    assert [qs["2"][f"option_{L}"] for L in "abcd"] == ["74%", "52.36%", "68%", "80%"]
+    assert qs["3"]["stem"] == "Which?" and qs["3"]["option_a"] == ""      # the stem is never taken as an option
+
+
+def test_local_split_rejects_ocr_debris():
+    ok = "2 Next?\n A) p\n B) q\n C) r\n D) s\n"
+    assert "empty" in validate(local_extract("1 Which?\n [x] A) _\n [ ] B) F, T\n C) x\n D) y\n" + ok), {1, 2})
+    assert "debris" in validate(local_extract("1 Which?\n A) p\n B) F, T [x]\n C) x\n D) y\n" + ok), {1, 2})
+
+
+def test_local_split_debris_after_bare_label_takes_value_before():
+    md = "1 If r is false, p and q are\nT , F\n [x] A) _\n [ ] B) F , F\n [ ] C) F , T\n [ ] D) T , T\n2 Next?\n A) p\n B) q\n C) r\n D) s\n"
+    q = local_extract(md)["extraction"]["questions"][0]
+    assert [q[f"option_{L}"] for L in "abcd"] == ["T , F", "F , F", "F , T", "T , T"]

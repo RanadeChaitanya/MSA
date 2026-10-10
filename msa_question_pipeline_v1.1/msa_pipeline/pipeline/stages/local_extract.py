@@ -25,7 +25,8 @@ NOISE = re.compile(r"^\s*(?:impulse\s*batch|matrix\s*science|msa\s*$|rabhchemia|
                    r"q\d{3,6}\s*$|\[\d+\]\s*$|●)", re.I)
 HEADER = re.compile(r"^\s*\d{1,2}\s*[-–]\s*[A-Z][A-Za-z ,&'()/-]{2,}$")          # "1-ROTATIONAL DYNAMICS"
 QNUM = re.compile(r"^\s*(?:\*\*)?\(?(\d{1,3})(?:\*\*)?(?:\s*[.)](?:\*\*)?(?=\s|$|[^\d\s.,])|(?=\s|$))")
-LABEL = re.compile(r"(?:(?<=[\s,;])|^)(?:\[\s?\]\s*)?\(?([A-Da-d])\)?[).](?=\s|$)|^\s*\[\s?\]\s*([A-D])(?=\s)")
+LABEL = re.compile(r"(?:(?<=[\s,;])|^)(?:\[[\sxX]?\]\s*)?\(?([A-Da-d])\)?[).](?=\s|$)|^\s*\[[\sxX]?\]\s*([A-D])(?=\s)")
+_BOX = re.compile(r"\[[\sxX]?\]")                   # a stray checkbox left inside a value
 CORRECT = re.compile(r"correct\s*option\s*[:.\-]?\s*\(?([A-D])\b", re.I)
 ORDER = "ABCD"
 _KEY = re.compile(r"answer\s*key|q\s*\.\s*no\b|\bans\b", re.I)
@@ -60,6 +61,7 @@ class _Q:
     cur: Optional[str] = None
     correct: Optional[str] = None
     tail: bool = False         # last question before a page break / end: may continue on the next page
+    ev: list = field(default_factory=list)     # ("t", piece, whole_line) / ("L", letter, bare) / ("f",) in order
 
 
 def _units(md: str) -> list[_Unit]:
@@ -131,6 +133,7 @@ def split(md: str) -> list[_Q]:
                     q.opt_fig[q.cur] = True
                 else:
                     q.stem_fig = True
+                q.ev.append(("f",))
             continue
         t = u.text
         if not t or NOISE.match(t) or (HEADER.match(t) and not u.cell):
@@ -164,26 +167,36 @@ def split(md: str) -> list[_Q]:
             q.correct = cm.group(1).upper()
             continue
         pos = 0
+        bare = len(labs) == 1 and not t[:labs[0][1]].strip() and not _real(t[labs[0][2]:])
+        if bare:
+            t = t[:labs[0][2]]                     # "[x] A) _": OCR debris after a bare label is dropped
         for L, a, b in labs:
             if a > pos:
                 _add(q, t[pos:a], u.start + pos)
             q.cur = L
             q.order.append(L)
             q.opts.setdefault(L, [])
+            q.ev.append(("L", L, bare))
             pos = b
         if pos < len(t):
-            _add(q, t[pos:], u.start + pos)
+            _add(q, t[pos:], u.start + pos, whole=not labs)
     if qs:
         qs[-1].tail = True
     return qs
 
 
-def _add(q: _Q, text: str, start: int) -> None:
+def _real(v: str) -> bool:
+    """Has a letter, digit or math: anything else ("_", "|", "-") is OCR debris, not an option value."""
+    return any(c.isalnum() or c in "$\\" for c in v)
+
+
+def _add(q: _Q, text: str, start: int, whole: bool = False) -> None:
     s = text.strip()
     if not s:
         return
     off = start + (len(text) - len(text.lstrip()))
     piece = (s, off, off + len(s))
+    q.ev.append(("t", piece, whole))
     if q.cur is None:
         q.stem.append(piece)
     else:
@@ -194,6 +207,7 @@ def _choose(q: _Q) -> dict[str, list[tuple[str, int, int]]]:
     """Options = the label run in the question's case; lowercase a)-d) inside an uppercase question stay stem."""
     upper = [L for L in q.order if L.isupper()]
     use_upper = len(set(upper)) >= 2
+    _value_before(q, use_upper)
     out: dict[str, list] = {}
     for L in ORDER:
         key = L if use_upper else L.lower()
@@ -213,6 +227,37 @@ def _choose(q: _Q) -> dict[str, list[tuple[str, int, int]]]:
     return out
 
 
+def _value_before(q: _Q, use_upper: bool) -> None:
+    """OCR of a two-column option grid often emits a value on the line BEFORE its bare label ("T, T\n[ ] A)").
+    Walking back from the end: a bare label followed by nothing / another label / a line a later label already
+    took owns the whole line just before it. If any label claims that way, options are rebuilt from the events;
+    the stem always keeps its first line, so a question text can never become an option."""
+    ev = q.ev
+    is_opt = (lambda L: L.isupper()) if use_upper else (lambda L: L.islower())
+    claim: dict[int, str] = {}
+    stem_first = next((k for k, e in enumerate(ev) if e[0] == "t"), None)
+    for k in range(len(ev) - 1, -1, -1):
+        e = ev[k]
+        if e[0] != "L" or not e[2] or not is_opt(e[1]):
+            continue
+        nxt = ev[k + 1] if k + 1 < len(ev) else None
+        if nxt is not None and not (nxt[0] == "L" or (k + 1) in claim):
+            continue
+        prv = ev[k - 1] if k else None
+        if prv and prv[0] == "t" and prv[2] and (k - 1) not in claim and k - 1 != stem_first:
+            claim[k - 1] = e[1]
+    if not claim:
+        return
+    q.stem, q.opts = [], {L: [] for L in q.opts}
+    cur = None
+    for k, e in enumerate(ev):
+        if e[0] == "L":
+            cur = e[1]
+        elif e[0] == "t":
+            owner = claim.get(k, cur)
+            (q.opts[owner] if owner else q.stem).append(e[1])
+
+
 def local_extract(md: str) -> dict:
     items, meta = [], []
     for q in split(md):
@@ -227,7 +272,7 @@ def local_extract(md: str) -> dict:
             k = f"option_{L.lower()}"
             it[k] = " ".join(p[0] for p in ps) if ps else (None if L not in opts else "")
             mt[k] = {"value": it[k], "ranges": [{"start": a, "end": b} for _, a, b in ps] if ps else None}
-        it["_figs"] = {L: bool(q.opt_fig.get(L) or q.opt_fig.get(L.lower())) for L in ORDER}
+        it["_figs"] = {L: bool(q.opt_fig.get(L) or q.opt_fig.get(L.lower())) for L in ORDER} | {"stem": q.stem_fig}
         it["_tail"] = q.tail
         items.append(it)
         meta.append(mt)
@@ -247,16 +292,19 @@ def validate(ext: dict, region_numbers: set[int]) -> Optional[str]:
         return "duplicate numbers"
     for q in qs:
         tag = q.get("number") or "?"
-        if q.get("_tail") and all(q.get(f"option_{L.lower()}") is None for L in ORDER):
+        if q.get("_tail") and all(q.get(f"option_{L.lower()}") is None for L in ORDER) \
+                and not (q.get("_figs") or {}).get("stem"):      # options may be printed inside the figure
             continue                     # continues on the next page (options there): Extract can't do better
         if not (q.get("stem") or "").strip():
             return f"q{tag}: empty stem"
         for L in ORDER:
             v = q.get(f"option_{L.lower()}")
             if v is None:
-                if q.get("_tail"):
+                if q.get("_tail") and not (q.get("_figs") or {}).get("stem"):
                     continue             # a page-end question cut after some options
                 return f"q{tag}: option {L} missing"
             if not v.strip() and not q["_figs"][L]:
                 return f"q{tag}: option {L} empty without a figure"
+            if v.strip() and (_BOX.search(v) or not _real(v)):   # OCR debris
+                return f"q{tag}: option {L} has OCR debris"
     return None
