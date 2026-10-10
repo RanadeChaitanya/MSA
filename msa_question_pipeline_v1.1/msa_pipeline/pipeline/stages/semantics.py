@@ -451,6 +451,11 @@ def run_semantics(client, br: BatchResult, regions: list[Region], sizes: dict[in
                 continue
             b = min([x for x in starts if x > a] + [pb])
             jobs.append((a, b, str(res.items[i].get("number"))))
+        # values the local split saw but could not place (one option empty, another holding two values): the
+        # printed order is lost in the OCR text, so Extract's answer is a guess -> the question goes to review
+        uncertain = {str(res.items[i].get("number")) for i in item_bad
+                     if any(not (meta[i].get(f"option_{x}") or {}).get("ranges") for x in "abcd")
+                     and any(len((meta[i].get(f"option_{x}") or {}).get("ranges") or []) >= 2 for x in "abcd")}
         for a, b, number in jobs:
             try:
                 ext = client.extract(br.markdown[a:b], QUESTION_SCHEMA)
@@ -473,6 +478,8 @@ def run_semantics(client, br: BatchResult, regions: list[Region], sizes: dict[in
                         if leaf.get("spans"):
                             leaf["spans"] = [[x + a, y + a] for x, y in leaf["spans"]]
                     shifted[name] = leaf
+                if number is not None and number in uncertain:
+                    it = dict(it, _order_uncertain=True)
                 merged_items.append(it)
                 merged_meta.append(shifted)
 

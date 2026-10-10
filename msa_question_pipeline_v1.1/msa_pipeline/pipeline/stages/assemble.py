@@ -143,6 +143,8 @@ def _make_draft(region: Region, layout: RegionLayout, item: Optional[dict], geo,
     if item is None:
         d.flags.append("extract_missing")
     else:
+        if item.get("_order_uncertain"):
+            d.flags.append("option_order_uncertain")
         n = _digits(item.get("number"))
         if n and region.number and int(n) != region.number:
             d.flags.append("number_mismatch")

@@ -28,6 +28,7 @@ import os
 from .utils.io import sha256_file, slug, write_json
 
 log = logging.getLogger("pipeline.runner")
+_REVIEW = ("low_ocr_confidence", "stem_possibly_truncated", "option_order_uncertain")   # review, never a paid retry
 
 
 @dataclass
@@ -227,10 +228,9 @@ def process_document(pdf_path: Path, cfg: Settings, client=None, doc_id: Optiona
                                  {p: issues_by_page[p] for p in overlay_pages}, paths.debug / "overlays")
 
     review = [{"qid": q.qid, "number": q.number, "page": q.page, "confidence": q.confidence,
-               "flags": [f for f in q.flags if is_error(f) or f in ("low_ocr_confidence", "stem_possibly_truncated")]}
+               "flags": [f for f in q.flags if is_error(f) or f in _REVIEW]}
               for q in questions
-              if any(is_error(f) for f in q.flags) or q.confidence < 0.7
-              or "stem_possibly_truncated" in q.flags]
+              if any(is_error(f) for f in q.flags) or q.confidence < 0.7 or any(f in _REVIEW for f in q.flags)]
     bad_pages = {str(p): [i for i in iss if i] for p, iss in issues_by_page.items() if iss}
     run = {"seconds": round(time.time() - t0, 1), "questions": len(questions), "needs_review": len(review),
            "credits": round(getattr(client, "credits", 0.0), 2), "api_calls": dict(getattr(client, "calls", {})),
