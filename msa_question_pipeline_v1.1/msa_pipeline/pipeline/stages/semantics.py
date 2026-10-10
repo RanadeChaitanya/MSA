@@ -423,12 +423,12 @@ def run_semantics(client, br: BatchResult, regions: list[Region], sizes: dict[in
         res = _ground(loc, br)
         _bind(res, regions)
         item_bad: dict[int, str] = {}
-        bad = _check_local(res, loc, regions, br, None if (br.metadata or {}).get("source") == "pdf_text_layer"
-                           else item_bad)
+        free_src = (br.metadata or {}).get("source") in ("pdf_text_layer", "docling")   # no Parse paid yet
+        bad = _check_local(res, loc, regions, br, None if free_src else item_bad)
         if not bad and not item_bad or mode == "local":
             res.notes.append("text_source:local" if not bad else "text_source:local_unverified")
             return res
-        if (br.metadata or {}).get("source") == "pdf_text_layer":
+        if free_src:
             res.retry_pages = sorted(bad)             # the runner re-reads these pages with Parse
             res.notes.append("text_source:pdf+parse_pages:" + ",".join(str(p) for p in sorted(bad)))
             return res

@@ -66,3 +66,22 @@ def test_local_split_debris_after_bare_label_takes_value_before():
 def test_last_question_without_any_labels_is_not_trusted():
     md = "1 Which?\nA) p\nB) q\nC) r\nD) s\n\n2 Moment of inertia is\nA $$x$$ B $$y$$ C $$z$$ D $$w$$\n"
     assert "q2: option A missing" in validate(local_extract(md), {1, 2})
+
+
+def test_docling_batch_routes_picture_pages_to_parse(tmp_path):
+    import json
+    from pipeline.stages.docling_text import build_docling_batch
+    from pipeline.utils.io import sha256_file
+    pdf = make_digital_pdf(tmp_path / "d.pdf")
+    key = sha256_file(pdf)[:16]
+    lines = ["1 Which gas?", "A) H2", "B) O2", "C) N2", "D) He", "2 Next?", "A) p", "B) q", "C) r", "D) s"]
+    items = [{"label": "text", "text": t, "bbox": [50, 50 + 20 * k, 300, 65 + 20 * k]} for k, t in enumerate(lines)]
+    cache = tmp_path / "dl"
+    cache.mkdir()
+    (cache / f"{key}_p0001.json").write_text(json.dumps({"w": 595, "h": 842, "items": items}))
+    (cache / f"{key}_p0002.json").write_text(json.dumps({"w": 595, "h": 842, "items": items + [
+        {"label": "picture", "text": "", "bbox": [50, 300, 300, 500]}]}))
+    br, unsafe = build_docling_batch(pdf, [1, 2], {1: (2481, 3509), 2: (2481, 3509)}, 7, cache)
+    assert br.page_nums == [1] and unsafe == [2]                 # the page with a picture goes to Landing AI
+    qs = {q["number"]: q for q in local_extract(br.markdown)["extraction"]["questions"]}
+    assert qs["1"]["option_a"] == "H2" and qs["2"]["option_d"] == "s"

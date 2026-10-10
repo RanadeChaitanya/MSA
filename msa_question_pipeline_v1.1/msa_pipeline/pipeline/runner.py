@@ -79,7 +79,10 @@ def process_pages(ctx: Ctx, page_nums: list[int]) -> dict[int, tuple[list[Questi
     # cost cut B: born-digital question pages are read from the PDF text layer (no Parse call)
     digital = [p for p in page_nums if ctx.cfg.pdf_text and ctx.page_kinds.get(p) == "question_digital"
                and ctx.records[p].source == "render" and ctx.records[p].profile == "default"]
-    recs = [ctx.records[p] for p in page_nums if p not in digital]
+    # cost cut C: screenshot / scanned question pages read by local Docling OCR first (no Parse call)
+    dl_pages = [p for p in page_nums if ctx.cfg.docling and p not in digital and ctx.records[p].source == "render"
+                and ctx.page_kinds.get(p) in ("question_composite", "question_scanned")]
+    recs = [ctx.records[p] for p in page_nums if p not in digital and p not in dl_pages]
     brs = parse_pages(ctx.client, recs, ctx.cfg, ctx.paths.lat_raw, src_pdf=ctx.pdf_path) if recs else []
     sizes = {p: (ctx.records[p].width, ctx.records[p].height) for p in digital}
     to_parse: list[int] = []
@@ -90,6 +93,15 @@ def process_pages(ctx: Ctx, page_nums: list[int]) -> dict[int, tuple[list[Questi
         to_parse += unsafe
         if br.page_nums:
             pdf_brs.append(br)
+    if dl_pages:
+        from .stages.docling_text import build_docling_batch
+        dsz = {p: (ctx.records[p].width, ctx.records[p].height) for p in dl_pages}
+        for k in range(0, len(dl_pages), ctx.cfg.batch_pages):
+            br, unsafe = build_docling_batch(ctx.pdf_path, dl_pages[k:k + ctx.cfg.batch_pages], dsz,
+                                             next(_batch_counter), Path(ctx.cfg.data_dir) / "cache" / "docling")
+            to_parse += unsafe
+            if br.page_nums:
+                pdf_brs.append(br)
     out: dict[int, tuple[list[QuestionDraft], list[str]]] = {p: ([], []) for p in page_nums}
 
     def collect(batch_results, skip: set[int]):

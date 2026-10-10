@@ -64,6 +64,7 @@ class Settings:
     repass_min_side: int = 1000
     repass_max_per_page: int = 4         # photo pages only; all candidates of a page go in ONE mosaic call
     pdf_text: bool = True                # born-digital pages: text from the PDF layer, no Parse call
+    docling: bool = False                # picture-question pages: text from local Docling OCR first, Parse fallback
     extract_mode: str = "auto"           # auto: local split, Extract only for unverified pages | extract | local
     describe_images: bool = True         # one mosaic call per page whose images Landing AI has not described yet
     parse_source: str = "auto"           # auto: digital pages are uploaded as original PDF pages | canonical
@@ -115,6 +116,7 @@ class Settings:
             describe_images=_bool("DESCRIBE_IMAGES", d.describe_images),
             extract_mode=_env("EXTRACT_MODE", d.extract_mode),
             pdf_text=_bool("PDF_TEXT", d.pdf_text),
+            docling=_bool("DOCLING", d.docling),
             parse_source=_env("PARSE_SOURCE", d.parse_source),
             ink_threshold=_int("INK_THRESHOLD", d.ink_threshold),
             ink_min_bbox_frac=_float("INK_MIN_BBOX_FRAC", d.ink_min_bbox_frac),
