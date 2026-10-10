@@ -72,11 +72,13 @@ def _chains(cands: list[tuple[int, Block, bool]], min_gap: float, min_size: int)
 
 def segment_page(blocks: list[Block], W: int, H: int, cfg: Settings, page: int, batch_id: int,
                  hint: int | None = None, min_gap_frac: float | None = None,
-                 min_cluster: int | None = None) -> list[Region]:
+                 min_cluster: int | None = None, anchors: list[Block] | None = None) -> list[Region]:
+    """`anchors`: exact question-number blocks from the PDF text layer (screenshot / scanned pages). When given,
+    only they can start questions; `blocks` (Parse output) still provide the content of each region."""
     leaf = [b for b in blocks if b.type in LEAF and not b.watermark]
     keys = key_table_ids(blocks)
     cands: list[tuple[int, Block, bool]] = []
-    for b in leaf:
+    for b in (anchors if anchors is not None else leaf):
         if b.type not in TEXTLIKE or not b.plain or (b.parent and b.parent in keys):
             continue
         t = re.sub(r"\s+", "", b.plain)

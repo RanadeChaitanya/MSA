@@ -16,7 +16,8 @@ from .models import DocumentOut, PageRecord
 from .retry.ladder import SkipRung, run_ladder
 from .stages.assemble import QuestionDraft, build_drafts, materialize
 from .stages.canonicalize import canonicalize_page, canonicalize_pdf
-from .stages.parse_stage import parse_pages
+from .stages.parse_stage import _batch_counter, parse_pages
+from .stages.pdf_text import build_pdf_batch
 from .stages.qa_confidence import run_verity_qa
 from .stages.validate import PAGE_ERRORS, error_count, is_error, validate_drafts, validate_final
 from .triage import triage
@@ -56,6 +57,7 @@ class Ctx:
     images: ImageCache = None            # type: ignore[assignment]
     pdf_path: Path = None                # type: ignore[assignment]
     page_kinds: dict = field(default_factory=dict)      # triage kind per page
+    retry_parse: set = field(default_factory=set)       # PDF-text pages the local split could not verify
 
 
 def parse_page_spec(spec: Optional[str], n_pages: int) -> Optional[list[int]]:
@@ -73,15 +75,42 @@ def parse_page_spec(spec: Optional[str], n_pages: int) -> Optional[list[int]]:
 
 
 def process_pages(ctx: Ctx, page_nums: list[int]) -> dict[int, tuple[list[QuestionDraft], list[str]]]:
-    recs = [ctx.records[p] for p in page_nums]
-    brs = parse_pages(ctx.client, recs, ctx.cfg, ctx.paths.lat_raw, src_pdf=ctx.pdf_path)
+    # cost cut B: born-digital question pages are read from the PDF text layer (no Parse call)
+    digital = [p for p in page_nums if ctx.cfg.pdf_text and ctx.page_kinds.get(p) == "question_digital"
+               and ctx.records[p].source == "render" and ctx.records[p].profile == "default"]
+    recs = [ctx.records[p] for p in page_nums if p not in digital]
+    brs = parse_pages(ctx.client, recs, ctx.cfg, ctx.paths.lat_raw, src_pdf=ctx.pdf_path) if recs else []
+    sizes = {p: (ctx.records[p].width, ctx.records[p].height) for p in digital}
+    to_parse: list[int] = []
+    pdf_brs = []
+    for k in range(0, len(digital), ctx.cfg.batch_pages):
+        group = digital[k:k + ctx.cfg.batch_pages]
+        br, unsafe = build_pdf_batch(ctx.pdf_path, group, sizes, next(_batch_counter))
+        to_parse += unsafe
+        if br.page_nums:
+            pdf_brs.append(br)
     out: dict[int, tuple[list[QuestionDraft], list[str]]] = {p: ([], []) for p in page_nums}
-    for br in brs:
-        drafts, issues = build_drafts(br, ctx)
-        for d in drafts:
-            out[d.page][0].append(d)
-        for p, iss in issues.items():
-            out.setdefault(p, ([], []))[1].extend(iss)
+
+    def collect(batch_results, skip: set[int]):
+        for br in batch_results:
+            drafts, issues = build_drafts(br, ctx)
+            for d in drafts:
+                if d.page not in skip:
+                    out[d.page][0].append(d)
+            for p, iss in issues.items():
+                if p not in skip:
+                    out.setdefault(p, ([], []))[1].extend(iss)
+
+    collect(brs, set())
+    ctx.retry_parse = set()
+    collect(pdf_brs, set())
+    retry = sorted(set(to_parse) | ctx.retry_parse)
+    if retry:                                         # PDF text not provable for these pages: read them with Parse
+        for p in ctx.retry_parse:
+            out[p] = ([], [])
+        log.info("pages read by Parse instead of the PDF text layer: %s", retry)
+        collect(parse_pages(ctx.client, [ctx.records[p] for p in retry], ctx.cfg, ctx.paths.lat_raw,
+                            src_pdf=ctx.pdf_path), set())
     for p in page_nums:
         validate_drafts(out[p][0])
     return out

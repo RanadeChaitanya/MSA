@@ -15,6 +15,7 @@ def cfg(tmp_path):
     c.api_key = "test"
     c.debug_overlays = True
     c.ladder_profiles = []          # keep the first test deterministic
+    c.extract_mode = "extract"      # these tests exercise how Landing AI Extract output is handled
     return c
 
 

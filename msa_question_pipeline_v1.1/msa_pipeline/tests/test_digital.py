@@ -104,6 +104,7 @@ class FakeDigital:
 def test_digital_pages_cost_two_calls_and_keep_dropped_questions(tmp_path):
     cfg = Settings()
     cfg.data_dir, cfg.api_key, cfg.ladder_profiles = tmp_path / "data", "test", []
+    cfg.pdf_text = False                              # this test pins the Parse-based flow
     cfg.describe_images = False
     fake = FakeDigital()
     out = process_document(make_digital_pdf(tmp_path / "d.pdf"), cfg, client=fake, doc_id="dig")

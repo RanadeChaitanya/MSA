@@ -276,6 +276,26 @@ def _pdf_geometry(br: BatchResult, ctx, sizes) -> dict[int, list]:
     return out
 
 
+def _number_anchors(br: BatchResult, ctx, sizes, pdf_geo) -> dict[int, list]:
+    """Exact question-number positions from the PDF text layer for screenshot / scanned pages."""
+    pdf_path = getattr(ctx, "pdf_path", None)
+    kinds = getattr(ctx, "page_kinds", {}) or {}
+    pages = [p for p in br.page_nums if p not in pdf_geo and kinds.get(p) in ("question_composite", "question_scanned")
+             and ctx.records[p].source == "render" and not ctx.records[p].rectified]
+    if pdf_path is None or not pages:
+        return {}
+    import pymupdf
+    from .pdf_layer import number_anchors
+    out: dict[int, list] = {}
+    with pymupdf.open(str(pdf_path)) as doc:
+        for p in pages:
+            W, H = sizes[p]
+            a = number_anchors(doc[p - 1], W, H, p)
+            if a:
+                out[p] = a
+    return out
+
+
 def _mark_exact(layout: RegionLayout, exact: bool) -> None:
     if exact:
         layout.exact = True
@@ -293,6 +313,7 @@ def build_drafts(br: BatchResult, ctx, profile: str = "default") -> tuple[list[Q
     regions: list[Region] = []
     hint = None
     pdf_geo = _pdf_geometry(br, ctx, sizes)               # page -> exact blocks (digital pages only)
+    num_anchors = _number_anchors(br, ctx, sizes, pdf_geo)   # page -> exact question numbers (picture pages)
     queue = RepassQueue()
     for p in br.page_nums:
         W, H = sizes[p]
@@ -300,15 +321,20 @@ def build_drafts(br: BatchResult, ctx, profile: str = "default") -> tuple[list[Q
         mark_watermarks(pb, cfg, W, H)
         # PDF text-layer numbers are real glyph runs at line starts (no stacked-fraction digits), so dense
         # one-line questions only need a one-line gap; OCR blocks keep the conservative MIN_ANCHOR_GAP_FRAC.
+        anchors = num_anchors.get(p)
+        exact = p in pdf_geo or bool(anchors)
         rs = segment_page(pb, W, H, cfg, p, br.batch_id, hint=(hint + 1) if hint else None,
-                          min_gap_frac=0.008 if p in pdf_geo else None,
-                          min_cluster=1 if p in pdf_geo else None)       # one long question per page is common
+                          min_gap_frac=0.008 if exact else None,
+                          min_cluster=1 if exact else None,             # one long question per page is common
+                          anchors=anchors or None)
         regions.extend(rs)
         if rs:
             hint = max(r.number for r in rs)
     for i, r in enumerate(regions):
         r.idx = i
-    sem = run_semantics(ctx.client, br, regions, sizes)
+    sem = run_semantics(ctx.client, br, regions, sizes, cfg)
+    if sem.retry_pages and hasattr(ctx, "retry_parse"):
+        ctx.retry_parse.update(sem.retry_pages)
     first = br.page_nums[0]
     for n in dict.fromkeys(sem.notes):
         page_issues.setdefault(first, []).append(n[:120])
@@ -360,8 +386,9 @@ def build_drafts(br: BatchResult, ctx, profile: str = "default") -> tuple[list[Q
     queue.flush(ctx.client, ctx.images, cfg)            # at most ONE mosaic repass call per photo page
     for d in drafts:
         _annotate_visuals(d, br)
-    if cfg.describe_images:
-        _describe_missing(drafts, ctx)
+    if cfg.describe_images:                         # not for pages about to be re-read with Parse
+        retry = getattr(ctx, "retry_parse", set()) or set()
+        _describe_missing([d for d in drafts if d.page not in retry], ctx)
     for p in pdf_geo:                                     # exact geometry: reading order is the page order
         on_page = sorted((d for d in drafts if d.page == p), key=lambda d: (d.column, d.region.box.y0))
         for k, d in enumerate(on_page):

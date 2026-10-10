@@ -27,7 +27,7 @@ from .structure import Block
 # option label at a word start: "a)", "(a)", "a." followed by content or end of line
 # not followed by "," / ")" / "." so prose like "(a), (b), (d) may be formed" is not read as option labels
 _LABEL = re.compile(r"(?:(?<=\s)|^)(\(?([a-dA-D])[).])(?=\s*[^\s,).]|\s*$)")
-_NUM = re.compile(r"^\s*(\d{1,3})\s*[.)]")
+_NUM = re.compile(r"^\s*\(?(\d{1,3})\s*[.)]")       # "12." "12)" "(12)": question numbers, never atom labels
 
 
 def _line_chars(line: dict) -> list[tuple[str, tuple[float, float, float, float]]]:
@@ -278,6 +278,29 @@ def _is_table_grid(members: list[tuple[Box, bool]], box: Box) -> bool:
 
 def _is_option_label(t: str) -> bool:
     return bool(re.fullmatch(r"\(?[a-dA-D][).]", t.strip()))
+
+
+_KEYLINE = re.compile(r"answer\s*key|q\s*\.\s*no\b|\bans\b", re.I)
+_ANCHOR_NUM = re.compile(r"^\s*\(?\d{1,3}\s*[.)]?\s*$")
+
+
+def number_anchors(page: pymupdf.Page, W: int, H: int, page_no: int) -> list[Block]:
+    """Question-number lines of a page whose questions are pictures (screenshot books, MSA scans): the text layer
+    still holds the printed numbers at their exact place. Numbers inside / below an answer-key grid are skipped."""
+    sx, sy = W / page.rect.width, H / page.rect.height
+    lines = [(ln["bbox"], " ".join(sp["text"] for sp in ln["spans"]).strip())
+             for blk in page.get_text("dict")["blocks"] for ln in blk.get("lines", [])]
+    key_top = min((bb[1] for bb, t in lines if _KEYLINE.search(t)), default=page.rect.height + 1)
+    out: list[Block] = []
+    for k, (bb, t) in enumerate(lines):
+        if not _ANCHOR_NUM.match(t) or bb[1] >= key_top - 2 or bb[0] > 0.62 * page.rect.width:
+            continue
+        r = pymupdf.Rect(bb)
+        if page.rotation:
+            r = r * page.rotation_matrix
+        out.append(Block(uid=f"pdfnum{page_no}/n-{k}", id=f"n-{k}", type="text", page=page_no, local_page=1,
+                         box=Box(r.x0 * sx, r.y0 * sy, r.x1 * sx, r.y1 * sy), md=t, plain=t, rng=(-1, -1)))
+    return out
 
 
 def is_digital(page: pymupdf.Page) -> bool:
