@@ -61,3 +61,8 @@ def test_local_split_debris_after_bare_label_takes_value_before():
     md = "1 If r is false, p and q are\nT , F\n [x] A) _\n [ ] B) F , F\n [ ] C) F , T\n [ ] D) T , T\n2 Next?\n A) p\n B) q\n C) r\n D) s\n"
     q = local_extract(md)["extraction"]["questions"][0]
     assert [q[f"option_{L}"] for L in "abcd"] == ["T , F", "F , F", "F , T", "T , T"]
+
+
+def test_last_question_without_any_labels_is_not_trusted():
+    md = "1 Which?\nA) p\nB) q\nC) r\nD) s\n\n2 Moment of inertia is\nA $$x$$ B $$y$$ C $$z$$ D $$w$$\n"
+    assert "q2: option A missing" in validate(local_extract(md), {1, 2})

@@ -292,15 +292,13 @@ def validate(ext: dict, region_numbers: set[int]) -> Optional[str]:
         return "duplicate numbers"
     for q in qs:
         tag = q.get("number") or "?"
-        if q.get("_tail") and all(q.get(f"option_{L.lower()}") is None for L in ORDER) \
-                and not (q.get("_figs") or {}).get("stem"):      # options may be printed inside the figure
-            continue                     # continues on the next page (options there): Extract can't do better
         if not (q.get("stem") or "").strip():
             return f"q{tag}: empty stem"
         for L in ORDER:
             v = q.get(f"option_{L.lower()}")
             if v is None:
-                if q.get("_tail") and not (q.get("_figs") or {}).get("stem"):
+                if q.get("_tail") and not (q.get("_figs") or {}).get("stem") \
+                        and any(q.get(f"option_{x.lower()}") is not None for x in ORDER):   # cut after some options
                     continue             # a page-end question cut after some options
                 return f"q{tag}: option {L} missing"
             if not v.strip() and not q["_figs"][L]:
