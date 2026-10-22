@@ -1,0 +1,6 @@
+{
+ "_note": "USD per 1M tokens. DeepSeek: official page api-docs.deepseek.com/quick_start/pricing, read 2026-10-22 (deepseek-flash; off-peak = half of peak; peak 01-04 and 06-10 UTC Mon-Fri). Anthropic Haiku 5.5: third-party reports, NOT checked on Anthropic's page; rate shown is for prompts up to 100K tokens (above that 0.50 in / 2.50 out). Verify both before trusting dollar figures; token counts in usage/usage.jsonl are exact.",
+ "deepseek-flash": {"peak": {"in": 0.30, "in_cached": 0.006, "out": 1.20}, "offpeak": {"in": 0.15, "in_cached": 0.003, "out": 0.60}},
+ "deepseek-v4": {"peak": {"in": 1.32, "in_cached": 0.044, "out": 3.96}, "offpeak": {"in": 0.66, "in_cached": 0.022, "out": 1.98}},
+ "claude-haiku-5-5": {"in": 0.10, "out": 0.50}
+}
