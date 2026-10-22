@@ -1,0 +1,384 @@
+{
+ "$defs": {
+  "DroppedBlock": {
+   "properties": {
+    "block_index": {
+     "title": "Block Index",
+     "type": "integer"
+    },
+    "reason": {
+     "enum": [
+      "header_noise",
+      "footer_noise",
+      "duplicate",
+      "not_a_question"
+     ],
+     "title": "Reason",
+     "type": "string"
+    },
+    "text": {
+     "title": "Text",
+     "type": "string"
+    }
+   },
+   "required": [
+    "block_index",
+    "reason",
+    "text"
+   ],
+   "title": "DroppedBlock",
+   "type": "object"
+  },
+  "Edit": {
+   "description": "One change made to the OCR text. The code guard checks every edit; restore_symbol edits are always re-checked by Sonnet.",
+   "properties": {
+    "field": {
+     "description": "'stem' or 'options.A'..'options.D'",
+     "title": "Field",
+     "type": "string"
+    },
+    "type": {
+     "enum": [
+      "format",
+      "remove_noise",
+      "split_options",
+      "merge_blocks",
+      "dedupe",
+      "restore_symbol",
+      "table_to_text",
+      "repair_symbol",
+      "repair_expression"
+     ],
+     "title": "Type",
+     "type": "string"
+    },
+    "before": {
+     "description": "exact OCR text that was replaced",
+     "title": "Before",
+     "type": "string"
+    },
+    "after": {
+     "title": "After",
+     "type": "string"
+    },
+    "basis": {
+     "description": "text-only reason, e.g. 'options use D_1 and D_2'. Required for restore_symbol and repair_*",
+     "title": "Basis",
+     "type": "string"
+    },
+    "evidence": {
+     "description": "required (non-empty) for repair_symbol / repair_expression",
+     "items": {
+      "$ref": "#/$defs/Evidence"
+     },
+     "title": "Evidence",
+     "type": "array"
+    },
+    "risk": {
+     "default": "low",
+     "enum": [
+      "low",
+      "medium",
+      "high"
+     ],
+     "title": "Risk",
+     "type": "string"
+    }
+   },
+   "required": [
+    "field",
+    "type",
+    "before",
+    "after",
+    "basis"
+   ],
+   "title": "Edit",
+   "type": "object"
+  },
+  "Evidence": {
+   "properties": {
+    "kind": {
+     "enum": [
+      "internal",
+      "domain",
+      "solvability"
+     ],
+     "title": "Kind",
+     "type": "string"
+    },
+    "quote": {
+     "description": "internal: the exact text of THIS question that supports the repair; domain: the standard law or definition; solvability: what becomes solvable",
+     "title": "Quote",
+     "type": "string"
+    }
+   },
+   "required": [
+    "kind",
+    "quote"
+   ],
+   "title": "Evidence",
+   "type": "object"
+  },
+  "Flag": {
+   "properties": {
+    "code": {
+     "enum": [
+      "STEM_TRUNCATED",
+      "STEM_DUPLICATED",
+      "OPTION_COUNT",
+      "OPTION_DUPLICATE",
+      "OPTION_EMPTY",
+      "OPTION_ORDER",
+      "FIGURE_REFERENCED_NO_BOX",
+      "FIGURE_BOX_NO_REFERENCE",
+      "TABLE_UNPARSED",
+      "NUMBERING_GAP",
+      "NOISE_REMAINS",
+      "SYMBOL_MISSING_SUSPECTED",
+      "SUBSCRIPT_SUSPECTED",
+      "GREEK_OR_PRIME_SUSPECTED",
+      "OCR_CHAR_CONFUSION",
+      "UNIT_SUSPECT",
+      "NUMBER_SUSPECT",
+      "CHEM_NAME_FORMULA_MISMATCH",
+      "ANSWER_INCONSISTENT",
+      "OTHER",
+      "SOURCE_DEFECT",
+      "REPAIR_UNCERTAIN"
+     ],
+     "title": "Code",
+     "type": "string"
+    },
+    "field": {
+     "description": "'stem', 'options.A'.., 'figure', or 'question'",
+     "title": "Field",
+     "type": "string"
+    },
+    "severity": {
+     "enum": [
+      "low",
+      "medium",
+      "high"
+     ],
+     "title": "Severity",
+     "type": "string"
+    },
+    "detail": {
+     "description": "one sentence, what looks wrong and why",
+     "title": "Detail",
+     "type": "string"
+    },
+    "needs_image": {
+     "description": "true if only looking at the page can settle it",
+     "title": "Needs Image",
+     "type": "boolean"
+    }
+   },
+   "required": [
+    "code",
+    "field",
+    "severity",
+    "detail",
+    "needs_image"
+   ],
+   "title": "Flag",
+   "type": "object"
+  },
+  "Question": {
+   "properties": {
+    "subject": {
+     "anyOf": [
+      {
+       "enum": [
+        "Physics",
+        "Chemistry",
+        "Biology"
+       ],
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "description": "null when it cannot be told from the text",
+     "title": "Subject"
+    },
+    "number": {
+     "title": "Number",
+     "type": "integer"
+    },
+    "source_blocks": {
+     "description": "indexes of the OCR blocks this question was built from",
+     "items": {
+      "type": "integer"
+     },
+     "title": "Source Blocks",
+     "type": "array"
+    },
+    "stem": {
+     "description": "cleaned question text; maths as $...$ LaTeX, no \\mathrm clutter; keep [figure] markers",
+     "title": "Stem",
+     "type": "string"
+    },
+    "options": {
+     "additionalProperties": {
+      "type": "string"
+     },
+     "description": "all four keys; empty string when an option is only a picture",
+     "propertyNames": {
+      "enum": [
+       "A",
+       "B",
+       "C",
+       "D"
+      ]
+     },
+     "title": "Options",
+     "type": "object"
+    },
+    "figure_ids": {
+     "additionalProperties": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array"
+     },
+     "description": "OCR figure box IDs passed through untouched (e.g. 'p3_img1'); never invented",
+     "propertyNames": {
+      "enum": [
+       "question",
+       "A",
+       "B",
+       "C",
+       "D"
+      ]
+     },
+     "title": "Figure Ids",
+     "type": "object"
+    },
+    "status": {
+     "description": "clean = no change, fixed = formatting edits only, repaired = repair edits with evidence and solvable = yes, flag = unresolved doubt",
+     "enum": [
+      "clean",
+      "fixed",
+      "repaired",
+      "flag"
+     ],
+     "title": "Status",
+     "type": "string"
+    },
+    "solvable": {
+     "default": "yes",
+     "description": "can a student solve the question from the text as you return it",
+     "enum": [
+      "yes",
+      "ambiguous",
+      "no"
+     ],
+     "title": "Solvable",
+     "type": "string"
+    },
+    "solvable_reason": {
+     "default": "",
+     "title": "Solvable Reason",
+     "type": "string"
+    },
+    "solved_option": {
+     "anyOf": [
+      {
+       "enum": [
+        "A",
+        "B",
+        "C",
+        "D"
+       ],
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "description": "the option your own quick solution supports; compared with the answer key later; never used to choose a repair",
+     "title": "Solved Option"
+    },
+    "solved_confidence": {
+     "default": 0.0,
+     "maximum": 1,
+     "minimum": 0,
+     "title": "Solved Confidence",
+     "type": "number"
+    },
+    "edits": {
+     "items": {
+      "$ref": "#/$defs/Edit"
+     },
+     "title": "Edits",
+     "type": "array"
+    },
+    "flags": {
+     "items": {
+      "$ref": "#/$defs/Flag"
+     },
+     "title": "Flags",
+     "type": "array"
+    },
+    "confidence": {
+     "maximum": 1,
+     "minimum": 0,
+     "title": "Confidence",
+     "type": "number"
+    }
+   },
+   "required": [
+    "subject",
+    "number",
+    "source_blocks",
+    "stem",
+    "options",
+    "figure_ids",
+    "status",
+    "edits",
+    "flags",
+    "confidence"
+   ],
+   "title": "Question",
+   "type": "object"
+  }
+ },
+ "properties": {
+  "page": {
+   "title": "Page",
+   "type": "integer"
+  },
+  "questions": {
+   "items": {
+    "$ref": "#/$defs/Question"
+   },
+   "title": "Questions",
+   "type": "array"
+  },
+  "dropped_blocks": {
+   "items": {
+    "$ref": "#/$defs/DroppedBlock"
+   },
+   "title": "Dropped Blocks",
+   "type": "array"
+  },
+  "page_flags": {
+   "items": {
+    "$ref": "#/$defs/Flag"
+   },
+   "title": "Page Flags",
+   "type": "array"
+  }
+ },
+ "required": [
+  "page",
+  "questions",
+  "dropped_blocks",
+  "page_flags"
+ ],
+ "title": "PageResult",
+ "type": "object"
+}
