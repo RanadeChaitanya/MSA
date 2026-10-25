@@ -50,6 +50,7 @@ class QuestionOut(BaseModel):
     correct_option: Optional[str] = None
     answer_text: str = ""
     question_images: list[AssetRef] = Field(default_factory=list)
+    solution_images: list[AssetRef] = Field(default_factory=list)   # figures from hint/solution sheets
     options: dict[str, OptionOut] = Field(default_factory=dict)
     confidence: float = 1.0
     ocr_confidence: Optional[float] = None
