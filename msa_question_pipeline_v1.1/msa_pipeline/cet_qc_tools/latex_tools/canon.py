@@ -37,6 +37,10 @@ def to_ce(body):
 
 
 def canon_math(s, subject):
+    # arrow trapped inside \mathrm{...}: \mathrm{A\xrightarrow{X}B} -> \mathrm{A} \xrightarrow{\mathrm{X}} \mathrm{B}
+    s = rule("arrow_out_of_mathrm", r"\\mathrm\{([^{}]*?)\\(xrightarrow|rightarrow|rightleftharpoons)(?:\{([^{}]*)\})?((?:[^{}]|\{[^{}]*\})*)\}",
+             lambda m: (r"\mathrm{" + m.group(1) + "} " if m.group(1).strip() else "") + "\\" + m.group(2)
+             + ("{\\mathrm{" + m.group(3) + "}}" if m.group(3) else "") + (r" \mathrm{" + m.group(4) + "}" if m.group(4).strip() else ""), s)
     s = rule("AA_in_math", r"\\mathrm\{\\AA\}", r"\\mathring{\\mathrm{A}}", s)
     s = rule("degree_no_base", r"(\\,|\s|^|\()\^\{?\\circ\}?", lambda m: m.group(1) + r"{}^{\circ}", s)
     s = rule("word_in_mathrm", r"\\mathrm\{([A-Za-z]*[a-z]{3,}[A-Za-z]*)\}", lambda m: m.group(0) if re.fullmatch(MULTI_UNITS, m.group(1)) else r"\text{" + m.group(1) + "}", s)
